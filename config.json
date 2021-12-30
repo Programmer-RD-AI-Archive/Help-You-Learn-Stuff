@@ -1,9 +1,0 @@
-{
-  "Driver": "{ODBC Driver 17 for SQL Server}",
-  "Server Name": "help-you-learn-stuff",
-  "DataBase Name": "programmerrdai",
-  "Server": "help-you-learn-stuff.database.windows.net,1433",
-  "User Name": "ranuga2008",
-  "Password": "Programmer-RD-AI",
-  "Connection": "Driver={ODBC Driver 17 for SQL Server};Server=programmer-rd-ai.database.windows.net,1433;Database=programmerrdai;Uid=ranuga2008;Pwd=Programmer-RD-AI;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-}
