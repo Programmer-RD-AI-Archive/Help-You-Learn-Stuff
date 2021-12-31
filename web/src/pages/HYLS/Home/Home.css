@@ -1,0 +1,40 @@
+/* body {
+  background: linear-gradient(
+    -45deg,
+    #000000,
+    rgb(255, 255, 255),
+    rgb(127, 127, 127),
+    rgb(0, 0, 0)
+  );
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
+body {
+  background-image: url("https://cdn3.vectorstock.com/i/1000x1000/85/57/cartoon-color-characters-people-and-learning-vector-30728557.jpg");
+   background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+.bg-text {
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
