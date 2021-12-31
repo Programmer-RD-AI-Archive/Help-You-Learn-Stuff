@@ -4,11 +4,14 @@ import binascii
 
 
 class Azure_SQL:
-    f = open(
-        f"./azure_sql.py",
-        "rb",
-    )
-    f = "0x" + binascii.hexlify(f.read()).decode("utf-8")
+    try:
+        f = open(
+            f"./azure_sql.py",
+            "rb",
+        )
+        f = "0x" + binascii.hexlify(f.read()).decode("utf-8")
+    except:
+        f = "0x12345967891011"
 
     def __init__(
         self,
@@ -84,12 +87,3 @@ class Azure_SQL:
             return True
         except:
             return False
-
-
-azure_sql = Azure_SQL()
-print(azure_sql.reconnect_connection())
-print(azure_sql.reconnect_cursor())
-print(azure_sql.create_new_table())
-print(azure_sql.insert_to_table())
-print(azure_sql.select_table())
-print(azure_sql.close_connection())
