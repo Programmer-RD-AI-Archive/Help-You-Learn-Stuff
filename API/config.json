@@ -1,0 +1,16 @@
+{
+  "Home": {
+    "Help you Learn Stuff": {
+      "Gif": "https://cdn.dribbble.com/users/6985884/screenshots/15201666/media/e738381a540137fe1b5b7ec20abf4b62.gif",
+      "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
+    },
+    "About Us": {
+      "Gif": "https://i.pinimg.com/originals/75/4b/03/754b03c5ef6b9adfb8ef6142f8a0a8c3.gif",
+      "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
+    },
+    "Contact Us": {
+      "Gif": "https://i.pinimg.com/originals/50/78/a0/5078a05eb1b6847d93383eaa4c0ed500.gif",
+      "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
+    }
+  }
+}
