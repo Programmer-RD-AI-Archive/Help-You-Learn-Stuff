@@ -1,0 +1,205 @@
+{% extends "/home/base.html" %} {% block head %}
+<style>
+  .p-3 .bg-light {
+    padding-left: 100px !important;
+  }
+</style>
+<title>Home</title>
+
+{% endblock %} {% block body %}
+<div class="overflow-hidden">
+  <div
+    class="row gx-5"
+    style="
+      height: 100% !important;
+      width: 100% !important;
+      background-color: white !important;
+    "
+  >
+    <div
+      class="col"
+      style="
+        margin: auto !important;
+        width: 50% !important;
+        background-color: white !important;
+      "
+    >
+      <div
+        class="p-3 bg-light"
+        style="padding: 50px !important; background-color: white !important"
+      >
+        <h1
+          style="
+            font-size: 100px !important;
+            color: rgb(93, 54, 167) !important;
+          "
+        >
+          <b
+            >Help you <br />
+            Learn Stuff</b
+          >
+        </h1>
+        <br />
+        <h3>
+          {{description_1}}
+        </h3>
+        <br />
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          style="
+            border-radius: 25px !important;
+            font-size: 100px !important;
+            color: rgb(93, 54, 167) !important;
+          "
+        >
+          <h2>Learn More</h2>
+        </button>
+      </div>
+    </div>
+    <div class="col" style="background-color: white !important">
+      <div class="p-3 bg-light" style="background-color: white !important">
+        <img src="{{gif_1}}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div id="aboutme" class="aboutme">
+  <div class="overflow-hidden">
+    <div
+      class="row gx-5"
+      style="
+        height: 100% !important;
+        width: 100% !important;
+        background-color: white !important;
+      "
+    >
+      <div class="col" style="background-color: white !important">
+        <div class="p-3 bg-light" style="background-color: white !important">
+          <img src="{{gif_2}}" alt="" />
+        </div>
+      </div>
+      <div
+        class="col"
+        style="
+          margin: auto !important;
+          width: 50% !important;
+          background-color: white !important;
+        "
+      >
+        <div
+          class="p-3 bg-light"
+          style="padding: 50px !important; background-color: white !important"
+        >
+          <h1
+            style="
+              font-size: 100px !important;
+              color: rgb(255, 196, 0) !important;
+            "
+          >
+            <b>About Us</b>
+          </h1>
+          <br />
+          <h3>
+            {{description_2}}
+          </h3>
+          <br />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            style="border-radius: 25px !important"
+          >
+            <h2 style="color: rgb(255, 196, 0) !important">Getting Started</h2>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div id="contactus" class="contactus">
+  <div class="overflow-hidden">
+    <div
+      class="row gx-5"
+      style="
+        height: 100% !important;
+        width: 100% !important;
+        background-color: white !important;
+      "
+    >
+      <div
+        class="col"
+        style="
+          margin: auto !important;
+          width: 50% !important;
+          background-color: white !important;
+        "
+      >
+        <div
+          class="p-3 bg-light"
+          style="padding: 50px !important; background-color: white !important"
+        >
+          <h1
+            style="
+              font-size: 100px !important;
+              color: rgb(54, 27, 211) !important;
+            "
+          >
+            <b>Contact Us</b>
+          </h1>
+          <br />
+          <div class="row g-3 align-items-center">
+            <h3>
+            {{description_3}}
+          </h3>
+            <form method="post">
+              <div class="col-auto">
+              <label for="email" class="col-form-label"><h3>Email</h3></label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                aria-describedby="email"
+              />
+            </div>
+            <div class="col-auto">
+              <label for="Question" class="col-form-label"
+                ><h3>Question</h3></label
+              >
+            </div>
+            <div class="col-auto">
+              <input
+                type="text"
+                name="Question"
+                id="Question"
+                class="form-control"
+                aria-describedby="Question"
+              />
+            </div>
+            
+          </div>
+          <br />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            style="border-radius: 25px !important"
+          >
+            <h2 style="color: rgb(54, 27, 211) !important">Ask Question</h2>
+          </button></form>
+        </div>
+      </div>
+      <div class="col" style="background-color: white !important">
+        <div class="p-3 bg-light" style="background-color: white !important">
+          <img src="{{gif_3}}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
