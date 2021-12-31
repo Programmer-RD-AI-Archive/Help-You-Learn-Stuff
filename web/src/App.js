@@ -1,10 +1,16 @@
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/HYLS/Home/Home";
 
 function App() {
   return (
-    <div className="App">
-      <h1>test</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
