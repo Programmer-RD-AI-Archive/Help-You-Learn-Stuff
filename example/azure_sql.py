@@ -86,10 +86,5 @@ class Azure_SQL:
             return False
 
 
-azure_sql = Azure_SQL()
-print(azure_sql.reconnect_connection())
-print(azure_sql.reconnect_cursor())
-print(azure_sql.create_new_table())
-print(azure_sql.insert_to_table())
-print(azure_sql.select_table())
-print(azure_sql.close_connection())
+asql = Azure_SQL()
+asql.create_new_table("CREATE TABLE Contact_Us_Questions (Email varchar(max), Question varchar(max))")
