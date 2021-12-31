@@ -34,7 +34,3 @@ class Azure_Storage:
             download_file.write(blob_client.download_blob().readall())
 
 
-azure_storage = Azure_Storage()
-azure_storage.create_file()
-azure_storage.find_file()
-azure_storage.download_file()
