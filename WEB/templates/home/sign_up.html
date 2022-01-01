@@ -1,0 +1,117 @@
+{% extends "/home/base.html" %} {% block head %}
+<style></style>
+<title>Sign Up</title>
+
+{% endblock %} {% block body %}
+<div id="aboutme" class="aboutme">
+  <div class="overflow-hidden">
+    <div
+      class="row gx-5"
+      style="
+        height: 100% !important;
+        width: 100% !important;
+        background-color: white !important;
+      "
+    >
+      <div class="col" style="background-color: white !important">
+        <div class="p-3 bg-light" style="background-color: white !important">
+          <img
+            src="{{config['config']['Sign Up']['Gif']}}"
+            alt=""
+            height="600"
+            width="800"
+          />
+        </div>
+      </div>
+      <div
+        class="col"
+        style="
+          margin: auto !important;
+          width: 50% !important;
+          background-color: white !important;
+        "
+      >
+        <div
+          class="p-3 bg-light"
+          style="padding: 50px !important; background-color: white !important"
+        >
+          <!-- 
+          <br />
+          <h3></h3>
+          <br />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            style="border-radius: 25px !important"
+          >
+            <h2 style="color: rgb(0, 195, 255) !important">Getting Started</h2>
+          </button> -->
+          <h1
+            style="
+              font-size: 100px !important;
+              color: rgb(0, 195, 255) !important;
+            "
+          >
+            <b>Sign Up</b>
+          </h1>
+          <form>
+            <div class="mb-3">
+              <!-- <label for="User Name" class="form-label"
+                ><h3></h3></label
+              > -->
+              <input
+                name="User Name"
+                type="text"
+                class="form-control"
+                id="User Name"
+                aria-describedby="emailHelp"
+                value="{{session['User Name']}}"
+                placeholder="User Name"
+                style="width: 500px !important; border-radius: 25px;"
+              />
+            </div>
+            <div class="mb-3">
+              <!-- <label for="Email" class="form-label"><h3>Email</h3></label> -->
+              <input
+                type="email"
+                class="form-control"
+                id="Email"
+                name="Email"
+                value="{{session['Email']}}"
+                placeholder="Email"
+                style="width: 500px !important; border-radius: 25px;"
+              />
+            </div>
+            <div class="mb-3">
+              <!-- <label for="Password" class="form-label"><h3>Password</h3></label> -->
+              <input
+                type="password"
+                class="form-control"
+                id="Password"
+                name="Password"
+                value="{{session['Password']}}"
+                placeholder="Password"
+                style="width: 500px !important; border-radius: 25px;"
+              />
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="Remember Password"
+                name="Remember Password"
+              />
+              <label class="form-check-label" for="Remember Password"
+                >Remember Password</label
+              >
+            </div>
+            <!-- <a href=""><h5>Already have a account ?</h5></a>
+            <a href=""><h5>Forgot password ?</h5></a> -->
+            <button type="submit" class="btn btn-dark"><h2>Submit</h2></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
