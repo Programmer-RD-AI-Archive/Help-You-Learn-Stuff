@@ -1,4 +1,3 @@
-from requests.sessions import session
 from WEB import *
 
 
