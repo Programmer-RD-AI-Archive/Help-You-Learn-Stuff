@@ -32,5 +32,3 @@ class Azure_Storage:
         download_file_path = "./downloaded_test.txt"
         with open(download_file_path, "wb") as download_file:
             download_file.write(blob_client.download_blob().readall())
-
-
