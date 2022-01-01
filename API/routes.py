@@ -37,9 +37,7 @@ class Contact_Us(Resource):
             args = contact_us_request_parser.parse_args()
             email = args["email"]
             question = args["question"]
-            print(email, question)
             send_email(subject=question, message=f"Email - {email} \n Question {question}")
-            print("Email Send")
             asql = Azure_SQL()
             tables = asql.get_tables()
             if "Contact_Us" not in tables:
@@ -52,7 +50,6 @@ class Contact_Us(Resource):
             # Added DB
             return {"message": True}
         except Exception as e:
-            print(e)
             return {"message": False}
 
 
@@ -74,18 +71,13 @@ class Accounts(Resource):
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         tables = asql.get_tables()
-        print("D" * 50)
         if "Accounts" not in tables:
-            print("E" * 50)
             asql.create_new_table(
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
-            print("F" * 50)
-        print("G" * 50)
         asql.insert_to_table(
             f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
-        print("H" * 50)
         newaccounts = []
         accounts = asql.select_table("SELECT * FROM [Accounts]")
         for account in accounts:
