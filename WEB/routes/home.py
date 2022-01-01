@@ -81,7 +81,7 @@ def sign_in():
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
     config = config.json()
     if request.method == "POST":
-        user_name_or_email = request.form["User Name or Email"]
+        user_name_or_email = request.form["Email or User Name"]
         password = request.form["Password"]
         already_accounts = requests.get(
             "http://127.0.0.1:5000/api/Accounts",
