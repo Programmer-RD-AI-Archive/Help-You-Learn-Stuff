@@ -11,9 +11,6 @@ def home():
             "http://127.0.0.1:5000/api/Contact_Us", {"email": email, "question": question}
         )
         config = config.json()
-        print("*" * 50)
-        print(config)
-        print("*" * 50)
         if config["message"] is True:
             try:
                 session.pop("email")
@@ -43,6 +40,7 @@ def home():
 
 
 @app.route("/Sign/Up", methods=["GET", "POST"])
+@app.route("/Sign/Up/", methods=["GET", "POST"])
 def sign_up():
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
@@ -56,7 +54,7 @@ def sign_up():
             "http://127.0.0.1:5000/api/Accounts",
         )
         already_accounts = already_accounts.json()
-        for already_account in already_accounts:
+        for already_account in already_accounts["message"]:
             if already_account[1] == email and already_account[3] == encode(password):
                 flash("Email is already exist.", "danger")
                 return redirect("/Sign/Up")
@@ -76,6 +74,7 @@ def sign_up():
 
 
 @app.route("/Sign/In", methods=["GET", "POST"])
+@app.route("/Sign/In/", methods=["GET", "POST"])
 def sign_in():
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
@@ -87,27 +86,32 @@ def sign_in():
             "http://127.0.0.1:5000/api/Accounts",
         )
         already_accounts = already_accounts.json()
-        for already_account in already_accounts:
+        ok = None
+        for already_account in already_accounts["message"]:
             if already_account[1] == user_name_or_email and already_account[3] == encode(password):
-                account_exists = True
+                email = already_account[1]
+                user_name = already_account[2]
                 _id = already_account[0]
-                break
+                ok = True
             elif already_account[2] == user_name_or_email and already_account[3] == encode(
                 password
             ):
-                account_exists = True
+                email = already_account[1]
+                user_name = already_account[2]
                 _id = already_account[0]
-                break
-        print(user_name_or_email, password)
-        if account_exists is True:
+                ok = True
+        if ok is True:
             try:
                 session.pop("Email or User Name")
                 session.pop("Password")
             except:
                 pass
             session["id"] = _id
+            session["User Name"] = user_name
+            session["Email"] = email
+            session["Password"] = password
             flash("You have loged in successfully", "success")
-            return redirect("/Sign/In")  # TODO
+            return redirect(f"/Usr/{_id}/")
         else:
             session["Email or User Name"] = user_name_or_email
             session["Password"] = password
