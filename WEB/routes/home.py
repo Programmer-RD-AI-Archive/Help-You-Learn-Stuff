@@ -99,6 +99,18 @@ def sign_in():
                 _id = already_account[0]
                 break
         print(user_name_or_email, password)
-        flash("You have loged in successfully", "success")
-        return redirect("/Sign/In")
+        if account_exists is True:
+            try:
+                session.pop("Email or User Name")
+                session.pop("Password")
+            except:
+                pass
+            session["id"] = _id
+            flash("You have loged in successfully", "success")
+            return redirect("/Sign/In")  # TODO
+        else:
+            session["Email or User Name"] = user_name_or_email
+            session["Password"] = password
+            flash("Email or User Name and Password is wrong.", "danger")
+            return redirect("/Sign/In")
     return render_template("home/sign_in.html", session=session, config=config)
