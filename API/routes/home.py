@@ -22,7 +22,7 @@ class Contact_Us(Resource):
             tables = asql.get_tables()
             if "Contact_Us" not in tables:
                 asql.create_new_table(
-                    "CREATE TABLE Contact_Us (Email varchar(max),Question varchar(max))"
+                    "CREATE TABLE Contact_Us (ID int IDENTITY(1,1),  Email varchar(max),Question varchar(max))"
                 )
             asql.insert_to_table(
                 f"INSERT INTO [Contact_Us]( [Email], [Question] ) VALUES ( '{email}', '{question}')"
@@ -50,7 +50,7 @@ class Accounts(Resource):
         tables = asql.get_tables()
         if "Accounts" not in tables:
             asql.create_new_table(
-                "CREATE TABLE Accounts (ID Email varchar(max),User_Name varchar(max), Password varchar(max))"
+                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
         accounts = asql.select_table("SELECT * FROM Accounts")
         return {"message": accounts}
@@ -61,8 +61,9 @@ class Accounts(Resource):
         tables = asql.get_tables()
         if "Accounts" not in tables:
             asql.create_new_table(
-                "CREATE TABLE Accounts (Email varchar(max),User_Name varchar(max), Password varchar(max))"
+                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
         asql.insert_to_table(
             f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user name']}', '{args['password']}')"
         )
+api.add_resource(Accounts, "/api/Accounts")
