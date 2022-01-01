@@ -1,4 +1,5 @@
 from WEB import *
+from WEB.help_funcs import *
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -71,5 +72,5 @@ def sign_up():
         session["Password"] = encode(password)
         session["User_Name"] = user_name
         flash("Your account has been created.", "success")
-        return redirect("/Sign/In")
+        return redirect("/Sign/Up")
     return render_template("home/sign_up.html", session=session, config=config)
