@@ -47,6 +47,7 @@ class Azure_SQL:
     ):
         print("Creating New Table")
         result = self.crsr.execute(table_query)
+        self.crsr.commit()
         return result
 
     def insert_to_table(
@@ -54,6 +55,7 @@ class Azure_SQL:
     ):
         print("Insert to Table")
         result = self.crsr.execute(insert_query)
+        self.crsr.commit()
         return result
 
     def select_table(self, select_query: str = "SELECT * FROM TEST"):
@@ -86,5 +88,10 @@ class Azure_SQL:
             return False
 
 
-asql = Azure_SQL()
-asql.create_new_table("CREATE TABLE Contact_Us_Questions (Email varchar(max), Question varchar(max))")
+azure_sql = Azure_SQL()
+# print(azure_sql.reconnect_connection())
+# print(azure_sql.reconnect_cursor())
+# print(azure_sql.create_new_table())
+# print(azure_sql.insert_to_table())
+print(azure_sql.select_table())
+print(azure_sql.close_connection())
