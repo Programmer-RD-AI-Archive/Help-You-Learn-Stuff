@@ -1,11 +1,15 @@
 from WEB import *
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
-    if requests.method == "POST":
-        email = requests.form['email']
-        question = requests.form['Question']
+    if request.method == "POST":
+        email = request.form["email"]
+        question = request.form["Question"]
+        config = requests.get(
+            "http://127.0.0.1:5000/api/Contact_Us", {"email": email, "question": question}
+        )
+        
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
     config = config.json()
