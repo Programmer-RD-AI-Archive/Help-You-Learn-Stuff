@@ -13,7 +13,10 @@
       "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!"
     }
   },
-  "Sign Up":{
-    "Gif":"https://cdn.dribbble.com/users/277921/screenshots/4223608/gw-dribbble.gif"
+  "Sign Up": {
+    "Gif": "https://cdn.dribbble.com/users/277921/screenshots/4223608/gw-dribbble.gif"
+  },
+  "Sign In": {
+    "Gif": "https://assets.materialup.com/uploads/f7fb023a-1295-4be1-999c-27103aa6a2df/preview.gif"
   }
 }
