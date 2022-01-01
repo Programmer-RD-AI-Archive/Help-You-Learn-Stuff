@@ -22,3 +22,5 @@
 -- CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))
 -- DROP TABLE Accounts
 -- DROP TABLE Contact_Us
+-- SELECT * FROM Accounts
+-- SELECT * FROM Contact_Us
