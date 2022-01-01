@@ -1,5 +1,4 @@
-import os, uuid
-from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
+from API import *
 
 
 class Azure_Storage:
