@@ -29,7 +29,6 @@ def home():
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
     config = config.json()
-    print(config)
     return render_template(
         "home/home.html",
         gif_1=config["config"]["Home"]["Help you Learn Stuff"]["Gif"],
@@ -47,7 +46,20 @@ def sign_up():
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
     config = config.json()
-    print(config)
     if request.method == "POST":
-        pass
-    return render_template("home/sign_up.html", session=session,config=config)
+        email = request.form["Email"]
+        password = request.form["Password"]
+        user_name = request.form["User Name"]
+        remember_password = request.form["Remember Password"]  # TODO
+        already_accounts = requests.get(
+            "http://127.0.0.1:5000/api/Accounts",
+            {"email": email, "password": password, "user_name": user_name},
+        )
+        already_accounts = already_accounts.json()
+        # TODO
+        account_add = requests.post(
+            "http://127.0.0.1:5000/api/Accounts",
+            {"email": email, "password": password, "user_name": user_name},
+        )
+        # account_add = account_add.json()
+    return render_template("home/sign_up.html", session=session, config=config)
