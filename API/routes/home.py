@@ -1,11 +1,19 @@
 from API import *
-from API.help_funcs import send_email
-from API.db.azure_sql import Azure_SQL
+
 
 contact_us_request_parser = reqparse.RequestParser()
 contact_us_request_parser.add_argument("email", type=str, help="email is required", required=True)
 contact_us_request_parser.add_argument(
     "question", type=str, help="question is required", required=True
+)
+
+accounts_request_parser = reqparse.RequestParser()
+accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
+accounts_request_parser.add_argument(
+    "password", type=str, help="Password is required", required=True
+)
+accounts_request_parser.add_argument(
+    "user_name", type=str, help="user name is required", required=True
 )
 
 
@@ -33,17 +41,6 @@ class Contact_Us(Resource):
             return {"message": False}
 
 
-api.add_resource(Contact_Us, "/api/Contact_Us")
-accounts_request_parser = reqparse.RequestParser()
-accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
-accounts_request_parser.add_argument(
-    "password", type=str, help="Password is required", required=True
-)
-accounts_request_parser.add_argument(
-    "user_name", type=str, help="user name is required", required=True
-)
-
-
 class Accounts(Resource):
     def get(self):
         asql = Azure_SQL()
@@ -67,6 +64,9 @@ class Accounts(Resource):
             f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
         return {"message": asql.select_table("SELECT * FROM [Accounts]")}
+
+
+api.add_resource(Contact_Us, "/api/Contact_Us")
 
 
 api.add_resource(Accounts, "/api/Accounts")
