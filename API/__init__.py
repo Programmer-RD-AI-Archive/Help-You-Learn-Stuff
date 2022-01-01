@@ -10,7 +10,10 @@ import smtplib, ssl
 
 password = "01x2253x6871"
 app = Flask(__name__)
+app.debug = True  # debug
+app.secret_key = "Help you Learn Stuff"  # secret key
+app.config["SECURITY_PASSWORD_SALT"] = "Help you Learn Stuff"
 api = Api(app)
-from API.routes import *
 from API.help_funcs import *
 from API.db import *
+from API.routes import *
