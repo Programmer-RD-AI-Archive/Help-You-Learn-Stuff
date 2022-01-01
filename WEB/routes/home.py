@@ -68,9 +68,37 @@ def sign_up():
             {"email": email, "password": encode(password), "user_name": user_name},
         )
         account_add = account_add.json()
-        session["Email"] = email
-        session["Password"] = encode(password)
-        session["User_Name"] = user_name
+        session["Email or User Name"] = email
+        session["Password"] = password
         flash("Your account has been created.", "success")
-        return redirect("/Sign/Up")
+        return redirect("/Sign/In")
     return render_template("home/sign_up.html", session=session, config=config)
+
+
+@app.route("/Sign/In", methods=["GET", "POST"])
+def sign_in():
+    password = "01x2253x6871"
+    config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
+    config = config.json()
+    if request.method == "POST":
+        user_name_or_email = request.form["User Name or Email"]
+        password = request.form["Password"]
+        already_accounts = requests.get(
+            "http://127.0.0.1:5000/api/Accounts",
+        )
+        already_accounts = already_accounts.json()
+        for already_account in already_accounts:
+            if already_account[1] == user_name_or_email and already_account[3] == encode(password):
+                account_exists = True
+                _id = already_account[0]
+                break
+            elif already_account[2] == user_name_or_email and already_account[3] == encode(
+                password
+            ):
+                account_exists = True
+                _id = already_account[0]
+                break
+        print(user_name_or_email, password)
+        flash("You have loged in successfully", "success")
+        return redirect("/Sign/In")
+    return render_template("home/sign_in.html", session=session, config=config)
