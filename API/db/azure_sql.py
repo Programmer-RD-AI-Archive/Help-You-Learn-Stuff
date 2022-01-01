@@ -40,14 +40,12 @@ class Azure_SQL:
                                  Connection Timeout={30};
                                  """
         )
-        print(self.connection_str)
         self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
         self, table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
     ):
-        print("Creating New Table")
         result = self.crsr.execute(table_query)
         self.crsr.commit()
         return result
@@ -55,18 +53,15 @@ class Azure_SQL:
     def insert_to_table(
         self, insert_query: str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')"
     ):
-        print("Insert to Table")
         result = self.crsr.execute(insert_query)
         self.crsr.commit()
         return result
 
     def select_table(self, select_query: str = "SELECT * FROM TEST"):
-        print("Select Table")
         result = self.crsr.execute(select_query)
         return self.crsr.fetchall()
 
     def close_connection(self) -> bool:
-        print("Closing Connection")
         try:
             self.cnxn.close()
             return True
@@ -74,7 +69,6 @@ class Azure_SQL:
             return False
 
     def reconnect_connection(self) -> bool:
-        print("Reconnecting Connection")
         try:
             self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
             return True
@@ -82,7 +76,6 @@ class Azure_SQL:
             return False
 
     def reconnect_cursor(self) -> bool:
-        print("Reconnecting Cursor")
         try:
             self.crsr: pyodbc.Cursor = self.cnxn.cursor()
             return True
