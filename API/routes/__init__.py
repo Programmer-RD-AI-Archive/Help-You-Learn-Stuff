@@ -1,1 +1,1 @@
-from API.routes.home import *
+from API.routes.get_config import *
