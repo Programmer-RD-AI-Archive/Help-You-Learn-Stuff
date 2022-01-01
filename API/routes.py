@@ -64,24 +64,35 @@ class Accounts(Resource):
             asql.create_new_table(
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
-        accounts = asql.select_table("SELECT * FROM Accounts")
-        return {"message": accounts}
+        newaccounts = []
+        accounts = asql.select_table("SELECT * FROM [Accounts]")
+        for account in accounts:
+            newaccounts.append(list(account))
+        return {"message": newaccounts}
 
     def post(self):
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         tables = asql.get_tables()
+        print("D" * 50)
         if "Accounts" not in tables:
+            print("E" * 50)
             asql.create_new_table(
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
+            print("F" * 50)
+        print("G" * 50)
         asql.insert_to_table(
             f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
-        return {"message": asql.select_table("SELECT * FROM [Accounts]")}
+        print("H" * 50)
+        newaccounts = []
+        accounts = asql.select_table("SELECT * FROM [Accounts]")
+        for account in accounts:
+            newaccounts.append(list(account))
+        return {"message": newaccounts}
 
 
 api.add_resource(Contact_Us, "/api/Contact_Us")
 api.add_resource(Accounts, "/api/Accounts")
-
 api.add_resource(Get_Config, "/api/get_config")
