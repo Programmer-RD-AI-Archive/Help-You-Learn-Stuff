@@ -1,3 +1,4 @@
+from requests.sessions import session
 from WEB import *
 
 
@@ -50,16 +51,26 @@ def sign_up():
         email = request.form["Email"]
         password = request.form["Password"]
         user_name = request.form["User Name"]
-        remember_password = request.form["Remember Password"]  # TODO
+        # remember_password = request.form["Remember Password"]  # TODO
         already_accounts = requests.get(
             "http://127.0.0.1:5000/api/Accounts",
-            {"email": email, "password": password, "user_name": user_name},
         )
         already_accounts = already_accounts.json()
-        # TODO
+        for already_account in already_accounts:
+            if already_account[1] == email and already_account[3] == encode(password):
+                flash("Email is already exist.", "danger")
+                return redirect("/Sign/Up")
+            elif already_account[2] == user_name and already_account[3] == encode(password):
+                flash("User Name is already exist.", "danger")
+                return redirect("/Sign/Up")
         account_add = requests.post(
             "http://127.0.0.1:5000/api/Accounts",
-            {"email": email, "password": password, "user_name": user_name},
+            {"email": email, "password": encode(password), "user_name": user_name},
         )
-        # account_add = account_add.json()
+        account_add = account_add.json()
+        session["Email"] = email
+        session["Password"] = encode(password)
+        session["User_Name"] = user_name
+        flash("Your account has been created.", "success")
+        return redirect("/Sign/In")
     return render_template("home/sign_up.html", session=session, config=config)
