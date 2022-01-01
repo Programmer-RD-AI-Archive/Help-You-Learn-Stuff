@@ -19,6 +19,7 @@ class Contact_Us(Resource):
         send_email(subject=question, message=f"Email - {email} \n Question {question}")
         asql = Azure_SQL()
         asql.insert_one(f"INSERT INTO [TEST]( [Email], [Question] ) VALUES ( {email}, {question})")
+        
         return {"message": "Success"}
 
 
