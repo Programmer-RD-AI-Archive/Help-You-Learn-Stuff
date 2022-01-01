@@ -2,7 +2,7 @@
 this has all of imports and other init configs and other main
 """
 from flask import *
-
+import requests
 app = Flask(__name__)  # init flask app
 app.debug = True  # debug
 app.secret_key = "Help you Learn Stuff"  # secret key
