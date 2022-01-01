@@ -40,7 +40,7 @@ accounts_request_parser.add_argument(
     "password", type=str, help="Password is required", required=True
 )
 accounts_request_parser.add_argument(
-    "user name", type=str, help="user name is required", required=True
+    "user_name", type=str, help="user name is required", required=True
 )
 
 
@@ -64,6 +64,9 @@ class Accounts(Resource):
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
         asql.insert_to_table(
-            f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user name']}', '{args['password']}')"
+            f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
+        return {"message": asql.select_table("SELECT * FROM [Accounts]")}
+
+
 api.add_resource(Accounts, "/api/Accounts")
