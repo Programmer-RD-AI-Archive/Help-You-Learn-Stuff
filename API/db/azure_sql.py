@@ -11,7 +11,7 @@ class Azure_SQL:
         )
         f = "0x" + binascii.hexlify(f.read()).decode("utf-8")
     except:
-        f = "0x12345967891011"
+        f = "0x123456987"
 
     def __init__(
         self,
@@ -50,6 +50,7 @@ class Azure_SQL:
     ):
         print("Creating New Table")
         result = self.crsr.execute(table_query)
+        self.crsr.commit()
         return result
 
     def insert_to_table(
@@ -57,6 +58,7 @@ class Azure_SQL:
     ):
         print("Insert to Table")
         result = self.crsr.execute(insert_query)
+        self.crsr.commit()
         return result
 
     def select_table(self, select_query: str = "SELECT * FROM TEST"):
