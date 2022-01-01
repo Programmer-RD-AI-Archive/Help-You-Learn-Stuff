@@ -12,15 +12,30 @@ contact_us_request_parser.add_argument(
 
 
 class Contact_Us(Resource):
-    def get(self):
-        args = contact_us_request_parser.parse_args()
-        email = args["email"]
-        question = args["question"]
-        send_email(subject=question, message=f"Email - {email} \n Question {question}")
-        asql = Azure_SQL()
-        asql.insert_one(f"INSERT INTO [TEST]( [Email], [Question] ) VALUES ( {email}, {question})")
-        
-        return {"message": "Success"}
+    def post(self):
+        try:
+            args = contact_us_request_parser.parse_args()
+            email = args["email"]
+            question = args["question"]
+            print(email, question)
+            send_email(subject=question, message=f"Email - {email} \n Question {question}")
+            print("Email Send")
+            asql = Azure_SQL()
+            asql.insert_to_table(
+                f"INSERT INTO [Contact_Us]( [Email], [Question] ) VALUES ( '{email}', '{question}')"
+            )
+            # Added DB
+            return {"message": True}
+        except:
+            return {"message": False}
 
 
 api.add_resource(Contact_Us, "/api/Contact_Us")
+
+
+class Sign_Up(Resource):
+    def get(self):
+        pass
+
+    def post(self):
+        pass
