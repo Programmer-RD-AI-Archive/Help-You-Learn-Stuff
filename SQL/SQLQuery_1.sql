@@ -29,3 +29,8 @@ CREATE TABLE Courses
     [Name] varchar(max),
     [Image] varchar(max)
 )
+
+
+CREATE TABLE Courses_Content (
+    [ID] int IDENTITY(1,1),
+)
