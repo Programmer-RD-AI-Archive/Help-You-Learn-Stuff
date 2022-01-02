@@ -59,7 +59,7 @@ class Accounts(Resource):
         tables = asql.get_tables()
         if "Accounts" not in tables:
             asql.create_new_table(
-                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
+                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Rank INT(max), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
         newaccounts = []
         accounts = asql.select_table("SELECT * FROM [Accounts]")
@@ -73,10 +73,10 @@ class Accounts(Resource):
         tables = asql.get_tables()
         if "Accounts" not in tables:
             asql.create_new_table(
-                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Email varchar(max),User_Name varchar(max), Password varchar(max))"
+                "CREATE TABLE Accounts (ID int IDENTITY(1,1), Rank INT(max), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
         asql.insert_to_table(
-            f"INSERT INTO [Accounts]( [Email], [User_Name], [Password] ) VALUES ( '{args['email']}', '{args['user_name']}', '{args['password']}')"
+            f"INSERT INTO [Accounts]( [Rank],[Email], [User_Name], [Password] ) VALUES ( 1,'{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
         newaccounts = []
         accounts = asql.select_table("SELECT * FROM [Accounts]")
