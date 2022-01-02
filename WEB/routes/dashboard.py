@@ -9,4 +9,19 @@ def usr_home(_id):
         password = "01x2253x6871"
         config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
+        # config = requests.get("http://127.0.0.1:5000/api/get_subjects", {"password": password})
+        # config = config.json()
         return render_template("dashboard/home.html", session=session, config=config)
+
+
+@app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
+@app.route("/Usr/<_id>/Log/Out/", methods=["GET", "POST"])
+def usr_logout(_id):
+    if str(_id) == str(session["id"]):
+        session.pop("id", None)
+        session.pop("User Name", None)
+        session.pop("Email", None)
+        session.pop("Password", None)
+        session.pop("type", None)
+        flash("Logged Out", "success")
+        return redirect("/")
