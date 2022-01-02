@@ -12,9 +12,16 @@ def admin_home():
         return render_template("admin/home.html", config=config, session=session)
 
 
+@app.route("/Admin/Courses", methods=["GET", "POST"])
+@app.route("/Admin/Courses/", methods=["GET", "POST"])
+def admin_courses():
+    if "Is_Admin" in session:
+        return render_template("admin/questions.html", config=config, session=session)
+
+
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
 @app.route("/Admin/Log/Out/", methods=["GET", "POST"])
-def admin_home():
+def admin_log_out():
     if "Is_Admin" in session:
         session.pop("Is_Admin")
         session.pop("id")
