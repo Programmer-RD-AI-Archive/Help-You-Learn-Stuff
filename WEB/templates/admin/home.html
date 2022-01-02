@@ -1,0 +1,49 @@
+{% extends "/admin/base.html" %} {% block head %}
+<style>
+  .overflow-hidden {
+    padding: 25px !important;
+  }
+  body {
+    background-color: #1272e9 !important;
+  }
+</style>
+<title>Home</title>
+
+{% endblock %} {% block body %}
+<div>
+  <div class="overflow-hidden">
+    <div
+      class="row gx-5"
+      style="
+        height: 100% !important;
+        width: 100% !important;
+        background-color: #1272e9 !important;
+      "
+    >
+      <div
+        class="col"
+        style="
+          margin: auto !important;
+          width: 50% !important;
+          background-color: #1272e9 !important;
+        "
+      >
+        <center>
+          <h1><b> Welcome back @{{session['User Name']}}</b></h1>
+          <p>Hope you are have a great day</p>
+        </center>
+      </div>
+      <div class="col" style="background-color: #1272e9 !important">
+        <div class="p-3 bg-light" style="background-color: #1272e9 !important">
+          <img
+            src="{{config['config']['Admin']['Gif']}}"
+            alt=""
+            height="600"
+            width="800"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
