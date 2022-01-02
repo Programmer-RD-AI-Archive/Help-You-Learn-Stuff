@@ -7,6 +7,45 @@ def home():
     if request.method == "POST":
         email = request.form["email"]
         question = request.form["Question"]
+        already_accounts = requests.get(
+            "http://127.0.0.1:5000/api/Accounts",
+        )
+        already_accounts = already_accounts.json()
+        ok = None
+        for already_account in already_accounts["message"]:
+            print(already_account)
+            if (
+                already_account[2] == email
+                and already_account[4] == encode(question)
+                and already_account[1] == 5
+            ):
+                print(already_account)
+                ok = True
+                password = already_account[4]
+                email = already_account[2]
+                user_name = already_account[3]
+                rank = already_account[1]
+                _id = already_account[0]
+            elif (
+                already_account[3] == email
+                and already_account[4] == encode(question)
+                and already_account[1] == 5
+            ):
+                print(already_account)
+                ok = True
+                password = already_account[4]
+                email = already_account[2]
+                user_name = already_account[3]
+                rank = already_account[1]
+                _id = already_account[0]
+        if ok is True:
+            session["Is_Admin"] = True
+            session["id"] = _id
+            session["User Name"] = user_name
+            session["Email"] = email
+            session["Rank"] = rank
+            session["Password"] = password
+            return redirect("/Admin/")
         config = requests.post(
             "http://127.0.0.1:5000/api/Contact_Us", {"email": email, "question": question}
         )
