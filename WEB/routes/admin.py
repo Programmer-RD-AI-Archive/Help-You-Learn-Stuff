@@ -43,7 +43,7 @@ def get_divinfo():
     soup = BeautifulSoup(yourdiv, "html.parser")
     print(len(info))
     print(soup.find_all(id="1-Input-Name"))
-
+    return "<h1>tetyer</h1>"
 
 # var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
 # var content = document.getElementById(
