@@ -8,82 +8,19 @@
 
 {% endblock %} {% block body %}
 <div>
-  <div class="overflow-hidden">
-    <div
-      class="row gx-5"
-      style="
-        height: 100% !important;
-        width: 100% !important;
-        "
-    >
-      <div
-        class="col"
-        style="
-          margin: auto !important;
-          width: 50% !important;
-          
-        "
-      >
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Check me out</label
-            >
-          </div>
-          <button type="submit" class="btn btn-dark">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="overflow-hidden">
-    <div
-      class="row gx-5"
-      style="
-        height: 100% !important;
-        width: 100% !important;
-        
-      "
-    >
-      <div
-        class="col"
-        style="
-          margin: auto !important;
-          width: 50% !important;
-          
-        "
-      >
-        A
-      </div>
-    </div>
-  </div>
+  <span id="rightdiv"><h1>A</h1></span>
+  <input type="submit" value="Submit" id="submit_btn" />
 </div>
+<script>
+  var node = document.createElement("node");
+  var node_text = document.createTextNode
+  $("#submit_btn").click(function (e) {
+    yourdiv = $("#rightdiv").html();
+    $.ajax({
+      type: "POST",
+      url: "/divinfo",
+      data: { yourdiv: yourdiv },
+    });
+  });
+</script>
 {% endblock %}
