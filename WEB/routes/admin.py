@@ -35,9 +35,10 @@ def admin_log_out():
 
 @app.route("/divinfo", methods=["POST"])
 def get_divinfo():
-    divinfo = request.form["yourdiv"]
+    info = request.form["info"]
+    yourdiv = request.form["yourdiv"]
     print("*" * 50)
-    print(divinfo)
+    print(info)
     return ("", 200)
 
 
