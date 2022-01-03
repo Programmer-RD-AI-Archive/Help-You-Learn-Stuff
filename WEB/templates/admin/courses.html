@@ -1,3 +1,4 @@
+
 {% extends "/admin/base.html" %} {% block head %}
 <style>
   .content {
@@ -47,7 +48,8 @@
       </li> -->
     </ul>
   </div>
-  <input class="btn" type="submit" value="Submit" id="submit_btn" />
+  <br />
+  <input class="btn btn-dark" type="submit" value="Submit" id="submit_btn" />
 </div>
 <script>
   var idx = 0;
@@ -58,7 +60,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        `<div class="mb-3"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"></div>`
+        `<div class="mb-3"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"></div><hr>`
       );
   });
   $("#checkbox").click(function (e) {
@@ -68,7 +70,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        '  <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="exampleCheck1"><label class="form-check-label" for="exampleCheck1">Check me out</label></div>'
+        '  <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="${idx.toString()}-Input-Name"><label id="${idx.toString()}-Content" class="form-check-label" for="exampleCheck1">Check me out</label></div><hr>'
       );
   });
   $("#big_input").click(function (e) {
@@ -78,7 +80,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        '<div class="mb-3"><label for="exampleFormControlTextarea1" class="form-label">Example textarea</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+        '<div class="mb-3"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content" rows=3></div><hr>'
       );
   });
   $("#submit_btn").click(function (e) {
@@ -96,8 +98,8 @@
       console.log(content);
       info[idx_iter] = [label, content];
     }
-    console.log(info);
     yourdiv = $("#content").html();
+    console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
     $.ajax({
       type: "POST",
       url: "/divinfo",
