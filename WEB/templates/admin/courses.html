@@ -94,14 +94,14 @@
       ).value;
       console.log(label);
       console.log(content);
-      info[idx_iter] = { label: label, content: content };
+      info[idx_iter] = [label, content];
     }
     console.log(info);
     yourdiv = $("#content").html();
     $.ajax({
       type: "POST",
       url: "/divinfo",
-      data: { 'info': info, 'yourdiv': yourdiv },
+      data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
   });
 </script>
