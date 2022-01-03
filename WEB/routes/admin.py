@@ -39,3 +39,9 @@ def get_divinfo():
     print("*" * 50)
     print(divinfo)
     return ("", 200)
+
+
+# var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
+# var content = document.getElementById(
+# `${idx_iter.toString()}-Content`
+#   ).value;
