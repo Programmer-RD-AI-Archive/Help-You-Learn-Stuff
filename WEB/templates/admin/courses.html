@@ -1,4 +1,3 @@
-
 {% extends "/admin/base.html" %} {% block head %}
 <style>
   .content {
@@ -102,7 +101,7 @@
     console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
     $.ajax({
       type: "POST",
-      url: "/divinfo",
+      url: "/Admin/Courses",
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
   });
