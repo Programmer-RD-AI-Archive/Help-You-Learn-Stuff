@@ -101,9 +101,11 @@
     console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
     $.ajax({
       type: "POST",
-      url: "/Admin/Courses",
+      url: "/Admin/Courses/Posts/",
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
+    window.location.reload();
+
   });
 </script>
 {% endblock %}
