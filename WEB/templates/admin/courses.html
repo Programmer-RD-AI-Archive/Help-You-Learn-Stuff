@@ -7,8 +7,8 @@
 <title>Home</title>
 
 {% endblock %} {% block body %}
-<div class="content">
-  <span id="rightdiv"></span>
+<div class="container">
+  <div id="content" class="content">A</div>
   <div class="dropdown">
     <button
       class="btn btn-secondary dropdown-toggle"
@@ -25,7 +25,7 @@
           >Input</a
         >
       </li>
-      <li>
+      <!-- <li>
         <a
           type="input"
           value="checkbox"
@@ -44,9 +44,10 @@
           href="#"
           >Big Input</a
         >
-      </li>
+      </li> -->
     </ul>
   </div>
+  <input class="btn" type="submit" value="Submit" id="submit_btn" />
 </div>
 <script>
   var idx = 0;
@@ -54,9 +55,9 @@
     idx += 1;
     console.log(idx);
     document
-      .getElementById("rightdiv")
+      .getElementById("content")
       .insertAdjacentHTML(
-        "afterend",
+        "beforeend",
         '<div class="mb-3"><label for="exampleInputEmail1" class="form-label"><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></label><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></div>'
       );
   });
@@ -64,9 +65,9 @@
     idx += 1;
     console.log(idx);
     document
-      .getElementById("rightdiv")
+      .getElementById("content")
       .insertAdjacentHTML(
-        "afterend",
+        "beforeend",
         '  <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="exampleCheck1"><label class="form-check-label" for="exampleCheck1">Check me out</label></div>'
       );
   });
@@ -74,14 +75,14 @@
     idx += 1;
     console.log(idx);
     document
-      .getElementById("rightdiv")
+      .getElementById("content")
       .insertAdjacentHTML(
-        "afterend",
+        "beforeend",
         '<div class="mb-3"><label for="exampleFormControlTextarea1" class="form-label">Example textarea</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
       );
   });
-  $("#send_request").click(function (e) {
-    yourdiv = $("#rightdiv").html();
+  $("#submit_btn").click(function (e) {
+    yourdiv = $("#content").html();
     $.ajax({
       type: "POST",
       url: "/divinfo",
