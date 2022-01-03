@@ -58,7 +58,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        '<div class="mb-3"><label for="exampleInputEmail1" class="form-label"><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></label><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></div>'
+        `<div class="mb-3"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"></div>`
       );
   });
   $("#checkbox").click(function (e) {
@@ -82,11 +82,25 @@
       );
   });
   $("#submit_btn").click(function (e) {
+    var data = {};
+    for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
+      console.log(`${idx_iter.toString()}-Content`);
+      console.log(`${idx_iter.toString()}-Input-Name`);
+      var label = document.getElementById(
+        `${idx_iter.toString()}-Input-Name`
+      ).value;
+      var content = document.getElementById(
+        `${idx_iter.toString()}-Content`
+      ).value;
+      console.log(label);
+      console.log(content);
+      data[idx_iter] = { label: label, content: content };
+    }
     yourdiv = $("#content").html();
     $.ajax({
       type: "POST",
       url: "/divinfo",
-      data: { yourdiv: yourdiv },
+      data: { yourdiv: yourdiv, data: data },
     });
   });
 </script>
