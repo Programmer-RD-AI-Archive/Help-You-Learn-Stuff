@@ -16,7 +16,7 @@ def admin_home():
 @app.route("/Admin/Courses/", methods=["GET", "POST"])
 def admin_courses():
     if "Is_Admin" in session:
-        return render_template("admin/questions.html", config=config, session=session)
+        return render_template("admin/courses.html", config=config, session=session)
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
@@ -31,3 +31,10 @@ def admin_log_out():
         session.pop("Password")
         flash("Loged out as admin", "success")
         return redirect("/")
+
+
+@app.route("/divinfo", methods=["POST"])
+def get_divinfo():
+    divinfo = request.form["yourdiv"]
+    print(divinfo)
+    return ('', 200)
