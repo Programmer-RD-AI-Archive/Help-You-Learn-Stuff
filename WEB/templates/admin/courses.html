@@ -1,20 +1,86 @@
 {% extends "/admin/base.html" %} {% block head %}
 <style>
-  .overflow-hidden {
+  .content {
     padding: 25px !important;
   }
 </style>
 <title>Home</title>
 
 {% endblock %} {% block body %}
-<div>
-  <span id="rightdiv"><h1>A</h1></span>
-  <input type="submit" value="Submit" id="submit_btn" />
+<div class="content">
+  <span id="rightdiv"></span>
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Add
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="input">
+      <li>
+        <a type="input" value="input" id="input" class="dropdown-item" href="#"
+          >Input</a
+        >
+      </li>
+      <li>
+        <a
+          type="input"
+          value="checkbox"
+          id="checkbox"
+          class="dropdown-item"
+          href="#"
+          >Check Box</a
+        >
+      </li>
+      <li>
+        <a
+          type="input"
+          value="big_input"
+          id="big_input"
+          class="dropdown-item"
+          href="#"
+          >Big Input</a
+        >
+      </li>
+    </ul>
+  </div>
 </div>
 <script>
-  var node = document.createElement("node");
-  var node_text = document.createTextNode
-  $("#submit_btn").click(function (e) {
+  var idx = 0;
+  $("#input").click(function (e) {
+    idx += 1;
+    console.log(idx);
+    document
+      .getElementById("rightdiv")
+      .insertAdjacentHTML(
+        "afterend",
+        '<div class="mb-3"><label for="exampleInputEmail1" class="form-label"><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></label><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></div>'
+      );
+  });
+  $("#checkbox").click(function (e) {
+    idx += 1;
+    console.log(idx);
+    document
+      .getElementById("rightdiv")
+      .insertAdjacentHTML(
+        "afterend",
+        '  <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="exampleCheck1"><label class="form-check-label" for="exampleCheck1">Check me out</label></div>'
+      );
+  });
+  $("#big_input").click(function (e) {
+    idx += 1;
+    console.log(idx);
+    document
+      .getElementById("rightdiv")
+      .insertAdjacentHTML(
+        "afterend",
+        '<div class="mb-3"><label for="exampleFormControlTextarea1" class="form-label">Example textarea</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+      );
+  });
+  $("#send_request").click(function (e) {
     yourdiv = $("#rightdiv").html();
     $.ajax({
       type: "POST",
