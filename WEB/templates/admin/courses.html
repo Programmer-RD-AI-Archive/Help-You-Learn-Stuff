@@ -82,11 +82,7 @@
         '<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content" rows=3></div><button type="button" class="btn btn-dark">Dark</button><hr>'
       );
   });
-  function removeElement(idx) {
-    console.log(idx);
-    var element = document.getElementById(`${idx}`);
-    element.remove();
-  }
+  
   $("#submit_btn").click(function (e) {
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
@@ -110,5 +106,10 @@
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
   });
+  function removeElement(idx) {
+    console.log(idx);
+    var element = document.getElementById(`${idx}`);
+    element.remove();
+  }
 </script>
 {% endblock %}
