@@ -29,9 +29,15 @@ def admin_courses_post():
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
     soup = BeautifulSoup(yourdiv, "html.parser")
-    print(len(info))
-    print(soup.find_all(id="1-Input-Name"))
-    session['testing'] = True
+    for idx in range(len(info)):
+        idx = idx + 1
+        all_input = []
+        for x in soup.find_all(id=f"{idx}-Input-Name"):
+            all_input.append(str(x))
+        print(info)
+        yourdiv.replace(str(all_input[0]), info[str(idx)][0])
+    session["testing"] = True
+    return ("", 200)
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
