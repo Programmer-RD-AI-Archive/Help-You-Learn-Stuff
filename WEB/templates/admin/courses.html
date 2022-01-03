@@ -59,7 +59,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"></div><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr>`
+        `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
       );
   });
   $("#checkbox").click(function (e) {
@@ -83,7 +83,8 @@
       );
   });
   function removeElement(idx) {
-    var element = document.getElementById("myDIV");
+    console.log(idx);
+    var element = document.getElementById(`${idx}`);
     element.remove();
   }
   $("#submit_btn").click(function (e) {
