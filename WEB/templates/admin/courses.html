@@ -82,7 +82,7 @@
       );
   });
   $("#submit_btn").click(function (e) {
-    var data = {};
+    var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
       console.log(`${idx_iter.toString()}-Content`);
       console.log(`${idx_iter.toString()}-Input-Name`);
@@ -94,13 +94,14 @@
       ).value;
       console.log(label);
       console.log(content);
-      data[idx_iter] = { label: label, content: content };
+      info[idx_iter] = { label: label, content: content };
     }
+    console.log(info);
     yourdiv = $("#content").html();
     $.ajax({
       type: "POST",
       url: "/divinfo",
-      data: { yourdiv: yourdiv, data: data },
+      data: { info: info, yourdiv: yourdiv },
     });
   });
 </script>
