@@ -17,15 +17,21 @@ def admin_home():
 @app.route("/Admin/Courses/", methods=["GET", "POST"])
 def admin_courses():
     if "Is_Admin" in session:
-        if request.method == "POST":
-            request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
-            info = request_form["info"]
-            yourdiv = request_form["yourdiv"]
-            soup = BeautifulSoup(yourdiv, "html.parser")
-            print(len(info))
-            print(soup.find_all(id="1-Input-Name"))
-            return "<h1>tetyer</h1>"
+        print(session)
         return render_template("admin/courses.html", config=config, session=session)
+
+
+@app.route("/Admin/Courses/Post", methods=["POST"])
+@app.route("/Admin/Courses/Post/", methods=["POST"])
+def admin_courses_post():
+    print("*" * 50)
+    request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
+    info = request_form["info"]
+    yourdiv = request_form["yourdiv"]
+    soup = BeautifulSoup(yourdiv, "html.parser")
+    print(len(info))
+    print(soup.find_all(id="1-Input-Name"))
+    session['testing'] = True
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
@@ -40,8 +46,6 @@ def admin_log_out():
         session.pop("Password")
         flash("Loged out as admin", "success")
         return redirect("/")
-
-
 
 
 # var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
