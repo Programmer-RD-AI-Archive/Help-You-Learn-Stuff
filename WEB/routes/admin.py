@@ -17,6 +17,14 @@ def admin_home():
 @app.route("/Admin/Courses/", methods=["GET", "POST"])
 def admin_courses():
     if "Is_Admin" in session:
+        if request.method == "POST":
+            request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
+            info = request_form["info"]
+            yourdiv = request_form["yourdiv"]
+            soup = BeautifulSoup(yourdiv, "html.parser")
+            print(len(info))
+            print(soup.find_all(id="1-Input-Name"))
+            return "<h1>tetyer</h1>"
         return render_template("admin/courses.html", config=config, session=session)
 
 
@@ -34,16 +42,7 @@ def admin_log_out():
         return redirect("/")
 
 
-@app.route("/divinfo", methods=["POST"])
-def get_divinfo():
-    print("*" * 50)
-    request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
-    info = request_form["info"]
-    yourdiv = request_form["yourdiv"]
-    soup = BeautifulSoup(yourdiv, "html.parser")
-    print(len(info))
-    print(soup.find_all(id="1-Input-Name"))
-    return "<h1>tetyer</h1>"
+
 
 # var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
 # var content = document.getElementById(
