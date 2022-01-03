@@ -1,3 +1,4 @@
+from bs4 import *
 from requests.sessions import session
 from WEB import *
 from WEB.help_funcs import *
@@ -35,12 +36,13 @@ def admin_log_out():
 
 @app.route("/divinfo", methods=["POST"])
 def get_divinfo():
-    info = request.form.get("yourdiv")
-    # yourdiv = request.form["yourdiv"]
     print("*" * 50)
-    print(request.form)
-    print(info)
-    return ("", 200)
+    request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
+    info = request_form["info"]
+    yourdiv = request_form["yourdiv"]
+    soup = BeautifulSoup(yourdiv, "html.parser")
+    print(len(info))
+    print(soup.find_all(id="1-Input-Name"))
 
 
 # var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
