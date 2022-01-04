@@ -25,7 +25,12 @@
           >Input</a
         >
       </li>
-      <!-- <li>
+      <li>
+        <a type="input" value="text" id="text" class="dropdown-item" href="#"
+          >Text</a
+        >
+      </li>
+      <li>
         <a
           type="input"
           value="checkbox"
@@ -44,7 +49,7 @@
           href="#"
           >Big Input</a
         >
-      </li> -->
+      </li>
     </ul>
   </div>
   <br />
@@ -52,7 +57,6 @@
 </div>
 <div class="testing" id="testing"></div>
 <script>
-  
   var idx = 0;
   $("#input").click(function (e) {
     idx += 1;
@@ -64,6 +68,16 @@
         `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label><input type="text" class="form-control" id="${idx.toString()}-Content"><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
       );
   });
+  $("#text").click(function (e) {
+    idx += 1;
+    console.log(idx);
+    document
+      .getElementById("content")
+      .insertAdjacentHTML(
+        "beforeend",
+        `<div id="${idx.toString()}"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><br><hr></div></div>`
+      );
+  });
   $("#checkbox").click(function (e) {
     idx += 1;
     console.log(idx);
@@ -71,18 +85,16 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        '  <div class="mb-3 form-check" id="${idx.toString()}"><input type="checkbox" class="form-check-input" id="${idx.toString()}-Input-Name"><label id="${idx.toString()}-Content" class="form-check-label" for="exampleCheck1">Check me out</label></div><button type="button" class="btn btn-dark">Dark</button><hr>'
+        `<div class="mb-3" id="${idx.toString()}"><div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="${idx.toString()}-Input-Bane"><label class="form-check-label" for="${idx.toString()}-Input-Bane">Check me out</label></div><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
       );
   });
   $("#big_input").click(function (e) {
     idx += 1;
     console.log(idx);
-    document
-      .getElementById("content")
-      .insertAdjacentHTML(
-        "beforeend",
-        '<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content" rows=3></div><button type="button" class="btn btn-dark">Dark</button><hr>'
-      );
+    document.getElementById("content").insertAdjacentHTML("beforeend","<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>");
   });
 
   $("#submit_btn").click(function (e) {
@@ -107,7 +119,7 @@
       url: "/Admin/Courses/Post/",
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
-    alert("Question Added")
+    alert("Question Added");
     window.location.reload(0);
   });
   function removeElement(idx) {
