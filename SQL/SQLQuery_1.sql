@@ -46,3 +46,4 @@ SELECT * FROM Contact_Us
 --     content varchar(max),
 --     html varchar(max)
 -- )
+SELECT * FROM Questions
