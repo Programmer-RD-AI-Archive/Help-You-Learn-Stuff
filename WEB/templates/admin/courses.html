@@ -52,6 +52,7 @@
 </div>
 <div class="testing" id="testing"></div>
 <script>
+  
   var idx = 0;
   $("#input").click(function (e) {
     idx += 1;
@@ -106,6 +107,8 @@
       url: "/Admin/Courses/Post/",
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
+    alert("Question Added")
+    window.location.reload(0);
   });
   function removeElement(idx) {
     console.log(idx);
