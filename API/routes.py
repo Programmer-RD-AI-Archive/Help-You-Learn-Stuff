@@ -18,6 +18,10 @@ accounts_request_parser.add_argument(
 accounts_request_parser.add_argument(
     "user_name", type=str, help="user name is required", required=True
 )
+cources = reqparse.RequestParser()
+cources.add_argument("label", type=str, help="label is required", required=True)
+cources.add_argument("content", type=str, help="content is required", required=True)
+cources.add_argument("html", type=str, help="html is required", required=True)
 
 
 class Get_Config(Resource):
@@ -84,6 +88,26 @@ class Accounts(Resource):
             newaccounts.append(list(account))
         return {"message": newaccounts}
 
+
+class Cources(Resource):
+    def post(self):
+        args = cources.parse_args()
+        asql = Azure_SQL()
+        tables = asql.get_tables()
+        if "Questions" not in tables:
+            asql.create_new_table(
+                """
+                CREATE TABLE Questions
+                (
+                    label varchar(max),
+                    content varchar(max),
+                    html varchar(max)
+                )
+                """
+            )
+        asql.insert_to_table(
+            f"INSERT INTO [Questions]( [label], [content], [html] ) VALUES ( '{args['label']}', '{args['content']}', '{args['html']}')"
+        )
 
 api.add_resource(Contact_Us, "/api/Contact_Us")
 api.add_resource(Accounts, "/api/Accounts")
