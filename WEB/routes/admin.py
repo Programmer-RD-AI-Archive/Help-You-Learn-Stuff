@@ -24,32 +24,22 @@ def admin_courses():
 @app.route("/Admin/Courses/Post", methods=["POST"])
 @app.route("/Admin/Courses/Post/", methods=["POST"])
 def admin_courses_post():
-    print("*" * 50)
+    flash("Question Added", "success")
     request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
     soup = BeautifulSoup(yourdiv, "html.parser")
-    print(soup)
-    print("\n")
     for idx in range(len(info)):
-        # print(info)
         idx = idx + 1
         element = soup.find(id=f"{idx}-Input-Name")
-        # element.unwrap()
-        # element.replace_with("<h1></h1>")
         element.replaceWith(info[str(idx)][0])
-        element = soup.find("button")      
-        element.string = ""  
+        element = soup.find("button")
+        element.string = ""
         element.unwrap()
         element = soup.find("div", id="1")
-        print(element.attrs)
         del element.attrs['class"mb-3"']
         element.attrs["class"] = "mb-3"
-        print(element.attrs)
-        # element.replace_with("<h1></h1>")
-        # element.replaceWith(info[0])
-    print("\n")
-    print(soup)
+    
     return ("", 200)
 
 
