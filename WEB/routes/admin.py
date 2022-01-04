@@ -30,6 +30,7 @@ def admin_courses_post():
     yourdiv = request_form["yourdiv"]
     soup = BeautifulSoup(yourdiv, "html.parser")
     print(soup)
+    print("\n")
     for idx in range(len(info)):
         # print(info)
         idx = idx + 1
@@ -37,12 +38,17 @@ def admin_courses_post():
         # element.unwrap()
         # element.replace_with("<h1></h1>")
         element.replaceWith(info[str(idx)][0])
-        element = soup.find("button")
+        element = soup.find("button")      
+        element.string = ""  
         element.unwrap()
-        element = soup.find("div",id="1")
+        element = soup.find("div", id="1")
+        print(element.attrs)
+        del element.attrs['class"mb-3"']
+        element.attrs["class"] = "mb-3"
+        print(element.attrs)
         # element.replace_with("<h1></h1>")
         # element.replaceWith(info[0])
-        print(element)
+    print("\n")
     print(soup)
     return ("", 200)
 
