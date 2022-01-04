@@ -31,8 +31,18 @@ def admin_courses_post():
     soup = BeautifulSoup(yourdiv, "html.parser")
     print(soup)
     for idx in range(len(info)):
+        # print(info)
         idx = idx + 1
-        soup.find(id=f"{idx}-Input-Name").string = "test"
+        element = soup.find(id=f"{idx}-Input-Name")
+        # element.unwrap()
+        # element.replace_with("<h1></h1>")
+        element.replaceWith(info[str(idx)][0])
+        element = soup.find("button")
+        element.unwrap()
+        element = soup.find("div",id="1")
+        # element.replace_with("<h1></h1>")
+        # element.replaceWith(info[0])
+        print(element)
     print(soup)
     return ("", 200)
 
