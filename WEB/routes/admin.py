@@ -1,4 +1,4 @@
-from bs4 import *
+from bs4 import Tag, BeautifulSoup
 from requests.sessions import session
 from WEB import *
 from WEB.help_funcs import *
@@ -34,9 +34,9 @@ def admin_courses_post():
         all_input = []
         for x in soup.find_all(id=f"{idx}-Input-Name"):
             all_input.append(str(x))
-        print(info)
+        print(str(all_input[0]), info[str(idx)][0])
+        print(x)
         yourdiv.replace(str(all_input[0]), info[str(idx)][0])
-    session["testing"] = True
     return ("", 200)
 
 
@@ -52,9 +52,3 @@ def admin_log_out():
         session.pop("Password")
         flash("Loged out as admin", "success")
         return redirect("/")
-
-
-# var label = document.getElementById(`${idx_iter.toString()}-Input-Name`).value;
-# var content = document.getElementById(
-# `${idx_iter.toString()}-Content`
-#   ).value;
