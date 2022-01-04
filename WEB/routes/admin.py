@@ -39,7 +39,8 @@ def admin_courses_post():
         element = soup.find("div", id="1")
         del element.attrs['class"mb-3"']
         element.attrs["class"] = "mb-3"
-    
+    print(soup)
+    print(info)
     return ("", 200)
 
 
