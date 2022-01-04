@@ -18,19 +18,31 @@
 -- DROP TABLE TEST
 
 -- INSERT INTO [Accounts]
--- ( [Rank] , [Email] ,[User_Name] , [Password] )
+    -- ( [Rank] , [Email] ,[User_Name] , [Password] )
 -- VALUES
--- (5,'go2ranuga@gmail.com','Programmer-RD-AI','dGVzdA==')
--- SELECT * FROM Accounts
--- SELECT * FROM Contact_Us
-CREATE TABLE Courses
-(
-    [ID] int IDENTITY(1,1),
-    [Name] varchar(max),
-    [Image] varchar(max)
-)
+    -- (5, 'go2ranuga@gmail.com', 'Programmer-RD-AI', 'dGVzdA==')
+SELECT * FROM Accounts
+SELECT * FROM Contact_Us
+-- CREATE TABLE Courses
+-- (
+--     [ID] int IDENTITY(1,1),
+--     [Name] varchar(max),
+--     [Image] varchar(max)
+-- )
 
 
-CREATE TABLE Courses_Content (
-    [ID] int IDENTITY(1,1),
-)
+-- CREATE TABLE Courses_Content (
+--     [ID] int IDENTITY(1,1),
+-- )
+-- DROP TABLE Accounts
+-- DROP TABLE Contact_Us
+-- DROP TABLE TEST
+-- DROP TABLE Courses_Content
+-- DROP TABLE Courses
+-- SELECT table_name FROM information_schema.tables
+-- CREATE TABLE Questions
+-- (
+--     label varchar(max),
+--     content varchar(max),
+--     html varchar(max)
+-- )
