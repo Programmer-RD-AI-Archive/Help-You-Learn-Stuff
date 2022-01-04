@@ -29,14 +29,11 @@ def admin_courses_post():
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
     soup = BeautifulSoup(yourdiv, "html.parser")
+    print(soup)
     for idx in range(len(info)):
         idx = idx + 1
-        all_input = []
-        for x in soup.find_all(id=f"{idx}-Input-Name"):
-            all_input.append(str(x))
-        print(str(all_input[0]), info[str(idx)][0])
-        print(x)
-        yourdiv.replace(str(all_input[0]), info[str(idx)][0])
+        soup.find(id=f"{idx}-Input-Name").string = "test"
+    print(soup)
     return ("", 200)
 
 
