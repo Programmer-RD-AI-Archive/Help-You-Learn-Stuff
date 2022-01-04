@@ -50,6 +50,8 @@
   <br />
   <input class="btn btn-dark" type="submit" value="Submit" id="submit_btn" />
 </div>
+<div class="testing" id="testing"></div>
+{{session['testing']}}
 <script>
   var idx = 0;
   $("#input").click(function (e) {
@@ -59,7 +61,7 @@
       .getElementById("content")
       .insertAdjacentHTML(
         "beforeend",
-        `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content"><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
+        `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label><input type="text" class="form-control" id="${idx.toString()}-Content"><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
       );
   });
   $("#checkbox").click(function (e) {
@@ -82,7 +84,7 @@
         '<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input type="text" class="form-control" id="${idx.toString()}-Input-Name"></label><input type="text" class="form-control" id="${idx.toString()}-Content" rows=3></div><button type="button" class="btn btn-dark">Dark</button><hr>'
       );
   });
-  
+
   $("#submit_btn").click(function (e) {
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
@@ -111,5 +113,7 @@
     var element = document.getElementById(`${idx}`);
     element.remove();
   }
+  var element = document.getElementById("testing");
+  element.body.innerHTML = "<h1>A</h1>"; // TODO Redirect the POST Request to the API
 </script>
 {% endblock %}
