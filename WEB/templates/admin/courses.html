@@ -61,53 +61,88 @@
   $("#input").click(function (e) {
     idx += 1;
     console.log(idx);
-    document
-      .getElementById("content")
-      .insertAdjacentHTML(
-        "beforeend",
-        `<div class="mb-3" id="${idx.toString()}"><label for="${idx.toString()}-Label" class="form-label"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label><input type="text" class="form-control" id="${idx.toString()}-Content"><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
-      );
+    document.getElementById("content").insertAdjacentHTML(
+      "beforeend",
+      `<div class="mb-3" id="${idx.toString()}">
+          <label for="${idx.toString()}-Label" class="form-label">
+            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          </label>
+          <input type="text" class="form-control" id="${idx.toString()}-Label">
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
+    );
   });
   $("#text").click(function (e) {
     idx += 1;
     console.log(idx);
-    document
-      .getElementById("content")
-      .insertAdjacentHTML(
-        "beforeend",
-        `<div id="${idx.toString()}"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ><br><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><br><hr></div></div>`
-      );
+    document.getElementById("content").insertAdjacentHTML(
+      "beforeend",
+      `<div id="${idx.toString()}">
+          <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <br>
+          <hr>
+        </div>
+      </div>`
+    );
   });
   $("#checkbox").click(function (e) {
     idx += 1;
     console.log(idx);
-    document
-      .getElementById("content")
-      .insertAdjacentHTML(
-        "beforeend",
-        `<div class="mb-3" id="${idx.toString()}"><div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="${idx.toString()}-Input-Bane"><label class="form-check-label" for="${idx.toString()}-Input-Bane">Check me out</label></div><button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button><hr></div>`
-      );
+    document.getElementById("content").insertAdjacentHTML(
+      "beforeend",
+      `<div class="mb-3" id="${idx.toString()}">
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="${idx.toString()}-Label">
+            <label class="form-check-label" for="${idx.toString()}-Input-Name">
+              <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+            </label>
+          </div>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
+    );
   });
   $("#big_input").click(function (e) {
     idx += 1;
     console.log(idx);
-    document.getElementById("content").insertAdjacentHTML("beforeend","<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>");
+    document.getElementById("content").insertAdjacentHTML(
+      "beforeend",
+      `<div class="mb-3" id="${idx.toString()}">
+          <label for="${idx.toString()}-Label" class="form-label">
+            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          </label>
+          <textarea class="form-control" id="${idx.toString()}-Label" rows="3">        
+          </textarea>
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
+    );
   });
 
   $("#submit_btn").click(function (e) {
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
-      console.log(`${idx_iter.toString()}-Content`);
+      console.log(`${idx_iter.toString()}-Label`);
       console.log(`${idx_iter.toString()}-Input-Name`);
-      var label = document.getElementById(
-        `${idx_iter.toString()}-Input-Name`
-      ).value;
-      var content = document.getElementById(
-        `${idx_iter.toString()}-Content`
-      ).value;
+      try {
+        var label = document.getElementById(
+          `${idx_iter.toString()}-Input-Name`
+        ).value;
+      } catch (error) {
+        var label = "None";
+      }
+      try {
+        var content = document.getElementById(
+          `${idx_iter.toString()}-Label`
+        ).value;
+      } catch (error) {
+        var content = "None";
+      }
       console.log(label);
       console.log(content);
       info[idx_iter] = [label, content];
@@ -126,8 +161,6 @@
     console.log(idx);
     var element = document.getElementById(`${idx}`);
     element.remove();
-  }
-  var element = document.getElementById("testing");
-  element.body.innerHTML = "<h1>A</h1>"; // TODO Redirect the POST Request to the API
+  } // TODO Redirect the POST Request to the API
 </script>
 {% endblock %}
