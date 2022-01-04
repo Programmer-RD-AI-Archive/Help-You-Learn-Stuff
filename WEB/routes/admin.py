@@ -31,15 +31,23 @@ def admin_courses_post():
     soup = BeautifulSoup(yourdiv, "html.parser")
     for idx in range(len(info)):
         idx = idx + 1
-        element = soup.find(id=f"{idx}-Input-Name")
+        element = soup.find('input',id=f"{idx}-Input-Name")
         element.replaceWith(info[str(idx)][0])
         element = soup.find("button")
         element.string = ""
         element.unwrap()
-        element = soup.find("div", id="1")
-        del element.attrs['class"mb-3"']
+        element = soup.find("div", id=f"{idx}")
+        print(element)
+        print("\n")
+        print(element.attrs)
+        print("\n")
+        try:
+            del element.attrs['class"mb-3"']
+        except:
+            pass
         element.attrs["class"] = "mb-3"
     print(soup)
+    print("\n")
     print(info)
     return ("", 200)
 
