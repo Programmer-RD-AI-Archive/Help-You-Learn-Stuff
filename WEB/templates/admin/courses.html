@@ -78,12 +78,16 @@
     </ul>
   </div>
   <br />
-  <input class="form-control" id="${idx.toString()}-Input-Name" type="text"
-  placeholder="Question Name"/>
+  <input
+    class="form-control"
+    id="name"
+    type="text"
+    placeholder="Question Name"
+  />
   <br />
   <input class="btn btn-dark" type="submit" value="Submit" id="submit_btn" />
 </div>
-<div class="testing" id="testing"></div>
+
 <script>
   var idx = 0;
   $("#input").click(function (e) {
@@ -220,9 +224,15 @@
       } catch (error) {
         var content = "None";
       }
+      try {
+        var name = document.getElementById(`name`).value;
+      } catch (error) {
+        var name = "None";
+      }
       console.log(label);
       console.log(content);
-      info[idx_iter] = [label, content];
+      console.log(name);
+      info[idx_iter] = [label, content, name];
     }
     yourdiv = $("#content").html();
     console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
