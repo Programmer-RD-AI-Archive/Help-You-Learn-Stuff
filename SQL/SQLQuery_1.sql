@@ -59,10 +59,17 @@ FROM Contact_Us
 --     ( [test1] )
 -- VALUES
 --     ({"test":"test"})
-DROP TABLE Questions;
-CREATE TABLE Questions
-(
-    [content-and-input-name] varchar(max),
-    [html] varchar(max),
-    [name] varchar(max),
-)
+-- DROP TABLE Questions;
+-- CREATE TABLE Questions
+-- (
+--     [content-and-input-name] varchar(max),
+--     [html] varchar(max),
+--     [name] varchar(max),
+-- )
+-- CREATE TABLE Questions
+-- (
+--     [html] varchar(max),
+--     [name] varchar(max),
+-- )
+SELECT *
+FROM Questions
