@@ -21,6 +21,14 @@ def admin_question():
         return render_template("admin/question.html", config=config, session=session)
 
 
+@app.route("/Admin/Resources", methods=["GET", "POST"])
+@app.route("/Admin/Resources/", methods=["GET", "POST"])
+def admin_resources():
+    if "Is_Admin" in session:
+        print(session)
+        return render_template("admin/resources.html", config=config, session=session)
+
+
 @app.route("/Admin/Question/Post", methods=["POST"])
 @app.route("/Admin/Question/Post/", methods=["POST"])
 def admin_question_post():
@@ -75,20 +83,6 @@ def admin_question_post():
 @app.route("/Admin/Test")
 def admin_test():
     return render_template("admin/test.html")
-
-
-# @app.route("/Admin/Log/Out", methods=["GET", "POST"])
-# @app.route("/Admin/Log/Out/", methods=["GET", "POST"])
-# def admin_log_out():
-#     if "Is_Admin" in session:
-#         session.pop("Is_Admin")
-#         session.pop("id")
-#         session.pop("User Name")
-#         session.pop("Email")
-#         session.pop("Rank")
-#         session.pop("Password")
-#         flash("Loged out as admin", "success")
-#         return redirect("/")
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
