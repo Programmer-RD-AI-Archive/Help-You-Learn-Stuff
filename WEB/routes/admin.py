@@ -28,6 +28,9 @@ def admin_courses_post():
     request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
+    print(info)
+    name = info["name"]
+    del info["name"]
     soup = BeautifulSoup(yourdiv, "html.parser")
     for idx in range(len(info)):
         idx = idx + 1
@@ -54,9 +57,17 @@ def admin_courses_post():
             element.attrs["class"] = "mb-3"
         except:
             pass
+        inputs = soup.find_all("input", id=f"{idx}-Label")
+        print(inputs)
+        print("\n")
+        for input_ in inputs:
+            print(input_.attrs)
+            print("\n")
+            input_.attrs["name"] = input_.attrs["id"]
+        print(soup)
     returned_vals = requests.post(
         "http://127.0.0.1:8986/api/cources",
-        {"label": info[0], "content": info[1], "html": str(soup), "name": info[2]},
+        {"content-and-input-name": f"{info}", "html": str(soup), "name": name},
     ).json()
     print(returned_vals)
     return ("", 200)
