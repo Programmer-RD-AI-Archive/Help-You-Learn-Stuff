@@ -21,10 +21,10 @@
 -- ( [Rank] , [Email] ,[User_Name] , [Password] )
 -- VALUES
 -- (5, 'go2ranuga@gmail.com', 'Programmer-RD-AI', 'dGVzdA==')
-SELECT *
-FROM Accounts
-SELECT *
-FROM Contact_Us
+-- SELECT *
+-- FROM Accounts
+-- SELECT *
+-- FROM Contact_Us
 -- CREATE TABLE Courses
 -- (
 --     [ID] int IDENTITY(1,1),
