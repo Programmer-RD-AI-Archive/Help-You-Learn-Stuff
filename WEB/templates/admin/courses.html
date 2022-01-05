@@ -21,33 +21,59 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="input">
       <li>
-        <a type="input" value="input" id="input" class="dropdown-item">Input</a>
+        <a type="input" value="input" id="input" class="dropdown-item" href="#"
+          >Input</a
+        >
       </li>
       <li>
-        <a type="input" value="text" id="text" class="dropdown-item">Text</a>
+        <a type="input" value="text" id="text" class="dropdown-item" href="#"
+          >Text</a
+        >
       </li>
       <li>
-        <a type="input" value="checkbox" id="checkbox" class="dropdown-item"
+        <a
+          type="input"
+          value="checkbox"
+          id="checkbox"
+          class="dropdown-item"
+          href="#"
           >Check Box</a
         >
       </li>
       <li>
-        <a type="input" value="big_input" id="big_input" class="dropdown-item"
+        <a
+          type="input"
+          value="big_input"
+          id="big_input"
+          class="dropdown-item"
+          href="#"
           >Big Input</a
         >
       </li>
       <li>
-        <a type="input" value="switches" id="switches" class="dropdown-item"
+        <a
+          type="input"
+          value="switches"
+          id="switches"
+          class="dropdown-item"
+          href="#"
           >Switches</a
         >
       </li>
       <li>
-        <a type="input" value="checks" id="checks" class="dropdown-item"
+        <a
+          type="input"
+          value="checks"
+          id="checks"
+          class="dropdown-item"
+          href="#"
           >Checks</a
         >
       </li>
       <li>
-        <a type="input" value="range" id="range" class="dropdown-item">Range</a>
+        <a type="input" value="range" id="range" class="dropdown-item" href="#"
+          >Range</a
+        >
       </li>
     </ul>
   </div>
@@ -66,115 +92,124 @@
   var idx = 0;
   $("#input").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-            <label for="${idx.toString()}-Label" class="form-label">
-              <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
-            </label>
-            <input type="text" class="form-control" id="${idx.toString()}-Label">
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+          <label for="${idx.toString()}-Label" class="form-label">
+            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          </label>
+          <input type="text" class="form-control" id="${idx.toString()}-Label">
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#text").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div id="${idx.toString()}">
-            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <br>
-            <hr>
-          </div>
-        </div>`
+          <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <br>
+          <hr>
+        </div>
+      </div>`
     );
   });
   $("#checkbox").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="${idx.toString()}-Label">
-              <label class="form-check-label" for="${idx.toString()}-Input-Name">
-                <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
-              </label>
-            </div>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="${idx.toString()}-Label">
+            <label class="form-check-label" for="${idx.toString()}-Input-Name">
+              <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+            </label>
+          </div>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#big_input").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-            <label for="${idx.toString()}-Label" class="form-label">
-              <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
-            </label>
-            <textarea class="form-control" id="${idx.toString()}-Label" rows="3">
-            </textarea>
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+          <label for="${idx.toString()}-Label" class="form-label">
+            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+          </label>
+          <textarea class="form-control" id="${idx.toString()}-Label" rows="3">        
+          </textarea>
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#switches").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-          <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="${idx.toString()}-Input-Name">
-          <label class="form-check-label" for="flexSwitchCheckDefault">
-            <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
-          </div>
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="${idx.toString()}-Input-Name">
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" >
+        </div>
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#checks").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-      <div class="form-check">
-             <input type="checkbox" class="form-check-input" id="${idx.toString()}-Label">
-      <label class="form-check-label" for="${idx.toString()}-Label">
-  <input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label>
-
-          </label>
-            </div>
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+    <div class="form-check">
+           <input type="checkbox" class="form-check-input" id="${idx.toString()}-Label">
+    <label class="form-check-label" for="${idx.toString()}-Label">
+<input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label>
+      
+        </label>
+          </div>
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#range").click(function (e) {
     idx += 1;
+    console.log(idx);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div class="mb-3" id="${idx.toString()}">
-      <label for="${idx.toString()}-Label" class="form-label"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label></label>
-  <input type="range" class="form-range" id="${idx.toString()}-Label">
-            <br>
-            <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
-            <hr>
-          </div>`
+    <label for="${idx.toString()}-Label" class="form-label"><input class="form-control" id="${idx.toString()}-Input-Name"  type="text" ></label></label>
+<input type="range" class="form-range" id="${idx.toString()}-Label">
+          <br>
+          <button type="button" class="btn btn-danger" onClick="removeElement(${idx.toString()})">Delete</button>
+          <hr>
+        </div>`
     );
   });
   $("#submit_btn").click(function (e) {
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
+      console.log(`${idx_iter.toString()}-Label`);
+      console.log(`${idx_iter.toString()}-Input-Name`);
       try {
         var label = document.getElementById(
           `${idx_iter.toString()}-Input-Name`
@@ -194,19 +229,24 @@
       } catch (error) {
         var name = "None";
       }
+      console.log(label);
+      console.log(content);
+      console.log(name);
       info[idx_iter] = [label, content];
     }
     info["name"] = name;
     yourdiv = $("#content").html();
+    console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
     $.ajax({
       type: "POST",
       url: "/Admin/Courses/Post/",
-      data: { info: info, yourdiv: yourdiv },
+      data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
     alert("Question Added");
     window.location.reload(0);
   });
   function removeElement(idx) {
+    console.log(idx);
     var element = document.getElementById(`${idx}`);
     element.remove();
   } // TODO Redirect the POST Request to the API
