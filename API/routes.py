@@ -19,8 +19,9 @@ accounts_request_parser.add_argument(
     "user_name", type=str, help="user name is required", required=True
 )
 cources = reqparse.RequestParser()
-cources.add_argument("label", type=str, help="label is required", required=True)
-cources.add_argument("content", type=str, help="content is required", required=True)
+cources.add_argument(
+    "content-and-input-name", type=str, help="content-and-input-name is required", required=True
+)
 cources.add_argument("html", type=str, help="html is required", required=True)
 cources.add_argument("name", type=str, help="name is required", required=True)
 
@@ -100,15 +101,14 @@ class Cources(Resource):
                 """
                 CREATE TABLE Questions
                 (
-                    label varchar(max),
-                    content varchar(max),
+                    content-and-input-name varchar(max),
                     html varchar(max),
                     name varchar(max)
                 )
                 """
             )
         asql.insert_to_table(
-            f"INSERT INTO [Questions]( [label], [content], [html], [name] ) VALUES ( '{args['label']}', '{args['content']}', '{args['html']}', '{args['name']}')"
+            f"INSERT INTO [Questions]( [content-and-input-name], [html], [name] ) VALUES ( '{args['content-and-input-name']}', '{args['html']}', '{args['name']}')"
         )
 
 
