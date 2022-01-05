@@ -17,6 +17,7 @@ def admin_home():
 @app.route("/Admin/Courses/", methods=["GET", "POST"])
 def admin_courses():
     if "Is_Admin" in session:
+        print(session)
         return render_template("admin/courses.html", config=config, session=session)
 
 
@@ -24,12 +25,12 @@ def admin_courses():
 @app.route("/Admin/Courses/Post/", methods=["POST"])
 def admin_courses_post():
     flash("Question Added", "success")
-    print(request.form)
     request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
     name = info["name"]
     del info["name"]
+    print(info)
     soup = BeautifulSoup(yourdiv, "html.parser")
     for idx in range(len(info)):
         idx = idx + 1
@@ -57,12 +58,18 @@ def admin_courses_post():
         except:
             pass
         inputs = soup.find_all("input", id=f"{idx}-Label")
+        print(inputs)
+        print("\n")
         for input_ in inputs:
+            print(input_.attrs)
+            print("\n")
+            input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
     returned_vals = requests.post(
         "http://127.0.0.1:8986/api/cources",
-        {"content-and-input-name": f"{info}", "html": str(soup), "name": name},
+        {"html": str(soup), "name": name},
     ).json()
+    print(returned_vals)
     return ("", 200)
 
 
