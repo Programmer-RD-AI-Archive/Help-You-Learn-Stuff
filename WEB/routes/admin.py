@@ -13,17 +13,17 @@ def admin_home():
         return render_template("admin/home.html", config=config, session=session)
 
 
-@app.route("/Admin/Courses", methods=["GET", "POST"])
-@app.route("/Admin/Courses/", methods=["GET", "POST"])
-def admin_courses():
+@app.route("/Admin/Question", methods=["GET", "POST"])
+@app.route("/Admin/Question/", methods=["GET", "POST"])
+def admin_question():
     if "Is_Admin" in session:
         print(session)
-        return render_template("admin/courses.html", config=config, session=session)
+        return render_template("admin/question.html", config=config, session=session)
 
 
-@app.route("/Admin/Courses/Post", methods=["POST"])
-@app.route("/Admin/Courses/Post/", methods=["POST"])
-def admin_courses_post():
+@app.route("/Admin/Question/Post", methods=["POST"])
+@app.route("/Admin/Question/Post/", methods=["POST"])
+def admin_question_post():
     flash("Question Added", "success")
     request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
@@ -75,6 +75,20 @@ def admin_courses_post():
 @app.route("/Admin/Test")
 def admin_test():
     return render_template("admin/test.html")
+
+
+# @app.route("/Admin/Log/Out", methods=["GET", "POST"])
+# @app.route("/Admin/Log/Out/", methods=["GET", "POST"])
+# def admin_log_out():
+#     if "Is_Admin" in session:
+#         session.pop("Is_Admin")
+#         session.pop("id")
+#         session.pop("User Name")
+#         session.pop("Email")
+#         session.pop("Rank")
+#         session.pop("Password")
+#         flash("Loged out as admin", "success")
+#         return redirect("/")
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
