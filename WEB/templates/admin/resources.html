@@ -3,28 +3,52 @@
 <title>Resources</title>
 
 {% endblock %} {% block body %}
-<div>
-  <form>
+<div class="container">
+  <form method="post">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <label for="Title" class="form-label">Title</label>
       <input
-        type="email"
+        type="link"
         class="form-control"
-        id="exampleInputEmail1"
+        id="Title"
         aria-describedby="emailHelp"
+        name="Title"
+        required
       />
-      <div id="emailHelp" class="form-text">
-        We'll never share your email with anyone else.
-      </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <label for="Description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        name="Description"
+        id="Description"
+        rows="3"
+      ></textarea>
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="mb-3">
+      <label for="Link of Resource" class="form-label">Link of Resource</label>
+      <input
+        type="link"
+        class="form-control"
+        id="Link of Resource"
+        aria-describedby="emailHelp"
+        name="link-of-resource"
+        required
+      />
     </div>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      required
+      name="method-of-resource"
+    >
+      <option selected>Method of Resource</option>
+      <option value="1">Video</option>
+      <option value="2">Image</option>
+      <option value="3">Sound</option>
+      <option value="4">Website</option>
+    </select>
+    <br />
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
