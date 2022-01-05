@@ -18,11 +18,13 @@
 -- DROP TABLE TEST
 
 -- INSERT INTO [Accounts]
-    -- ( [Rank] , [Email] ,[User_Name] , [Password] )
+-- ( [Rank] , [Email] ,[User_Name] , [Password] )
 -- VALUES
-    -- (5, 'go2ranuga@gmail.com', 'Programmer-RD-AI', 'dGVzdA==')
-SELECT * FROM Accounts
-SELECT * FROM Contact_Us
+-- (5, 'go2ranuga@gmail.com', 'Programmer-RD-AI', 'dGVzdA==')
+SELECT *
+FROM Accounts
+SELECT *
+FROM Contact_Us
 -- CREATE TABLE Courses
 -- (
 --     [ID] int IDENTITY(1,1),
@@ -45,6 +47,22 @@ SELECT * FROM Contact_Us
 --     label varchar(max),
 --     content varchar(max),
 --     html varchar(max),
-       name varchar(max),
+--    name varchar(max),
 -- )
-SELECT * FROM Questions
+-- SELECT * FROM Questions
+
+-- CREATE TABLE TEST
+-- (
+--     test1 object,
+-- )
+-- INSERT INTO [TEST]
+--     ( [test1] )
+-- VALUES
+--     ({"test":"test"})
+DROP TABLE Questions;
+CREATE TABLE Questions
+(
+    [content-and-input-name] varchar(max),
+    [html] varchar(max),
+    [name] varchar(max),
+)
