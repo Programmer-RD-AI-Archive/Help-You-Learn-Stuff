@@ -31,7 +31,7 @@ def admin_resources():
             title = request.form["Title"]
             description = request.form["Description"]
             print(method_of_resource, title, description, link_of_resource)
-        return render_template("admin/resources.html", session=session)
+        return render_template("admin/resources.html", session=session,)
 
 
 @app.route("/Admin/Question/Post", methods=["POST"])
