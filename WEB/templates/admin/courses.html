@@ -21,59 +21,33 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="input">
       <li>
-        <a type="input" value="input" id="input" class="dropdown-item" href="#"
-          >Input</a
-        >
+        <a type="input" value="input" id="input" class="dropdown-item">Input</a>
       </li>
       <li>
-        <a type="input" value="text" id="text" class="dropdown-item" href="#"
-          >Text</a
-        >
+        <a type="input" value="text" id="text" class="dropdown-item">Text</a>
       </li>
       <li>
-        <a
-          type="input"
-          value="checkbox"
-          id="checkbox"
-          class="dropdown-item"
-          href="#"
+        <a type="input" value="checkbox" id="checkbox" class="dropdown-item"
           >Check Box</a
         >
       </li>
       <li>
-        <a
-          type="input"
-          value="big_input"
-          id="big_input"
-          class="dropdown-item"
-          href="#"
+        <a type="input" value="big_input" id="big_input" class="dropdown-item"
           >Big Input</a
         >
       </li>
       <li>
-        <a
-          type="input"
-          value="switches"
-          id="switches"
-          class="dropdown-item"
-          href="#"
+        <a type="input" value="switches" id="switches" class="dropdown-item"
           >Switches</a
         >
       </li>
       <li>
-        <a
-          type="input"
-          value="checks"
-          id="checks"
-          class="dropdown-item"
-          href="#"
+        <a type="input" value="checks" id="checks" class="dropdown-item"
           >Checks</a
         >
       </li>
       <li>
-        <a type="input" value="range" id="range" class="dropdown-item" href="#"
-          >Range</a
-        >
+        <a type="input" value="range" id="range" class="dropdown-item">Range</a>
       </li>
     </ul>
   </div>
@@ -227,7 +201,7 @@
     $.ajax({
       type: "POST",
       url: "/Admin/Courses/Post/",
-      data: JSON.stringify({ info: info, yourdiv: yourdiv }),
+      data: { info: info, yourdiv: yourdiv },
     });
     alert("Question Added");
     window.location.reload(0);
