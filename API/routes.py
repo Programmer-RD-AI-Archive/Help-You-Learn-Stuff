@@ -22,6 +22,7 @@ cources = reqparse.RequestParser()
 cources.add_argument("label", type=str, help="label is required", required=True)
 cources.add_argument("content", type=str, help="content is required", required=True)
 cources.add_argument("html", type=str, help="html is required", required=True)
+cources.add_argument("name", type=str, help="name is required", required=True)
 
 
 class Get_Config(Resource):
@@ -101,14 +102,17 @@ class Cources(Resource):
                 (
                     label varchar(max),
                     content varchar(max),
-                    html varchar(max)
+                    html varchar(max),
+                    name varchar(max)
                 )
                 """
             )
         asql.insert_to_table(
-            f"INSERT INTO [Questions]( [label], [content], [html] ) VALUES ( '{args['label']}', '{args['content']}', '{args['html']}')"
+            f"INSERT INTO [Questions]( [label], [content], [html], [name] ) VALUES ( '{args['label']}', '{args['content']}', '{args['html']}', '{args['name']}')"
         )
 
+
+api.add_resource(Cources, "/api/cources")
 api.add_resource(Contact_Us, "/api/Contact_Us")
 api.add_resource(Accounts, "/api/Accounts")
 api.add_resource(Get_Config, "/api/get_config")
