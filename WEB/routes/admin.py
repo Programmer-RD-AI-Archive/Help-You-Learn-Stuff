@@ -25,8 +25,13 @@ def admin_question():
 @app.route("/Admin/Resources/", methods=["GET", "POST"])
 def admin_resources():
     if "Is_Admin" in session:
-        print(session)
-        return render_template("admin/resources.html", config=config, session=session)
+        if request.method == "POST":
+            method_of_resource = request.form["method-of-resource"]
+            link_of_resource = request.form["link-of-resource"]
+            title = request.form["Title"]
+            description = request.form["Description"]
+            print(method_of_resource, title, description, link_of_resource)
+        return render_template("admin/resources.html", session=session)
 
 
 @app.route("/Admin/Question/Post", methods=["POST"])
