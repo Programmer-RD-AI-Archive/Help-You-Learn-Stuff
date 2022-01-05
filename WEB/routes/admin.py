@@ -54,10 +54,17 @@ def admin_courses_post():
             element.attrs["class"] = "mb-3"
         except:
             pass
-    print(soup)
-    print("\n")
-    print(info)
+    returned_vals = requests.post(
+        "http://127.0.0.1:8986/api/cources",
+        {"label": info[0], "content": info[1], "html": str(soup), "name": info[2]},
+    ).json()
+    print(returned_vals)
     return ("", 200)
+
+
+@app.route("/Admin/Test")
+def admin_test():
+    return render_template("admin/test.html")
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
