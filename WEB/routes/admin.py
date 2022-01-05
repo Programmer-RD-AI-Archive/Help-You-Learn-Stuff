@@ -66,9 +66,8 @@ def admin_courses_post():
             input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
     returned_vals = requests.post(
-        "http://127.0.0.1:8986/api/cources",
-        {"html": str(soup), "name": name},
-    ).json()
+        "http://127.0.0.1:5000/api/cources", {"html": str(soup), "name": name}
+    )
     print(returned_vals)
     return ("", 200)
 
