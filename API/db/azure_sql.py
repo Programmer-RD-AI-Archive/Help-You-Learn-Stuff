@@ -1,7 +1,6 @@
 from API import *
 
 
-
 class Azure_SQL:
     try:
         f = open(
@@ -58,8 +57,11 @@ class Azure_SQL:
         return result
 
     def select_table(self, select_query: str = "SELECT * FROM TEST"):
-        result = self.crsr.execute(select_query)
-        return self.crsr.fetchall()
+        self.crsr.execute(select_query)
+        results = []
+        for result in self.crsr.fetchall():
+            results.append(list(result))
+        return results
 
     def close_connection(self) -> bool:
         try:
