@@ -10,7 +10,7 @@ contact_us_request_parser.add_argument(
     "question", type=str, help="question is required", required=True
 )
 azure_sql_request_parser = reqparse.RequestParser()
-azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True)
+azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True) 
 azure_sql_request_parser.add_argument("Query", type=str, help="Query is required", required=False)
 azure_storage_request_parser = reqparse.RequestParser()
 azure_storage_request_parser.add_argument(
