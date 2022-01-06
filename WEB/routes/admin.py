@@ -30,7 +30,7 @@ def admin_resources():
             link_of_resource = request.form["link-of-resource"]
             title = request.form["Title"]
             description = request.form["Description"]
-            print(method_of_resource, title, description, link_of_resource)
+            
         return render_template("admin/resources.html", session=session,)
 
 
