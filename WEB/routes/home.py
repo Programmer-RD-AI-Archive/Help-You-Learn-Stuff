@@ -85,6 +85,9 @@ def sign_up():
         email = request.form["Email"]
         password = request.form["Password"]
         user_name = request.form["User Name"]
+        if verify_email(email) is True:
+            flash("Invalid Email", "danger")
+            return redirect("/Sign/Up")
         # remember_password = request.form["Remember Password"]  # TODO
         already_accounts = requests.get(
             "http://127.0.0.1:5000/api/Accounts",
