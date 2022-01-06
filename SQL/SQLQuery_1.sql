@@ -73,3 +73,12 @@
 -- )
 SELECT *
 FROM Questions
+-- CREATE TABLE Resources
+-- (
+--     [method_of_resource] Int,
+--     [link_of_resource] varchar(max),
+--     [title] varchar(max),
+--     [description] varchar(max)
+-- )
+SELECT *
+FROM Resources
