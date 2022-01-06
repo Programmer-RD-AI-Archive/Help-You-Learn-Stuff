@@ -19,7 +19,12 @@ def admin_home():
 @app.route("/Admin/Question/", methods=["GET", "POST"])
 def admin_question():
     if "Is_Admin" in session:
-        return render_template("admin/question.html", config=config, session=session)
+        returned_vals = requests.get("http://127.0.0.1:5000/api/questions").json()
+        returned_vals = returned_vals["message"]
+        print(returned_vals)
+        return render_template(
+            "admin/question.html", config=config, session=session, questions=returned_vals
+        )
 
 
 @app.route("/Admin/Resources", methods=["GET", "POST"])
@@ -146,13 +151,16 @@ def admin_question_post():
             element.attrs["class"] = "mb-3"
         except:
             pass
+        element = soup.find("hr")
+        element.unwrap()
         inputs = soup.find_all("input", id=f"{idx}-Label")
         for input_ in inputs:
             input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
     returned_vals = requests.post(
-        "http://127.0.0.1:5000/api/cources", {"html": str(soup), "name": name}
-    )
+        "http://127.0.0.1:5000/api/questions", {"html": str(soup), "name": str(name)}
+    ).json()
+    print(returned_vals)
     return ("", 200)
 
 
