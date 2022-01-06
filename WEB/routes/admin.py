@@ -68,11 +68,50 @@ def admin_resources_delete(_id):
         results = requests.post(
             "http://127.0.0.1:5000/api/resources",
             {
-                "_id": int(_id),
+                "id": int(_id),
             },
         )
         flash("Deleted", "success")
         return redirect("/Admin/Resources")
+
+
+@app.route(
+    "/Admin/Resources/<_id>/Edit/",
+    methods=["GET", "POST"],
+)
+@app.route(
+    "/Admin/Resources/<_id>/Edit",
+    methods=["GET", "POST"],
+)
+def admin_resources_edit(_id):
+    if "Is_Admin" in session:
+        if request.method == "POST":
+            method_of_resource = request.form["method-of-resource"]
+            link_of_resource = request.form["link-of-resource"]
+            title = request.form["Title"]
+            description = request.form["Description"]
+            results = requests.get(
+                "http://127.0.0.1:5000/api/azure/sql",
+                {
+                    "Query": f"UPDATE Resources SET method_of_resource={method_of_resource}, link_of_resource={link_of_resource}, title={title}, description={description}",
+                    "Type": "Insert",
+                },
+            ).json()
+            print(results)
+            flash("Updated resources", "success")
+            return redirect("/Admin/Resources")
+        results = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Resources WHERE ID = {_id}", "Type": "Select"},
+        ).json()["message"][0]
+        print(results)
+        return render_template(
+            "admin/resources.html",
+            method_of_resource=str(results[1]),
+            link_of_resource=results[2],
+            description=results[3],
+            title=results[4],
+        )
 
 
 @app.route("/Admin/Question/Post", methods=["POST"])
