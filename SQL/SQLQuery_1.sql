@@ -73,12 +73,15 @@
 -- )
 SELECT *
 FROM Questions
+-- DROP TABLE Resources
 -- CREATE TABLE Resources
 -- (
+--     [ID] int IDENTITY(1,1),
 --     [method_of_resource] Int,
 --     [link_of_resource] varchar(max),
 --     [title] varchar(max),
 --     [description] varchar(max)
 -- )
+DELETE FROM Resources WHERE ID=1
 SELECT *
 FROM Resources
