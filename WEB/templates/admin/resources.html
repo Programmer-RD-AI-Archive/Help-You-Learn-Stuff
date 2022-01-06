@@ -63,15 +63,15 @@
         border-radius: 25px;
       "
     >
-      <h1>{{resource[2]}}</h1>
-      <p><b>{{resource[3]}}</b></p>
-      <p>{{link_of_resource_dict[resource[0]]}}</p>
+      <h1>{{resource[3]}}</h1>
+      <p><b>{{resource[4]}}</b></p>
+      <p>{{link_of_resource_dict[resource[1]]}}</p>
       <a
-        href="/Admin/Resources/{{resource[0]}}/{{resource[1]}}/{{resource[2]}}/{{resource[3]}}/Edit"
+        href="/Admin/Resources/{{resource[0]}}/Edit"
         ><button type="button" class="btn btn-primary">Edit</button>
       </a>
       <a
-        href="/Admin/Resources/{{resource[0]}}/{{resource[1]}}/{{resource[2]}}/{{resource[3]}}/Delete"
+        href="/Admin/Resources/{{resource[0]}}/Delete"
         ><button type="button" class="btn btn-danger">Delete</button>
       </a>
       <br /><br />
@@ -79,7 +79,7 @@
         style="resize: both !important; overflow: auto !important"
         width="500"
         height="500"
-        src="{{resource[1]}}"
+        src="{{resource[2]}}"
         frameborder="0"
       ></iframe>
     </div>
