@@ -87,7 +87,32 @@
   <br />
   <input class="btn btn-dark" type="submit" value="Submit" id="submit_btn" />
 </div>
-<div class="testing" id="testing"></div>
+<br />
+<br />
+<div class="container">
+  {% for question in questions %}
+  <div
+    class="jumbotron"
+    style="
+      background-color: lightgray;
+      border-radius: 12.5px;
+      padding: 1em;
+      margin: 1em;
+    "
+  >
+    <h2>{{question[2]}}</h2>
+    <a href="/Admin/Question/{{question[0]}}/Edit"
+      ><button type="button" class="btn btn-primary">Edit</button>
+    </a>
+    <br />
+    <br />
+    <a href="/Admin/Question/{{question[0]}}/Delete"
+      ><button type="button" class="btn btn-danger">Delete</button>
+    </a>
+    <!-- {{question[1]|safe}} -->
+  </div>
+  {% endfor %}
+</div>
 <script>
   var idx = 0;
   $("#input").click(function (e) {
@@ -239,7 +264,7 @@
     console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
     $.ajax({
       type: "POST",
-      url: "/Admin/Courses/Post/",
+      url: "/Admin/Question/Post/",
       data: JSON.stringify({ info: info, yourdiv: yourdiv }),
     });
     alert("Question Added");
