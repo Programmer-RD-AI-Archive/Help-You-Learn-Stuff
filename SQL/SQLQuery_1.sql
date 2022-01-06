@@ -62,12 +62,7 @@
 -- DROP TABLE Questions;
 -- CREATE TABLE Questions
 -- (
---     [content-and-input-name] varchar(max),
---     [html] varchar(max),
---     [name] varchar(max),
--- )
--- CREATE TABLE Questions
--- (
+--     [ID] int IDENTITY(1,1),
 --     [html] varchar(max),
 --     [name] varchar(max),
 -- )
@@ -82,6 +77,13 @@ FROM Questions
 --     [title] varchar(max),
 --     [description] varchar(max)
 -- )
-DELETE FROM Resources WHERE ID=1
+-- DELETE FROM Resources WHERE ID=1
 SELECT *
 FROM Resources
+
+-- UPDATE Resources
+-- SET title='ttt'
+-- WHERE ID=7;
+
+-- SELECT *
+-- FROM Resources
