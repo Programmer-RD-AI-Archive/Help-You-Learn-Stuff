@@ -51,5 +51,40 @@
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <br />
+  <div class="content">
+    {% for resource in resources %}
+    <br />
+    <div
+      class="jumbotron"
+      style="
+        background-color: lightgray;
+        padding: 50px !important;
+        border-radius: 25px;
+      "
+    >
+      <h1>{{resource[2]}}</h1>
+      <p><b>{{resource[3]}}</b></p>
+      <p>{{link_of_resource_dict[resource[0]]}}</p>
+      <a
+        href="/Admin/Resources/{{resource[0]}}/{{resource[1]}}/{{resource[2]}}/{{resource[3]}}/Edit"
+        ><button type="button" class="btn btn-primary">Edit</button>
+      </a>
+      <a
+        href="/Admin/Resources/{{resource[0]}}/{{resource[1]}}/{{resource[2]}}/{{resource[3]}}/Delete"
+        ><button type="button" class="btn btn-danger">Delete</button>
+      </a>
+      <br /><br />
+      <iframe
+        style="resize: both !important; overflow: auto !important"
+        width="500"
+        height="500"
+        src="{{resource[1]}}"
+        frameborder="0"
+      ></iframe>
+    </div>
+    <br />
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
