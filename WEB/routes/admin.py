@@ -3,6 +3,8 @@ from requests.sessions import session
 from WEB import *
 from WEB.help_funcs import *
 
+link_of_resource_dict = {1: "Video", 2: "Image", 3: "Sound", 4: "Website"}
+
 
 @app.route("/Admin", methods=["GET", "POST"])
 @app.route("/Admin/", methods=["GET", "POST"])
@@ -42,9 +44,14 @@ def admin_resources():
             flash("Resource Added", "success")
             print(results)
             return redirect("/Admin/Resources")
+        results = requests.get(
+            "http://127.0.0.1:5000/api/resources",
+        ).json()
         return render_template(
             "admin/resources.html",
             session=session,
+            resources=results["message"],
+            link_of_resource_dict=link_of_resource_dict,
         )
 
 
