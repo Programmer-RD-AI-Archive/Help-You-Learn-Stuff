@@ -19,7 +19,6 @@ def admin_home():
 @app.route("/Admin/Question/", methods=["GET", "POST"])
 def admin_question():
     if "Is_Admin" in session:
-        print(session)
         return render_template("admin/question.html", config=config, session=session)
 
 
@@ -42,7 +41,6 @@ def admin_resources():
                 },
             ).json()
             flash("Resource Added", "success")
-            print(results)
             return redirect("/Admin/Resources")
         results = requests.get(
             "http://127.0.0.1:5000/api/resources",
@@ -90,21 +88,20 @@ def admin_resources_edit(_id):
             link_of_resource = request.form["link-of-resource"]
             title = request.form["Title"]
             description = request.form["Description"]
+            # "UPDATE Resources SET title='ttt' WHERE ID=7;"
             results = requests.get(
                 "http://127.0.0.1:5000/api/azure/sql",
                 {
-                    "Query": f"UPDATE Resources SET method_of_resource={method_of_resource}, link_of_resource={link_of_resource}, title={title}, description={description}",
+                    "Query": f"UPDATE Resources SET method_of_resource='{method_of_resource}', link_of_resource='{link_of_resource}', title='{title}', description='{description}' WHERE ID={_id}",
                     "Type": "Insert",
                 },
             ).json()
-            print(results)
             flash("Updated resources", "success")
             return redirect("/Admin/Resources")
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
             {"Query": f"SELECT * FROM Resources WHERE ID = {_id}", "Type": "Select"},
         ).json()["message"][0]
-        print(results)
         return render_template(
             "admin/resources.html",
             method_of_resource=str(results[1]),
@@ -123,7 +120,6 @@ def admin_question_post():
     yourdiv = request_form["yourdiv"]
     name = info["name"]
     del info["name"]
-    print(info)
     soup = BeautifulSoup(yourdiv, "html.parser")
     for idx in range(len(info)):
         idx = idx + 1
@@ -151,17 +147,12 @@ def admin_question_post():
         except:
             pass
         inputs = soup.find_all("input", id=f"{idx}-Label")
-        print(inputs)
-        print("\n")
         for input_ in inputs:
-            print(input_.attrs)
-            print("\n")
             input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
     returned_vals = requests.post(
         "http://127.0.0.1:5000/api/cources", {"html": str(soup), "name": name}
     )
-    print(returned_vals)
     return ("", 200)
 
 
