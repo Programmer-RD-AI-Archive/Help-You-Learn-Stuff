@@ -9,6 +9,22 @@ contact_us_request_parser.add_argument("email", type=str, help="email is require
 contact_us_request_parser.add_argument(
     "question", type=str, help="question is required", required=True
 )
+azure_sql_request_parser = reqparse.RequestParser()
+azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True)
+azure_sql_request_parser.add_argument("Query", type=str, help="Query is required", required=False)
+azure_storage_request_parser = reqparse.RequestParser()
+azure_storage_request_parser.add_argument(
+    "Container Name", type=str, help="Container Name is required", required=True
+)
+azure_storage_request_parser.add_argument(
+    "blob_name", type=str, help="blob_name is required", required=False
+)
+azure_storage_request_parser.add_argument(
+    "file_rb", type=str, help="file_rb is required", required=False
+)
+azure_storage_request_parser.add_argument(
+    "file_name", type=str, help="file_name is required", required=False
+)
 
 accounts_request_parser = reqparse.RequestParser()
 accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
@@ -109,6 +125,42 @@ class Cources(Resource):
         return {"message": True}
 
 
+class Azure_SQL_API(Resource):
+    def get(self):
+        args = azure_sql_request_parser.parse_args()
+        asql = Azure_SQL()
+        if args["Type"] == "Table":
+            return {"message": asql.create_new_table(args["Type"])}
+        elif args["Type"] == "Insert":
+            return {"message": asql.insert_to_table(args["Query"])}
+        elif args["Type"] == "Select":
+            return {"message": asql.select_table(args["Query"])}
+        elif args["Type"] == "Get Tables":
+            return {"message": asql.create_new_table()}
+        else:
+            return {"message": "Not correct type"}
+
+
+class Azure_Storage_API(Resources):
+    def get(self):
+        args = azure_storage_request_parser.parse_args()
+        astorage = Azure_Storage(args["Container Name"])
+        if args["Type"] == "Create File":
+            return {
+                "message": astorage.create_file(
+                    blob_name=args["blob_name"], file_rb=args["file_rb"]
+                )
+            }
+        elif args["Type"] == "Find File":
+            return {"message": astorage.find_file()}
+        elif args["Type"] == "Download File":
+            return {"message": astorage.download_file(file_name=args["file_name"])}
+        else:
+            return {"message": "Not correct type"}
+
+
+api.add_resource(Azure_Storage_API, "/api/azure/storage")
+api.add_resource(Azure_SQL_API, "/api/azure/sql")
 api.add_resource(Cources, "/api/cources")
 api.add_resource(Contact_Us, "/api/Contact_Us")
 api.add_resource(Accounts, "/api/Accounts")
