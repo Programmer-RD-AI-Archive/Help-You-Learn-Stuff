@@ -13,13 +13,11 @@ def home():
         already_accounts = already_accounts.json()
         ok = None
         for already_account in already_accounts["message"]:
-            print(already_account)
             if (
                 already_account[2] == email
                 and already_account[4] == encode(question)
                 and already_account[1] == 5
             ):
-                print(already_account)
                 ok = True
                 password = already_account[4]
                 email = already_account[2]
@@ -31,7 +29,6 @@ def home():
                 and already_account[4] == encode(question)
                 and already_account[1] == 5
             ):
-                print(already_account)
                 ok = True
                 password = already_account[4]
                 email = already_account[2]
