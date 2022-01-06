@@ -118,9 +118,8 @@ class Accounts(Resource):
         return {"message": newaccounts}
 
 
-class Cources(Resource):
-    def post(self):
-        args = cources.parse_args()
+class Questions(Resource):
+    def get(self):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
@@ -128,13 +127,32 @@ class Cources(Resource):
                 """
                 CREATE TABLE Questions
                 (
-                    html varchar(max),
-                    name varchar(max)
+                    [ID] int IDENTITY(1,1),
+                    [html] varchar(max),
+                    [name] varchar(max),
+                )
+                """
+            )
+        return {"message": asql.select_table(f"SELECT * FROM Questions")}
+
+    def post(self):
+        args = cources.parse_args()
+        print(args)
+        asql = Azure_SQL()
+        tables = asql.get_tables()
+        if "Questions" not in tables:
+            asql.create_new_table(
+                """
+                CREATE TABLE Questions
+                (
+                    [ID] int IDENTITY(1,1),
+                    [html] varchar(max),
+                    [name] varchar(max),
                 )
                 """
             )
         asql.insert_to_table(
-            f"INSERT INTO [Questions]( [html], [name] ) VALUES ( '{args['html']}', '{args['name']}')"
+            f"INSERT INTO Questions (html, name) VALUES ('{args['html']}','{args['name']}');"
         )
         return {"message": True}
 
@@ -196,7 +214,7 @@ class Azure_Storage_API(Resource):
 api.add_resource(Resources, "/api/resources")
 api.add_resource(Azure_Storage_API, "/api/azure/storage")
 api.add_resource(Azure_SQL_API, "/api/azure/sql")
-api.add_resource(Cources, "/api/cources")
+api.add_resource(Questions, "/api/questions")
 api.add_resource(Contact_Us, "/api/Contact_Us")
 api.add_resource(Accounts, "/api/Accounts")
 api.add_resource(Get_Config, "/api/get_config")
