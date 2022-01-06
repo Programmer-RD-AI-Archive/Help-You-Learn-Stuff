@@ -1,5 +1,6 @@
 from API import *
 
+
 resources_request_parser = reqparse.RequestParser()
 resources_request_parser.add_argument(
     "method_of_resource", type=str, help="method_of_resource is required", required=True
@@ -137,6 +138,11 @@ class Cources(Resource):
 
 
 class Resources(Resource):
+    def get(self):
+        print("*" * 50)
+        asql = Azure_SQL()
+        return {"message": asql.select_table(f"SELECT * FROM [Resources]")}
+
     def put(self):
         args = resources_request_parser.parse_args()
         asql = Azure_SQL()
