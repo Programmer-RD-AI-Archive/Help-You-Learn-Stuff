@@ -146,7 +146,6 @@ class Resources(Resource):
 
     def post(self):
         args = resources_request_parser_delete.parse_args()
-        print(args)
         asql = Azure_SQL()
         return {
             "message": asql.insert_to_table(f"DELETE FROM Resources WHERE ID={args['id']}")
