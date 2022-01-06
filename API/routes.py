@@ -49,6 +49,8 @@ accounts_request_parser.add_argument(
 cources = reqparse.RequestParser()
 cources.add_argument("html", type=str, help="html is required", required=True)
 cources.add_argument("name", type=str, help="name is required", required=True)
+resources_request_parser_delete = reqparse.RequestParser()
+resources_request_parser_delete.add_argument("id", type=int, help="id is required", required=True)
 
 
 class Get_Config(Resource):
@@ -143,11 +145,11 @@ class Resources(Resource):
         return {"message": asql.select_table(f"SELECT * FROM [Resources]")}
 
     def post(self):
-        args = resources_request_parser.parse_args()
+        args = resources_request_parser_delete.parse_args()
         print(args)
         asql = Azure_SQL()
         return {
-            "message": asql.insert_to_table(f"DELETE FROM Resources WHERE ID={args['_id']}")
+            "message": asql.insert_to_table(f"DELETE FROM Resources WHERE ID={args['id']}")
         }  # TODO
 
     def put(self):
@@ -163,7 +165,7 @@ class Azure_SQL_API(Resource):
         args = azure_sql_request_parser.parse_args()
         asql = Azure_SQL()
         if args["Type"] == "Table":
-            return {"message": asql.create_new_table(args["Type"])}
+            return {"message": asql.create_new_table(args["Query"])}
         elif args["Type"] == "Insert":
             return {"message": asql.insert_to_table(args["Query"])}
         elif args["Type"] == "Select":
