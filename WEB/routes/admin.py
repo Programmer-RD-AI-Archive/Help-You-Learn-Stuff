@@ -55,6 +55,26 @@ def admin_resources():
         )
 
 
+@app.route(
+    "/Admin/Resources/<_id>/Delete/",
+    methods=["GET", "POST"],
+)
+@app.route(
+    "/Admin/Resources/<_id>/Delete",
+    methods=["GET", "POST"],
+)
+def admin_resources_delete(_id):
+    if "Is_Admin" in session:
+        results = requests.post(
+            "http://127.0.0.1:5000/api/resources",
+            {
+                "_id": int(_id),
+            },
+        )
+        flash("Deleted", "success")
+        return redirect("/Admin/Resources")
+
+
 @app.route("/Admin/Question/Post", methods=["POST"])
 @app.route("/Admin/Question/Post/", methods=["POST"])
 def admin_question_post():
