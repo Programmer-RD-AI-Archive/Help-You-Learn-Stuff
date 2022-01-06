@@ -1,5 +1,16 @@
 from API import *
 
+resources_request_parser = reqparse.RequestParser()
+resources_request_parser.add_argument(
+    "method_of_resource", type=str, help="method_of_resource is required", required=True
+)
+resources_request_parser.add_argument(
+    "link_of_resource", type=str, help="link_of_resource is required", required=True
+)
+resources_request_parser.add_argument("title", type=str, help="title is required", required=True)
+resources_request_parser.add_argument(
+    "description", type=str, help="description is required", required=True
+)
 get_config_request_parser = reqparse.RequestParser()
 get_config_request_parser.add_argument(
     "password", type=str, help="Password is required", required=True
@@ -10,7 +21,7 @@ contact_us_request_parser.add_argument(
     "question", type=str, help="question is required", required=True
 )
 azure_sql_request_parser = reqparse.RequestParser()
-azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True) 
+azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True)
 azure_sql_request_parser.add_argument("Query", type=str, help="Query is required", required=False)
 azure_storage_request_parser = reqparse.RequestParser()
 azure_storage_request_parser.add_argument(
@@ -125,6 +136,15 @@ class Cources(Resource):
         return {"message": True}
 
 
+class Resources(Resource):
+    def put(self):
+        args = resources_request_parser.parse_args()
+        asql = Azure_SQL()
+        asql.insert_to_table(
+            f"INSERT INTO [Resources]( [method_of_resource], [link_of_resource], [title], [description] ) VALUES ( '{args['method_of_resource']}', '{args['link_of_resource']}','{args['title']}','{args['description']}')"
+        )
+
+
 class Azure_SQL_API(Resource):
     def get(self):
         args = azure_sql_request_parser.parse_args()
@@ -141,7 +161,7 @@ class Azure_SQL_API(Resource):
             return {"message": "Not correct type"}
 
 
-class Azure_Storage_API(Resources):
+class Azure_Storage_API(Resource):
     def get(self):
         args = azure_storage_request_parser.parse_args()
         astorage = Azure_Storage(args["Container Name"])
@@ -159,6 +179,7 @@ class Azure_Storage_API(Resources):
             return {"message": "Not correct type"}
 
 
+api.add_resource(Resources, "/api/resources")
 api.add_resource(Azure_Storage_API, "/api/azure/storage")
 api.add_resource(Azure_SQL_API, "/api/azure/sql")
 api.add_resource(Cources, "/api/cources")
