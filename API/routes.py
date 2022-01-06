@@ -139,9 +139,16 @@ class Cources(Resource):
 
 class Resources(Resource):
     def get(self):
-        print("*" * 50)
         asql = Azure_SQL()
         return {"message": asql.select_table(f"SELECT * FROM [Resources]")}
+
+    def post(self):
+        args = resources_request_parser.parse_args()
+        print(args)
+        asql = Azure_SQL()
+        return {
+            "message": asql.insert_to_table(f"DELETE FROM Resources WHERE ID={args['_id']}")
+        }  # TODO
 
     def put(self):
         args = resources_request_parser.parse_args()
