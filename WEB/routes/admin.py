@@ -30,8 +30,22 @@ def admin_resources():
             link_of_resource = request.form["link-of-resource"]
             title = request.form["Title"]
             description = request.form["Description"]
-            
-        return render_template("admin/resources.html", session=session,)
+            results = requests.put(
+                "http://127.0.0.1:5000/api/resources",
+                {
+                    "method_of_resource": method_of_resource,
+                    "link_of_resource": link_of_resource,
+                    "title": title,
+                    "description": description,
+                },
+            ).json()
+            flash("Resource Added", "success")
+            print(results)
+            return redirect("/Admin/Resources")
+        return render_template(
+            "admin/resources.html",
+            session=session,
+        )
 
 
 @app.route("/Admin/Question/Post", methods=["POST"])
