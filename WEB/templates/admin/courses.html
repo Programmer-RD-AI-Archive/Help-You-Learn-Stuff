@@ -14,8 +14,9 @@
       >
       <input type="number" class="form-control" id="Marks Required to Pass" />
     </div>
-    {% for resource in resources %}
-    <div style="overflow: auto">
+    <div style="resize: both; overflow: auto; height: 125px">
+      {% for resource in resources %}
+      <br />
       <button
         type="button"
         id="{{resource}}"
@@ -23,23 +24,27 @@
         class="btn btn-dark"
         onclick="add_to_content(this.value)"
       >
-        {{resource}}
+        {{resource[3]}}
       </button>
+      <br />
+      {% endfor %}
     </div>
-    {% endfor %}
     <br />
-    {% for question in questions %}
-    <button
-      type="button"
-      id="{{question}}"
-      value="{{question}}"
-      class="btn btn-dark"
-      onclick="add_to_content(this.value)"
-    >
-      {{question}}
-    </button>
-    {% endfor %}
-
+    <hr />
+    <br />
+    <div style="resize: both; overflow: auto; height: 125px">
+      {% for question in questions %}
+      <button
+        type="button"
+        id="{{question}}"
+        value="{{question}}"
+        class="btn btn-dark"
+        onclick="add_to_content(this.value)"
+      >
+        {{question[2]}}
+      </button>
+      {% endfor %}
+    </div>
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
@@ -47,8 +52,8 @@
 <script>
   var idx = 0;
   function add_to_content(val) {
-    console.log(val);
     idx += 1;
+    console.log(val);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div>
