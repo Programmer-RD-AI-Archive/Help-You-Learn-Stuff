@@ -15,6 +15,22 @@ def admin_home():
         return render_template("admin/home.html", config=config, session=session)
 
 
+@app.route("/Admin/Courses", methods=["GET", "POST"])
+@app.route("/Admin/Courses/", methods=["GET", "POST"])
+def admin_courses():
+    if "Is_Admin" in session:
+        resources = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Resources", "Type": "Select"},
+        ).json()["message"]
+        questions = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Questions", "Type": "Select"},
+        ).json()["message"]
+        print(resources, questions)
+        return render_template("admin/courses.html", resources=resources, questions=questions)
+
+
 @app.route("/Admin/Question", methods=["GET", "POST"])
 @app.route("/Admin/Question/", methods=["GET", "POST"])
 def admin_question():
@@ -175,6 +191,21 @@ def admin_question_preview(_id):
             {"Query": f"SELECT * FROM Questions WHERE ID = {_id}", "Type": "Select"},
         ).json()["message"][0]
         return render_template("admin/admin_question_preview.html", code=results[1])
+
+
+@app.route("/Admin/Question/<_id>/Delete/")
+@app.route(
+    "/Admin/Question/<_id>/Delete",
+)
+def admin_question_delete(_id):
+    if "Is_Admin" in session:
+        results = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"DELETE FROM Questions WHERE ID={_id}", "Type": "Insert"},
+        ).json()
+        print(results)
+        flash("Deleted", "success")
+        return redirect("/Admin/Question")
 
 
 @app.route("/Admin/Test")
