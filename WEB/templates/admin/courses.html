@@ -1,0 +1,106 @@
+{% extends "/admin/base.html" %} {% block head %}
+
+<title>Courses</title>
+
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="content" id="content"></div>
+  <hr />
+  <br />
+  <form>
+    <div class="mb-3">
+      <label for="Marks Required to Pass" class="form-label"
+        >Marks Required to Pass</label
+      >
+      <input type="number" class="form-control" id="Marks Required to Pass" />
+    </div>
+    {% for resource in resources %}
+    <div style="overflow: auto">
+      <button
+        type="button"
+        id="{{resource}}"
+        value="{{resource}}"
+        class="btn btn-dark"
+        onclick="add_to_content(this.value)"
+      >
+        {{resource}}
+      </button>
+    </div>
+    {% endfor %}
+    <br />
+    {% for question in questions %}
+    <button
+      type="button"
+      id="{{question}}"
+      value="{{question}}"
+      class="btn btn-dark"
+      onclick="add_to_content(this.value)"
+    >
+      {{question}}
+    </button>
+    {% endfor %}
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<script>
+  var idx = 0;
+  function add_to_content(val) {
+    console.log(val);
+    idx += 1;
+    document.getElementById("content").insertAdjacentHTML(
+      "beforeend",
+      `<div>
+        <h1>${val[3]}</h1>
+        <p>${val[4]}</p>
+      </div>`
+    );
+  }
+  $("#submit_btn").click(function (e) {
+    var info = {};
+    for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
+      console.log(`${idx_iter.toString()}-Label`);
+      console.log(`${idx_iter.toString()}-Input-Name`);
+      try {
+        var label = document.getElementById(
+          `${idx_iter.toString()}-Input-Name`
+        ).value;
+      } catch (error) {
+        var label = "None";
+      }
+      try {
+        var content = document.getElementById(
+          `${idx_iter.toString()}-Label`
+        ).value;
+      } catch (error) {
+        var content = "None";
+      }
+      try {
+        var name = document.getElementById(`name`).value;
+      } catch (error) {
+        var name = "None";
+      }
+      console.log(label);
+      console.log(content);
+      console.log(name);
+      info[idx_iter] = [label, content];
+    }
+    info["name"] = name;
+    yourdiv = $("#content").html();
+    console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
+    $.ajax({
+      type: "POST",
+      url: "/Admin/Question/Post/",
+      data: JSON.stringify({ info: info, yourdiv: yourdiv }),
+    });
+    alert("Question Added");
+    window.location.reload(0);
+  });
+  function removeElement(idx) {
+    console.log(idx);
+    var element = document.getElementById(`${idx}`);
+    element.remove();
+  } // TODO Redirect the POST Request to the API
+</script>
+{% endblock %}
