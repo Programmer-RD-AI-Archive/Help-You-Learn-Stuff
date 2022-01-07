@@ -28,6 +28,7 @@ def verify_email(email_address):
     )
 
     status = response.json()["status"]
+    print(status)
     if status == "valid":
         return True
     elif status == "invalid":
