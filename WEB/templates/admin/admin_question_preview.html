@@ -1,7 +1,13 @@
 {% extends "/admin/base.html" %} {% block head %}
 <style></style>
-<title>Home</title>
+<title>Admin Question Preview</title>
 
 {% endblock %} {% block body %}
-<div class="container">{{code|safe}}</div>
+<div class="container">
+  <a href="/Admin/Question/"
+    ><button type="button" class="btn btn-primary"><- Go Back</button>
+  </a>
+  <hr />
+  {{code|safe}}
+</div>
 {% endblock %}
