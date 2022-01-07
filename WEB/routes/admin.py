@@ -164,6 +164,19 @@ def admin_question_post():
     return ("", 200)
 
 
+@app.route("/Admin/Question/<_id>/Preview/")
+@app.route(
+    "/Admin/Question/<_id>/Preview",
+)
+def admin_question_preview(_id):
+    if "Is_Admin" in session:
+        results = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Questions WHERE ID = {_id}", "Type": "Select"},
+        ).json()["message"][0]
+        return render_template("admin/admin_question_preview.html", code=results[1])
+
+
 @app.route("/Admin/Test")
 def admin_test():
     return render_template("admin/test.html")
