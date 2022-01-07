@@ -21,8 +21,7 @@
 -- ( [Rank] , [Email] ,[User_Name] , [Password] )
 -- VALUES
 -- (5, 'go2ranuga@gmail.com', 'Programmer-RD-AI', 'dGVzdA==')
--- SELECT *
--- FROM Accounts
+
 -- SELECT *
 -- FROM Contact_Us
 -- CREATE TABLE Courses
@@ -66,8 +65,10 @@
 --     [html] varchar(max),
 --     [name] varchar(max),
 -- )
+-- SELECT *
+-- FROM Questions;
 SELECT *
-FROM Questions;
+FROM Accounts
 -- INSERT INTO Questions (html, name)
 -- VALUES ('Cardinal','Tom B. Erichsen');
 
