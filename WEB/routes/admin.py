@@ -37,11 +37,10 @@ def admin_courses_post():
         # eval([0])
         request_forms = request.form
         request_forms = dict(request_forms)
-        request_forms = request_forms.keys()
-        request_forms = list(request_forms)
         new_request_forms = ""
-        for request_form in request_forms:
-            new_request_forms += request_form
+        for key, val in zip(request_forms.keys(), request_forms.values()):
+            new_request_forms += key
+            new_request_forms += val
         request_form = eval(new_request_forms)
         print(request_form)
         # whole_content = request.form["whole_content"]
