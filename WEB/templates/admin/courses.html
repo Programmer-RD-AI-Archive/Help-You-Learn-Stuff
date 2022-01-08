@@ -60,24 +60,24 @@
 </div>
 <script>
   var idx = 0;
-  
+  var idx_val = {};
   function removeElement(idx) {
     console.log(idx);
     var element = document.getElementById(`${idx}`);
     element.remove();
   }
   function add_to_content(val) {
-    console.log(val);
     val = val.split(",");
     idx += 1;
-    console.log(val);
+    idx_val[idx] = val;
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
-      `<div id="${val[1]}-${val[2]}" class="${val[2]}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
+      `<div id="${idx}" class="${idx}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
         <h5>${val[0]}</h5>
-        <button onclick="removeElement("${val[1]}-${val[2]}")">Click me!</button>
+        <button onclick="removeElement("${idx}")">Click me!</button>
       </div>`
     );
+    console.log(val);
   }
   function removeElement(idx) {
     console.log(idx);
