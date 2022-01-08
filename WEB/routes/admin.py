@@ -42,10 +42,9 @@ def admin_courses_post():
             new_request_forms += key
             new_request_forms += val
         request_form = eval(new_request_forms)
-        print(request_form)
-        # whole_content = request.form["whole_content"]
-        # whole_content = BeautifulSoup(whole_content, "html.parser")
-        # info = request.form["info"]
+        whole_content = request_form["whole_content"]
+        whole_content = BeautifulSoup(whole_content, "html.parser")
+        print(whole_content)
 
 
 @app.route("/Admin/Question", methods=["GET", "POST"])
