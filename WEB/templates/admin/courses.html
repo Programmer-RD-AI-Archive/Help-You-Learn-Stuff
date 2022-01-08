@@ -74,7 +74,7 @@
       "beforeend",
       `<div id="${idx}" class="${idx}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
         <h5>${val[0]}</h5>
-        <button onclick="removeElement("${idx}")">Click me!</button>
+        <button type="button" class="btn btn-outline-danger" onclick='removeElement("${idx}");'>Delete</button>
       </div>`
     );
     console.log(val);
