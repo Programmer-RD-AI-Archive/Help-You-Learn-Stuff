@@ -27,8 +27,26 @@ def admin_courses():
             "http://127.0.0.1:5000/api/azure/sql",
             {"Query": f"SELECT * FROM Questions", "Type": "Select"},
         ).json()["message"]
-        print(resources, questions)
         return render_template("admin/courses.html", resources=resources, questions=questions)
+
+
+@app.route("/Admin/Courses/Post/", methods=["GET", "POST"])
+@app.route("/Admin/Courses/Post", methods=["GET", "POST"])
+def admin_courses_post():
+    if "Is_Admin" in session:
+        # eval([0])
+        request_forms = request.form
+        request_forms = dict(request_forms)
+        request_forms = request_forms.keys()
+        request_forms = list(request_forms)
+        new_request_forms = ""
+        for request_form in request_forms:
+            new_request_forms += request_form
+        request_form = eval(new_request_forms)
+        print(request_form)
+        # whole_content = request.form["whole_content"]
+        # whole_content = BeautifulSoup(whole_content, "html.parser")
+        # info = request.form["info"]
 
 
 @app.route("/Admin/Question", methods=["GET", "POST"])
