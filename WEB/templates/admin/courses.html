@@ -4,7 +4,11 @@
 
 {% endblock %} {% block body %}
 <div class="container">
-  <div class="content" id="content"></div>
+  <div
+    class="content"
+    id="content"
+    style="resize: both; overflow: auto; height: 250px"
+  ></div>
   <hr />
   <br />
   <form>
@@ -12,15 +16,20 @@
       <label for="Marks Required to Pass" class="form-label"
         >Marks Required to Pass</label
       >
-      <input type="number" class="form-control" id="Marks Required to Pass" />
+      <input
+        type="number"
+        class="form-control"
+        id="Marks Required to Pass"
+        required
+      />
     </div>
     <div style="resize: both; overflow: auto; height: 125px">
       {% for resource in resources %}
       <br />
       <button
         type="button"
-        id="{{resource}}"
-        value="{{resource}}"
+        id="{{resource[0]}}"
+        value="{{resource[3]}},{{resource[0]}},resource"
         class="btn btn-dark"
         onclick="add_to_content(this.value)"
       >
@@ -36,8 +45,8 @@
       {% for question in questions %}
       <button
         type="button"
-        id="{{question}}"
-        value="{{question}}"
+        id="{{question[0]}}"
+        value="{{question[2]}},{{question[0]}},question"
         class="btn btn-dark"
         onclick="add_to_content(this.value)"
       >
@@ -52,13 +61,15 @@
 <script>
   var idx = 0;
   function add_to_content(val) {
+    console.log(val);
+    val = val.split(",");
     idx += 1;
     console.log(val);
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
-      `<div>
-        <h1>${val[3]}</h1>
-        <p>${val[4]}</p>
+      `<div id="${val[1]}-${val[2]}" class="${val[2]}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
+        <h5>${val[0]}</h5>
+        <button class="btn btn-danger">A</button>
       </div>`
     );
   }
