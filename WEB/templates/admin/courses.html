@@ -55,7 +55,9 @@
       {% endfor %}
     </div>
     <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" id="submit_btn" class="btn btn-primary">
+      Submit
+    </button>
   </form>
 </div>
 <script>
@@ -73,16 +75,40 @@
     document.getElementById("content").insertAdjacentHTML(
       "beforeend",
       `<div id="${idx}" class="${idx}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
-        <h5>${val[0]}</h5>
+        <h4>${val[0]}</h4>
+        <p>${val[2]}</p>
         <button type="button" class="btn btn-outline-danger" onclick='removeElement("${idx}");'>Delete</button>
       </div>`
     );
     console.log(val);
   }
-  function removeElement(idx) {
-    console.log(idx);
-    var element = document.getElementById(`${idx}`);
-    element.remove();
-  } // TODO Redirect the POST Request to the API
+  $("#submit_btn").click(function (e) {
+    var info = {};
+    for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
+      try {
+        var specific_content = document.getElementById(
+          `${idx_iter.toString()}`
+        ).value;
+      } catch (error) {
+        var content = "None";
+      }
+      try {
+        var marks = document.getElementById(`Marks Required to Pass`).value;
+      } catch (error) {
+        var marks = "None";
+      }
+      console.log(marks);
+      console.log(specific_content);
+      info[idx_iter] = [marks, specific_content, idx_val[idx_iter]];
+    }
+    whole_content = $("#content").html();
+    $.ajax({
+      type: "POST",
+      url: "/Admin/Courses/Post/",
+      data: JSON.stringify({ info: info, whole_content: whole_content }),
+    });
+    alert("Course Added");
+    window.location.reload(0);
+  });
 </script>
 {% endblock %}
