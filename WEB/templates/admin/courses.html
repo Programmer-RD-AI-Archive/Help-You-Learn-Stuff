@@ -60,9 +60,11 @@
 </div>
 <script>
   var idx = 0;
-  function delete_element(id) {
-    var element = document.getElementById(id);
-    element.parentNode.removeChild(element);
+  
+  function removeElement(idx) {
+    console.log(idx);
+    var element = document.getElementById(`${idx}`);
+    element.remove();
   }
   function add_to_content(val) {
     console.log(val);
@@ -73,50 +75,10 @@
       "beforeend",
       `<div id="${val[1]}-${val[2]}" class="${val[2]}" style="background-color:lightgray; padding:12.5px; margin:12.5px; border-radius: 25px">
         <h5>${val[0]}</h5>
-        <button class="btn btn-danger" onClick="delete_element(${val[1]}-${val[2]})">Delete</button>
+        <button onclick="removeElement("${val[1]}-${val[2]}")">Click me!</button>
       </div>`
     );
   }
-  $("#submit_btn").click(function (e) {
-    var info = {};
-    for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
-      console.log(`${idx_iter.toString()}-Label`);
-      console.log(`${idx_iter.toString()}-Input-Name`);
-      try {
-        var label = document.getElementById(
-          `${idx_iter.toString()}-Input-Name`
-        ).value;
-      } catch (error) {
-        var label = "None";
-      }
-      try {
-        var content = document.getElementById(
-          `${idx_iter.toString()}-Label`
-        ).value;
-      } catch (error) {
-        var content = "None";
-      }
-      try {
-        var name = document.getElementById(`name`).value;
-      } catch (error) {
-        var name = "None";
-      }
-      console.log(label);
-      console.log(content);
-      console.log(name);
-      info[idx_iter] = [label, content];
-    }
-    info["name"] = name;
-    yourdiv = $("#content").html();
-    console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
-    $.ajax({
-      type: "POST",
-      url: "/Admin/Question/Post/",
-      data: JSON.stringify({ info: info, yourdiv: yourdiv }),
-    });
-    alert("Question Added");
-    window.location.reload(0);
-  });
   function removeElement(idx) {
     console.log(idx);
     var element = document.getElementById(`${idx}`);
