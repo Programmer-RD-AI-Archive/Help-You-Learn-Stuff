@@ -13,6 +13,14 @@
   <br />
   <form>
     <div class="mb-3">
+      <label for="Image" class="form-label">Image</label>
+      <input type="url" class="form-control" id="Image" required />
+    </div>
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="Name" required />
+    </div>
+    <div class="mb-3">
       <label for="Marks Required to Pass" class="form-label"
         >Marks Required to Pass</label
       >
@@ -84,6 +92,8 @@
   }
   $("#submit_btn").click(function (e) {
     var marks = document.getElementById(`Marks Required to Pass`).value;
+    var image = document.getElementById(`Image`).value;
+    var name = document.getElementById(`Name`).value;
     whole_content = $("#content").html();
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
@@ -99,6 +109,8 @@
         info: info,
         whole_content: whole_content,
         marks: marks,
+        image: image,
+        name: name,
       }),
     });
     alert("Course Added");
