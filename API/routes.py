@@ -52,10 +52,11 @@ cources.add_argument("name", type=str, help="name is required", required=True)
 resources_request_parser_delete = reqparse.RequestParser()
 resources_request_parser_delete.add_argument("id", type=int, help="id is required", required=True)
 courses = reqparse.RequestParser()
-courses.add_argument("whole_content", type=int, help="whole_content is required", required=True)
-courses.add_argument("info", type=int, help="info is required", required=True)
-courses.add_argument("image", type=int, help="image is required", required=True)
-courses.add_argument("name", type=int, help="name is required", required=True)
+courses.add_argument("whole_content", type=str, help="whole_content is required", required=True)
+courses.add_argument("info", type=str, help="info is required", required=True)
+courses.add_argument("image", type=str, help="image is required", required=True)
+courses.add_argument("name", type=str, help="name is required", required=True)
+courses.add_argument("marks", type=str, help="marks is required", required=True)
 
 
 class Get_Config(Resource):
@@ -185,6 +186,7 @@ class Resources(Resource):
 class Courses(Resource):
     def put(self):
         args = courses.parse_args()
+        print(args["info"])
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
@@ -196,12 +198,30 @@ class Courses(Resource):
                     [Whole Content] varchar(max),
                     [Info] varchar(max),
                     [Image] varchar(max),
-                    [Name] varchar(max)
+                    [Name] varchar(max),
+                    [Marks] varchar(max)
                 )
                 """
             )
         asql.insert_to_table(
-            f"INSERT INTO Courses ([Whole Content], [Info], [Image], [Name]) VALUES ('{args['whole_content']}','{args['info']}','{args['image']}','{args['name']}');"
+            f"""
+            INSERT INTO [Courses]
+            (   
+                [Whole_Content],
+                [Info],
+                [Image],
+                [Name],
+                [Marks]
+            ) 
+            VALUES 
+            ( 
+                '{args['whole_content']}',
+                '{args["info"]}',
+                '{args['image']}',
+                '{args['name']}',
+                {args['marks']}
+            )
+            """
         )
         return {"message": True}
 
