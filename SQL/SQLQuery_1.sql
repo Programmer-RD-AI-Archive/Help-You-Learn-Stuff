@@ -8,10 +8,10 @@
 -- VALUES
 --     (1)
 -- SELECT *
--- FROM TEST
+-- FRO/M TEST
 -- DROP TABLE Accounts
 -- DROP TABLE Contact_Us
--- CREATE TABLE Accounts (ID int IDENTITY(1,1), Rank INT, Email varchar(max),User_Name varchar(max), Password varchar(max))
+-- CREATE TABLE Accounts ([ID] int IDENTITY(1,1), Rank INT, [Email] varchar(max),[User_Name] varchar(max), [Password] varchar(max))
 -- CREATE TABLE Contact_Us (ID int IDENTITY(1,1),  Email varchar(max),Question varchar(max))
 -- DROP TABLE Accounts
 -- DROP TABLE Contact_Us
@@ -95,9 +95,20 @@ FROM Accounts
 -- CREATE TABLE Courses
 -- (
 --     [ID] int IDENTITY(1,1),
---     [Whole Content] varchar(max),
+--     [Whole_Content] varchar(max),
 --     [Info] varchar(max),
 --     [Image] varchar(max),
---     [Name] varchar(max)
+--     [Name] varchar(max),
+--     [Marks] varchar(max)
 -- )
-SELECT * FROM Courses;
+SELECT *
+FROM Courses;
+-- DROP TABLE TEST;
+-- CREATE TABLE [TEST]
+-- (
+--     [Testing_Object] varchar(max)
+-- )
+-- INSERT INTO [TEST]
+--     ( [Testing_Object])
+-- VALUES
+--     ('{"1": [["ttt", "7", "resource"]]}')
