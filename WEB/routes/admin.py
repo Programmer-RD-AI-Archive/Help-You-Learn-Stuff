@@ -27,26 +27,37 @@ def admin_courses():
             "http://127.0.0.1:5000/api/azure/sql",
             {"Query": f"SELECT * FROM Questions", "Type": "Select"},
         ).json()["message"]
-        return render_template("admin/courses.html", resources=resources, questions=questions)
+        courses = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Courses", "Type": "Select"},
+        ).json()["message"]
+        print(courses)
+        return render_template(
+            "admin/courses.html", resources=resources, questions=questions, courses=courses
+        )
 
 
 @app.route("/Admin/Courses/Post/", methods=["GET", "POST"])
 @app.route("/Admin/Courses/Post", methods=["GET", "POST"])
 def admin_courses_post():
     if "Is_Admin" in session:
-        # eval([0])
         request_forms = request.form
         request_forms = dict(request_forms)
-        # new_request_forms = ""
-        # for key, val in zip(request_forms.keys(), request_forms.values()):
-        #     new_request_forms += key
-        #     new_request_forms += val
-        # request_form = eval(new_request_forms)
-        # whole_content = request_form["whole_content"]
-        # whole_content = BeautifulSoup(whole_content, "html.parser")
-        print(request_forms)
-        print("\n")
-        print(request_forms)
+        new_request_forms = ""
+        for key, val in zip(request_forms.keys(), request_forms.values()):
+            new_request_forms += key
+            new_request_forms += val
+        request_forms = eval(new_request_forms)
+        whole_content = request_forms["whole_content"]
+        whole_content = BeautifulSoup(whole_content, "html.parser")
+        info = request_forms["info"]
+        image = request_forms["image"]
+        name = request_forms["name"]
+        response = requests.put(
+            "http://127.0.0.1:5000/api/courses",
+            {"whole_content": whole_content, "info": info, "image": image, "name": name},
+        ).json()
+        print(response)
 
 
 @app.route("/Admin/Question", methods=["GET", "POST"])
