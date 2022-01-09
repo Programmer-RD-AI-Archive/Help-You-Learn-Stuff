@@ -37,14 +37,16 @@ def admin_courses_post():
         # eval([0])
         request_forms = request.form
         request_forms = dict(request_forms)
-        new_request_forms = ""
-        for key, val in zip(request_forms.keys(), request_forms.values()):
-            new_request_forms += key
-            new_request_forms += val
-        request_form = eval(new_request_forms)
-        whole_content = request_form["whole_content"]
-        whole_content = BeautifulSoup(whole_content, "html.parser")
-        print(whole_content)
+        # new_request_forms = ""
+        # for key, val in zip(request_forms.keys(), request_forms.values()):
+        #     new_request_forms += key
+        #     new_request_forms += val
+        # request_form = eval(new_request_forms)
+        # whole_content = request_form["whole_content"]
+        # whole_content = BeautifulSoup(whole_content, "html.parser")
+        print(request_forms)
+        print("\n")
+        print(request_forms)
 
 
 @app.route("/Admin/Question", methods=["GET", "POST"])
