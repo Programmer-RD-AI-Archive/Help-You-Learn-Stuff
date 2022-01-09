@@ -69,14 +69,24 @@
   </form>
   <br />
   <div class="container px-4">
+    {% for course in courses %}
     <div class="row gx-5">
+      {% for course_iter in course %}
       <div class="col">
-        <div class="p-3 border bg-light">Custom column padding</div>
+        <div
+          class="p-3 border bg-light"
+          style="background-image: url({{course_iter[3]}});  background-position: center;background-repeat: no-repeat;background-size: cover;"
+        >
+          <h1><b>Name : {{course_iter[4]}}</b></h1>
+          <p><b>Marks Required : {{course_iter[5]}}</b></p>
+          <p><b>{{course_iter}}</b></p>
+        </div>
       </div>
-      <div class="col">
-        <div class="p-3 border bg-light">Custom column padding</div>
-      </div>
+      <br />
+      {% endfor %}
     </div>
+    <br />
+    {% endfor %}
   </div>
 </div>
 <script>
