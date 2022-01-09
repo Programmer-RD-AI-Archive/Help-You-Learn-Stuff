@@ -91,3 +91,13 @@ FROM Accounts
 
 -- SELECT *
 -- FROM Resources
+-- DROP TABLE Courses
+-- CREATE TABLE Courses
+-- (
+--     [ID] int IDENTITY(1,1),
+--     [Whole Content] varchar(max),
+--     [Info] varchar(max),
+--     [Image] varchar(max),
+--     [Name] varchar(max)
+-- )
+SELECT * FROM Courses;
