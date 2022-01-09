@@ -31,9 +31,18 @@ def admin_courses():
             "http://127.0.0.1:5000/api/azure/sql",
             {"Query": f"SELECT * FROM Courses", "Type": "Select"},
         ).json()["message"]
-        print(courses)
+        new_cources = []
+        iter_cources = []
+        idx = 0
+        for cource in courses:
+            if idx % 2 == 0:
+                new_cources.append(iter_cources)
+                iter_cources = []
+            idx += 1
+            iter_cources.append(cource)
+        new_cources.append(iter_cources)
         return render_template(
-            "admin/courses.html", resources=resources, questions=questions, courses=courses
+            "admin/courses.html", resources=resources, questions=questions, courses=new_cources
         )
 
 
@@ -53,11 +62,19 @@ def admin_courses_post():
         info = request_forms["info"]
         image = request_forms["image"]
         name = request_forms["name"]
+        marks = request_forms["marks"]
         response = requests.put(
             "http://127.0.0.1:5000/api/courses",
-            {"whole_content": whole_content, "info": info, "image": image, "name": name},
+            {
+                "whole_content": str(whole_content),
+                "info": info,
+                "image": str(image),
+                "name": str(name),
+                "marks": str(marks),
+            },
         ).json()
-        print(response)
+        flash("Cources added", "success")
+        return redirect("/Admin/Courses")
 
 
 @app.route("/Admin/Question", methods=["GET", "POST"])
