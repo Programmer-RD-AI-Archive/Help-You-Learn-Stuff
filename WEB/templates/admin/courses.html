@@ -82,21 +82,24 @@
     );
     console.log(val);
   }
+  var marks = document.getElementById(`Marks Required to Pass`).value;
   $("#submit_btn").click(function (e) {
     whole_content = $("#content").html();
     var info = {};
     for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
       var specific_content = $(`#${idx_iter}`).html();
-      var marks = document.getElementById(`Marks Required to Pass`).value;
-      console.log(marks);
       console.log(specific_content);
-      info[idx_iter] = [marks, specific_content, idx_val[idx_iter]];
+      info[idx_iter] = [specific_content, idx_val[idx_iter]];
     }
     console.log(whole_content);
     $.ajax({
       type: "POST",
       url: "/Admin/Courses/Post/",
-      data: JSON.stringify({ info: info, whole_content: whole_content }),
+      data: JSON.stringify({
+        info: info,
+        whole_content: whole_content,
+        marks: marks,
+      }),
     });
     alert("Course Added");
     window.location.reload(0);
