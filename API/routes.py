@@ -53,7 +53,7 @@ resources_request_parser_delete = reqparse.RequestParser()
 resources_request_parser_delete.add_argument("id", type=int, help="id is required", required=True)
 courses = reqparse.RequestParser()
 courses.add_argument("whole_content", type=str, help="whole_content is required", required=True)
-courses.add_argument("info", type=str, help="info is required", required=True)
+courses.add_argument("info", help="info is required", required=True,)
 courses.add_argument("image", type=str, help="image is required", required=True)
 courses.add_argument("name", type=str, help="name is required", required=True)
 courses.add_argument("marks", type=str, help="marks is required", required=True)
@@ -216,7 +216,7 @@ class Courses(Resource):
             VALUES 
             ( 
                 '{args['whole_content']}',
-                '{args["info"]}',
+                '{args['info']}',
                 '{args['image']}',
                 '{args['name']}',
                 {args['marks']}
