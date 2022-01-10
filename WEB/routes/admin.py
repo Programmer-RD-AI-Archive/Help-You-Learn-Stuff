@@ -67,7 +67,7 @@ def admin_courses_post():
             "http://127.0.0.1:5000/api/courses",
             {
                 "whole_content": str(whole_content),
-                "info": info,
+                "info": str(info),
                 "image": str(image),
                 "name": str(name),
                 "marks": str(marks),
