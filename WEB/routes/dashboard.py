@@ -9,9 +9,23 @@ def usr_home(_id):
         password = "01x2253x6871"
         config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
-        # config = requests.get("http://127.0.0.1:5000/api/get_subjects", {"password": password})
-        # config = config.json()
-        return render_template("dashboard/home.html", session=session, config=config)
+        courses = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Courses", "Type": "Select"},
+        ).json()["message"]
+        new_cources = []
+        iter_cources = []
+        idx = 0
+        for cource in courses:
+            if idx % 2 == 0:
+                new_cources.append(iter_cources)
+                iter_cources = []
+            idx += 1
+            iter_cources.append(cource)
+        new_cources.append(iter_cources)
+        return render_template(
+            "dashboard/home.html", session=session, config=config, courses=new_cources
+        )
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
