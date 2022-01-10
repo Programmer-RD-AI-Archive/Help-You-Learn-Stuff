@@ -111,6 +111,6 @@ CREATE TABLE [TEST]
 INSERT INTO [TEST]
     ( [Testing_Object])
 VALUES
-    ('{"1": [["ttt", "7", "resource"]]}')
+    ('{"1": [["te", "3", "question"]], "2": [["te", "3", "question"]]}')
 SELECT *
 FROM TEST
