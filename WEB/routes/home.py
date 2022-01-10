@@ -127,17 +127,19 @@ def sign_in():
         already_accounts = already_accounts.json()
         ok = None
         for already_account in already_accounts["message"]:
-            if already_account[1] == user_name_or_email and already_account[3] == encode(password):
-                email = already_account[1]
-                user_name = already_account[2]
+            if already_account[2] == user_name_or_email and already_account[4] == encode(password):
+                email = already_account[2]
+                user_name = already_account[3]
                 _id = already_account[0]
+                rank = already_account[1]
                 ok = True
-            elif already_account[2] == user_name_or_email and already_account[3] == encode(
+            elif already_account[3] == user_name_or_email and already_account[4] == encode(
                 password
             ):
-                email = already_account[1]
-                user_name = already_account[2]
+                email = already_account[2]
+                user_name = already_account[3]
                 _id = already_account[0]
+                rank = already_account[1]
                 ok = True
         if ok is True:
             try:
@@ -149,6 +151,7 @@ def sign_in():
             session["User Name"] = user_name
             session["Email"] = email
             session["Password"] = password
+            session["Rank"] = rank
             flash("You have loged in successfully", "success")
             return redirect(f"/Usr/{_id}/")
         else:
