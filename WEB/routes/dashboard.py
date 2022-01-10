@@ -23,6 +23,8 @@ def usr_home(_id):
             idx += 1
             iter_cources.append(cource)
         new_cources.append(iter_cources)
+        new_cources = new_cources[1:]
+        print(new_cources)
         return render_template(
             "dashboard/home.html", session=session, config=config, courses=new_cources
         )
