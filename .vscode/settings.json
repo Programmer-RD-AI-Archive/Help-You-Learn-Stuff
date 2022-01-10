@@ -1,3 +1,6 @@
 {
-  "azureML.defaultWorkspaceId": "/subscriptions/5fa0f8a9-3f8f-4008-92c8-c9df5ae35c6b/resourceGroups/Help-You-Learn-Stuff/providers/Microsoft.MachineLearningServices/workspaces/Help-You-Learn-Stuff"
+  "azureML.defaultWorkspaceId": "/subscriptions/5fa0f8a9-3f8f-4008-92c8-c9df5ae35c6b/resourceGroups/Help-You-Learn-Stuff/providers/Microsoft.MachineLearningServices/workspaces/Help-You-Learn-Stuff",
+  "liveFrame.url": "http://127.0.0.1:8986/",
+  "liveFrame.title": "Local Development",
+  "liveFrame.pane": "Beside"
 }
