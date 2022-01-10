@@ -103,14 +103,14 @@ FROM Accounts
 -- )
 SELECT *
 FROM Courses;
-DROP TABLE TEST;
-CREATE TABLE [TEST]
-(
-    [Testing_Object] varchar(max)
-)
-INSERT INTO [TEST]
-    ( [Testing_Object])
-VALUES
-    ('{"1": [["te", "3", "question"]], "2": [["te", "3", "question"]]}')
+-- DROP TABLE TEST;
+-- CREATE TABLE [TEST]
+-- (
+--     [Testing_Object] varchar(max)
+-- )
+-- INSERT INTO [TEST]
+--     ( [Testing_Object])
+-- VALUES
+--     ('{"1": [["te", "3", "question"]], "2": [["te", "3", "question"]]}')
 SELECT *
 FROM TEST
