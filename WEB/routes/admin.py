@@ -73,6 +73,7 @@ def admin_courses_post():
                 "marks": str(marks),
             },
         ).json()
+        print(response)
         flash("Cources added", "success")
         return redirect("/Admin/Courses")
 
