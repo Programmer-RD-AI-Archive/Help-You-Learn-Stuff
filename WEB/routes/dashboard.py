@@ -24,10 +24,23 @@ def usr_home(_id):
             iter_cources.append(cource)
         new_cources.append(iter_cources)
         new_cources = new_cources[1:]
-        print(new_cources)
         return render_template(
-            "dashboard/home.html", session=session, config=config, courses=new_cources
+            "dashboard/home.html", session=session, config=config, courses=new_cources, id_user=_id
         )
+
+
+@app.route("/Usr/<_id>/Cources/<course_id>/", methods=["GET", "POST"])
+@app.route("/Usr/<_id>/Cources/<course_id>", methods=["GET", "POST"])
+def usr_home_cources(_id, course_id):
+    if str(_id) == str(session["id"]):
+        password = "01x2253x6871"
+        config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
+        config = config.json()
+        courses = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
+        ).json()["message"]
+        print(courses)
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
