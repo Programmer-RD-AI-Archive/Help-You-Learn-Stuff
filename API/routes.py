@@ -216,7 +216,7 @@ class Courses(Resource):
             VALUES 
             ( 
                 '{args['whole_content']}',
-                {args['info']},
+                "{"1": [["te", "3", "question"]], "2": [["te", "3", "question"]]}",
                 '{args['image']}',
                 '{args['name']}',
                 '{args['marks']}'
