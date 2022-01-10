@@ -7,7 +7,12 @@
 <div class="container">
   {% for course in courses %} {% for course_iter in course %}
   <div class="card" style="width: 18rem; border-radius: 25px">
-    <img src="{{course_iter[3]}}" class="card-img-top" alt="..." />
+    <img
+      src="{{course_iter[3]}}"
+      class="card-img-top"
+      alt="..."
+      style="border-radius: 25px"
+    />
     <div class="card-body">
       <h5 class="card-title">{{course_iter[4]}}</h5>
       <p class="card-text">{{course_iter[5]}}</p>
@@ -23,7 +28,11 @@
         ></div>
       </div>
       <br />
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a
+        href="/Usr/{{id_user}}/Cources/{{course_iter[0]}}"
+        class="btn btn-primary"
+        >Continue Cources</a
+      >
     </div>
   </div>
   {% endfor %} {% endfor %} {% endblock %}
