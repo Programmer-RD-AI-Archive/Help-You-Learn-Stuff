@@ -100,6 +100,7 @@ FROM Accounts
 --     [Image] varchar(max),
 --     [Name] varchar(max),
 --     [Marks] varchar(max)
+--     -- [Description] varchar(max)
 -- )
 SELECT *
 FROM Courses;
