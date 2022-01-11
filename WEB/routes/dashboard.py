@@ -41,7 +41,8 @@ def usr_home_cources(_id, course_id):
             {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
         ).json()["message"]
         print(courses)
-
+        info = courses[0]["Info"]
+        
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
 @app.route("/Usr/<_id>/Log/Out/", methods=["GET", "POST"])
