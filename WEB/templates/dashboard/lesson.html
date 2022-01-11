@@ -1,0 +1,16 @@
+{% extends "/dashboard/base.html" %} {% block head %}
+
+<title>Home</title>
+
+{% endblock %} {% block body %}
+
+<div class="container">
+  <iframe
+    src="{{url}}"
+    width="1000px"
+    height="750px"
+    frameborder="0"
+    style="padding: 20px; resize: both; overflow: auto"
+  ></iframe>
+</div>
+{% endblock %}
