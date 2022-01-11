@@ -75,8 +75,7 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                         "Type": "Select",
                     },
                 ).json()["message"]
-            print(info_of_page)
-
+            return render_template("dashboard/lesson.html", url=info_of_page[0][2], session=session)
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
