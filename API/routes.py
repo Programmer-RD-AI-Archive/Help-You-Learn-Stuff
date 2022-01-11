@@ -37,7 +37,7 @@ azure_storage_request_parser.add_argument(
 azure_storage_request_parser.add_argument(
     "file_name", type=str, help="file_name is required", required=False
 )
-
+azure_storage_request_parser.add_argument("Type", type=str, help="Type is required", required=False)
 accounts_request_parser = reqparse.RequestParser()
 accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
 accounts_request_parser.add_argument(
@@ -276,6 +276,7 @@ class Azure_SQL_API(Resource):
 class Azure_Storage_API(Resource):
     def get(self):
         args = azure_storage_request_parser.parse_args()
+        print(args)
         astorage = Azure_Storage(args["Container Name"])
         if args["Type"] == "Create File":
             return {
@@ -286,7 +287,11 @@ class Azure_Storage_API(Resource):
         elif args["Type"] == "Find File":
             return {"message": astorage.find_file()}
         elif args["Type"] == "Download File":
-            return {"message": astorage.download_file(file_name=args["file_name"])}
+            return {
+                "message": astorage.download_file(file_name_in_the_cloud=args["file_name"]).decode(
+                    "utf-8"
+                )
+            }
         elif args["Type"] == "Delete Container":
             return {"message": astorage.delete_blob()}
         else:
