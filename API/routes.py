@@ -186,8 +186,21 @@ class Resources(Resource):
 class Courses(Resource):
     def put(self):
         args = courses.parse_args()
-        print(args["info"])
         asql = Azure_SQL()
+        astorage = Azure_Storage("cource")
+        cources = asql.select_table("SELECT * FROM Courses")
+        ids_of_cources = []
+        for cource in cources:
+            ids_of_cources.append(cource)
+        if ids_of_cources == []:
+            ids_of_cources = [[0]]
+        id_new = ids_of_cources[-1][0]
+        id_new += 1
+
+        info = str(args["info"])
+        info = bytes(info, encoding="utf-8")
+        astorage.create_file(file_name_in_the_cloud=f"{id_new}-info.txt", file_rb=info)
+
         tables = asql.get_tables()
         if "Questions" not in tables:
             asql.create_new_table(
@@ -216,7 +229,7 @@ class Courses(Resource):
             VALUES 
             ( 
                 '{args['whole_content']}',
-                '{args['info']}',
+                '{id_new}-info.txt',
                 '{args['image']}',
                 '{args['name']}',
                 '{args['marks']}'
@@ -274,6 +287,8 @@ class Azure_Storage_API(Resource):
             return {"message": astorage.find_file()}
         elif args["Type"] == "Download File":
             return {"message": astorage.download_file(file_name=args["file_name"])}
+        elif args["Type"] == "Delete Container":
+            return {"message": astorage.delete_blob()}
         else:
             return {"message": "Not correct type"}
 
