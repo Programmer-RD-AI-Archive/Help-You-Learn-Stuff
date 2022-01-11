@@ -59,14 +59,24 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
         if int(lesson_id) <= len(session[f"Cource {course_id}"]):
             specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
             print(specific_lesson_info)
-            courses = requests.get(
-                "http://127.0.0.1:5000/api/azure/sql",
-                {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
-            ).json()["message"]
-            # next_lesson = info.keys()[0]
-            # TODO check if length of cource is higher than 1
-            return render_template()
-        return redirect(f"/Usr/{_id}")
+            if specific_lesson_info[0][2] == "resource":
+                info_of_page = requests.get(
+                    "http://127.0.0.1:5000/api/azure/sql",
+                    {
+                        "Query": f"SELECT * FROM Resources WHERE ID={int(lesson_id)}",
+                        "Type": "Select",
+                    },
+                ).json()["message"]
+            else:
+                info_of_page = requests.get(
+                    "http://127.0.0.1:5000/api/azure/sql",
+                    {
+                        "Query": f"SELECT * FROM Questions WHERE ID={int(lesson_id)}",
+                        "Type": "Select",
+                    },
+                ).json()["message"]
+            print(info_of_page)
+
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
