@@ -40,9 +40,32 @@ def usr_home_cources(_id, course_id):
             "http://127.0.0.1:5000/api/azure/sql",
             {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
         ).json()["message"]
-        print(courses)
-        info = courses[0]["Info"]
-        
+        info = courses[0][2]
+        info = requests.get(
+            "http://127.0.0.1:5000/api/azure/storage",
+            {"Type": "Download File", "Container Name": "cource", "file_name": info},
+        ).json()["message"]
+        info = dict(eval(info))
+        session[f"Cource {course_id}"] = info
+        next_lesson = list(info.keys())[0]
+        # TODO check if length of cource is higher than 1
+        return redirect(f"/Usr/{_id}/Cources/{course_id}/Lesson/{next_lesson}")
+
+
+@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>/", methods=["GET", "POST"])
+@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>", methods=["GET", "POST"])
+def usr_home_cource_lesson(_id, course_id, lesson_id):
+    if str(_id) == str(session["id"]):
+        specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
+        print(specific_lesson_info)
+        courses = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
+        ).json()["message"]
+        # next_lesson = info.keys()[0]
+        # TODO check if length of cource is higher than 1
+        return render_template()
+
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
 @app.route("/Usr/<_id>/Log/Out/", methods=["GET", "POST"])
