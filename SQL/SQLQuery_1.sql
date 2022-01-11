@@ -65,10 +65,8 @@
 --     [html] varchar(max),
 --     [name] varchar(max),
 -- )
--- SELECT *
--- FROM Questions;
 SELECT *
-FROM Accounts
+FROM Questions;
 -- INSERT INTO Questions (html, name)
 -- VALUES ('Cardinal','Tom B. Erichsen');
 
@@ -82,8 +80,8 @@ FROM Accounts
 --     [description] varchar(max)
 -- )
 -- DELETE FROM Resources WHERE ID=1
--- SELECT *
--- FROM Resources
+SELECT *
+FROM Resources
 
 -- UPDATE Resources
 -- SET title='ttt'
