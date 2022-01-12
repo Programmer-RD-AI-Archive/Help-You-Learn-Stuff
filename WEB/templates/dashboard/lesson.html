@@ -17,6 +17,8 @@
     frameborder="0"
     style="padding: 20px; resize: both; overflow: auto"
   ></iframe>
-  {% else %} {% endif %}
+  {% else %} {{code|safe}} <br />
+  <button type="button" class="btn btn-dark" id="submit_btn">Submit</button>
+  {% endif %}
 </div>
 {% endblock %}
