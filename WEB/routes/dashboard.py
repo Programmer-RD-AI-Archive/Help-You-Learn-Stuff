@@ -56,6 +56,7 @@ def usr_home_cources(_id, course_id):
 @app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>", methods=["GET", "POST"])
 def usr_home_cource_lesson(_id, course_id, lesson_id):
     if str(_id) == str(session["id"]):
+        print(lesson_id)
         if int(lesson_id) <= len(session[f"Cource {course_id}"]):
             specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
             print(specific_lesson_info)
@@ -63,19 +64,34 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                 info_of_page = requests.get(
                     "http://127.0.0.1:5000/api/azure/sql",
                     {
-                        "Query": f"SELECT * FROM Resources WHERE ID={int(lesson_id)}",
+                        "Query": f"SELECT * FROM Resources WHERE ID={int(specific_lesson_info[0][1])}",
                         "Type": "Select",
                     },
                 ).json()["message"]
+                if info_of_page[0][1] == 1:
+                    info_of_page[0][2] = "https://www.youtube.com/embed/" + info_of_page[0][2]
+                return render_template(
+                    "dashboard/lesson.html",
+                    url=info_of_page[0][2],
+                    title=info_of_page[0][3],
+                    description=info_of_page[0][4],
+                    session=session,
+                    resources="True",
+                )
             else:
                 info_of_page = requests.get(
                     "http://127.0.0.1:5000/api/azure/sql",
                     {
-                        "Query": f"SELECT * FROM Questions WHERE ID={int(lesson_id)}",
+                        "Query": f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
                         "Type": "Select",
                     },
                 ).json()["message"]
-            return render_template("dashboard/lesson.html", url=info_of_page[0][2], session=session)
+                return render_template(
+                    "dashboard/lesson.html",
+                    session=session,
+                    resources=False,
+                )
+            print(info_of_page)
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
