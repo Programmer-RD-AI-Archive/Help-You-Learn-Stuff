@@ -5,6 +5,11 @@
 {% endblock %} {% block body %}
 
 <div class="container">
+  {% if resources == 'True' %}
+  <h1><b>{{title}}</b></h1>
+  <br />
+  <p><b>{{description}}</b></p>
+  <br />
   <iframe
     src="{{url}}"
     width="1000px"
@@ -12,5 +17,6 @@
     frameborder="0"
     style="padding: 20px; resize: both; overflow: auto"
   ></iframe>
+  {% else %} {% endif %}
 </div>
 {% endblock %}
