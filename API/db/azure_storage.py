@@ -1,4 +1,4 @@
-from API import *
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
 
 class Azure_Storage:
