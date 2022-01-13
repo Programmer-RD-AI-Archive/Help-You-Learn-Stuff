@@ -1,7 +1,6 @@
 """
 this has all of imports and other init configs and other main
 """
-import requests
 from flask import *
 
 from WEB.help_funcs import *
