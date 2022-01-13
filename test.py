@@ -10,8 +10,8 @@ from azure.storage.blob import (
     __version__,
 )
 
-# yourdiv.replace(str(all_input[0]), info[str(idx)][0])
 from bs4 import BeautifulSoup, Tag
+
 
 # markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
 # soup = BeautifulSoup(markup, "html.parser")
