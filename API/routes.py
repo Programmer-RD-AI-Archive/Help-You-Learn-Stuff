@@ -283,24 +283,6 @@ class Courses(Resource):
             """)
         return {"message": True}
 
-    # def get(self):
-    #     asql = Azure_SQL()
-    #     tables = asql.get_tables()
-    #     if "Questions" not in tables:
-    #         asql.create_new_table(
-    #             """
-    #             CREATE TABLE Courses
-    #             (
-    #                 [ID] int IDENTITY(1,1),
-    #                 [Whole Content] varchar(max),
-    #                 [Info] varchar(max),
-    #                 [Image] varchar(max),
-    #                 [Name] varchar(max)
-    #             )
-    #             """
-    #         )
-    #     return {"message": asql.select_table(f"SELECT * FROM Courses;")}
-
 
 class Azure_SQL_API(Resource):
     @staticmethod
