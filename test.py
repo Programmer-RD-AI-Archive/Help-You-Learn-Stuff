@@ -9,10 +9,7 @@ from azure.storage.blob import (
     ContainerClient,
     __version__,
 )
-
 from bs4 import BeautifulSoup, Tag
-
-
 
 
 class Azure_Storage:
