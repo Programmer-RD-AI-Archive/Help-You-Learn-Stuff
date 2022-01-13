@@ -1,12 +1,5 @@
-import binascii
 import json
-import os
-import smtplib
-import ssl
-import textwrap
-import uuid
 
-import pyodbc
 from azure.storage.blob import (
     BlobClient,
     BlobServiceClient,
