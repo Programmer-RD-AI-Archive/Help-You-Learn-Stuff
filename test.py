@@ -13,9 +13,6 @@ from azure.storage.blob import (
 from bs4 import BeautifulSoup, Tag
 
 
-# markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
-# soup = BeautifulSoup(markup, "html.parser")
-# a_tag = soup.a
 
 
 class Azure_Storage:
