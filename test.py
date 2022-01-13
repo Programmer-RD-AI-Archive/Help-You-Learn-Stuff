@@ -36,6 +36,3 @@ info = '{"1": ["trtret", "gerger"]}'
 info = bytes(info, encoding="utf-8")
 print(info)
 azure_storage = Azure_Storage()
-# azure_storage.create_file(file_name_in_the_cloud="/a/testa.json", file_rb=info)
-# azure_storage.find_file()
-# azure_storage.download_file()
