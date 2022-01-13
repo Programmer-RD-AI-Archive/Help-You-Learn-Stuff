@@ -12,7 +12,6 @@ from azure.storage.blob import (
 )
 from bs4 import BeautifulSoup, Tag
 
-
 class Azure_Storage:
     def __init__(self, ) -> None:
         self.connection_str = "DefaultEndpointsProtocol=https;AccountName=helpyoulearnstuff;AccountKey=WMruG6IqnwGspaRB9vIL+SmhTwzM3iPE7cRtjHkikxpa7WJo5EvQ+rIqjFZIgoPqwmEvOCZ/4KSf42yVX8kkQQ==;EndpointSuffix=core.windows.net"
