@@ -10,9 +10,8 @@ from azure.storage.blob import (
     __version__,
 )
 
-# new_tag = soup.new_tag("h1")
-# new_tag.string = "example.com"
-# a_tag.i.replace_with(new_tag)
+from bs4 import BeautifulSoup, Tag
+
 
 # markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
 # soup = BeautifulSoup(markup, "html.parser")
