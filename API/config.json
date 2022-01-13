@@ -21,5 +21,12 @@
   },
   "Admin": {
     "Gif": "https://cdn.dribbble.com/users/470545/screenshots/3471475/calculater.gif"
+  },
+  "Configs": {
+    "Gmail": "helpyoulearnstuff@gmail.com",
+    "Gmail Password": "Ranuga D 2008",
+    "API Key": "01x2253x6871",
+    "Secret Key": "Help you Learn Stuff",
+    "Encoder Type": "latin-1"
   }
 }
