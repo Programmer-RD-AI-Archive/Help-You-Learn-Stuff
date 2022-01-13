@@ -1,8 +1,11 @@
-from API import *
 import smtplib
 
+from API import *
 
-def send_email(subject="TEST", message="From Python", reviver="go2ranuga@gmail.com"):
+
+def send_email(subject="TEST",
+               message="From Python",
+               reviver="go2ranuga@gmail.com"):
     """
     Send Email using ttest
     """
