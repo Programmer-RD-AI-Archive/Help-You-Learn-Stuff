@@ -1,6 +1,40 @@
 version = 1
 
 [[analyzers]]
+<<<<<<< Updated upstream
+=======
+name = "python"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+
+[[transformers]]
+name = "yapf"
+enabled = true
+
+[[transformers]]
+name = "black"
+enabled = true
+
+[[transformers]]
+name = "isort"
+enabled = true
+
+[[transformers]]
+name = "autopep8"
+enabled = true
+
+[[analyzers]]
+name = "secrets"
+enabled = true
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
+
+[[analyzers]]
+>>>>>>> Stashed changes
 name = "javascript"
 enabled = true
 
@@ -10,4 +44,12 @@ enabled = true
 
 [[transformers]]
 name = "prettier"
+<<<<<<< Updated upstream
 enabled = true
+=======
+enabled = true
+
+[[analyzers]]
+name = "sql"
+enabled = true
+>>>>>>> Stashed changes
