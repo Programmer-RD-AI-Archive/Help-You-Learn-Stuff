@@ -100,7 +100,8 @@ courses.add_argument("marks",
 
 
 class Get_Config(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         args = get_config_request_parser.parse_args()
         if args["password"] == password:
             config = open("./API/config.json")
