@@ -1,4 +1,6 @@
-from API import *
+import pyodbc
+import textwrap
+import binascii
 
 
 class Azure_SQL:
