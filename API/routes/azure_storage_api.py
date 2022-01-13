@@ -13,7 +13,9 @@ azure_storage_request_parser.add_argument(
 azure_storage_request_parser.add_argument(
     "file_name", type=str, help="file_name is required", required=False
 )
-azure_storage_request_parser.add_argument("Type", type=str, help="Type is required", required=False)
+azure_storage_request_parser.add_argument(
+    "Type", type=str, help="Type is required", required=False
+)
 
 
 class Azure_Storage_API(Resource):
@@ -31,9 +33,9 @@ class Azure_Storage_API(Resource):
             return {"message": astorage.find_file()}
         if args["Type"] == "Download File":
             return {
-                "message": astorage.download_file(file_name_in_the_cloud=args["file_name"]).decode(
-                    "utf-8"
-                )
+                "message": astorage.download_file(
+                    file_name_in_the_cloud=args["file_name"]
+                ).decode("utf-8")
             }
         if args["Type"] == "Delete Container":
             return {"message": astorage.delete_blob()}

@@ -2,7 +2,9 @@ from API import *
 
 hp = Help_Funcs()
 accounts_request_parser = reqparse.RequestParser()
-accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
+accounts_request_parser.add_argument(
+    "email", type=str, help="email is required", required=True
+)
 accounts_request_parser.add_argument(
     "password", type=str, help="Password is required", required=True
 )
@@ -27,7 +29,7 @@ class Accounts(Resource):
             return {"message": newaccounts}
 
     def post(self) -> dict:
-        
+
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         hp.table_exists_or_not(

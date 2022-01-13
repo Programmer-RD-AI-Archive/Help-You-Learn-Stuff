@@ -2,8 +2,10 @@ from API import *
 
 hp = Help_Funcs()
 questions = reqparse.RequestParser()
-questions.add_argument("html", type=str, help="html is required", required=True)
-questions.add_argument("name", type=str, help="name is required", required=True)
+questions.add_argument(
+    "html", type=str, help="html is required", required=True)
+questions.add_argument(
+    "name", type=str, help="name is required", required=True)
 
 
 class Questions(Resource):
