@@ -31,7 +31,6 @@ def verify_email(email_address):
     print(status)
     if status == "valid":
         return True
-    elif status == "invalid":
+    if status == "invalid":
         return False
-    else:
-        return False
+    return False
