@@ -1,5 +1,4 @@
-from azure.storage.blob import (
-    __version__)
+from azure.storage.blob import __version__
 from flask import Flask
 from flask_restful import Api
 
