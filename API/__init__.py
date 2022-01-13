@@ -1,14 +1,17 @@
-from azure.storage.blob import __version__
-from flask import Flask
-from flask_restful import Api
+from flask import *
+from flask_restful import *
+from flask_restful import reqparse
+import json
+
+
+config = json.load(open("./API/config.json"))
+password = config["Configs"]["API Key"]
+app = Flask(__name__)
+app.debug = True  # debug
+app.secret_key = config["Configs"]["Secret Key"]  # secret key
+app.config["SECURITY_PASSWORD_SALT"] = config["Configs"]["Secret Key"]
+api = Api(app)
 
 from API.db import *
 from API.help_funcs import *
 from API.routes import *
-
-password = "01x2253x6871"
-app = Flask(__name__)
-app.debug = True  # debug
-app.secret_key = "Help you Learn Stuff"  # secret key
-app.config["SECURITY_PASSWORD_SALT"] = "Help you Learn Stuff"
-api = Api(app)
