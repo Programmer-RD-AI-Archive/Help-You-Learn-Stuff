@@ -4,7 +4,7 @@ from API import *
 class Azure_SQL:
     try:
         f = open(
-            f"./azure_sql.py",
+            "./azure_sql.py",
             "rb",
         )
         f = "0x" + binascii.hexlify(f.read()).decode("utf-8")
