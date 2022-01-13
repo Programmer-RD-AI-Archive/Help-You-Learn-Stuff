@@ -90,16 +90,16 @@ FROM Resources
 -- SELECT *
 -- FROM Resources
 -- DROP TABLE Courses
--- CREATE TABLE Courses
--- (
---     [ID] int IDENTITY(1,1),
---     [Whole_Content] varchar(max),
---     [Info] varchar(max),
---     [Image] varchar(max),
---     [Name] varchar(max),
---     [Marks] varchar(max)
---     -- [Description] varchar(max)
--- )
+CREATE TABLE Courses
+(
+    [ID] int IDENTITY(1,1),
+    [Whole_Content] varchar(max),
+    [Info] varchar(max),
+    [Image] varchar(max),
+    [Name] varchar(max),
+    [Marks] varchar(max)
+    -- [Description] varchar(max)
+)
 SELECT *
 FROM Courses;
 -- DROP TABLE TEST;
