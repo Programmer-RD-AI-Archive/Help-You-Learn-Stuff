@@ -27,7 +27,7 @@ resources_request_parser.add_argument("description",
 class Resources(Resource):
     def get(self) -> dict:
         asql = Azure_SQL()
-        return {"message": asql.select_table(f"SELECT * FROM [Resources]")}
+        return {"message": asql.select_table("SELECT * FROM [Resources]")}
 
     def post(self):
         args = resources_request_parser_delete.parse_args()
