@@ -1,7 +1,5 @@
 # import base64
 
-import uuid
-
 from azure.storage.blob import (
     BlobClient,
     BlobServiceClient,
