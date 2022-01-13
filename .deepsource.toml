@@ -24,32 +24,3 @@ enabled = true
 [[transformers]]
 name = "autopep8"
 enabled = true
-
-[[analyzers]]
-name = "secrets"
-enabled = true
-
-[[analyzers]]
-name = "test-coverage"
-enabled = true
-
-[[analyzers]]
->>>>>>> Stashed changes
-name = "javascript"
-enabled = true
-
-[[transformers]]
-name = "standardjs"
-enabled = true
-
-[[transformers]]
-name = "prettier"
-<<<<<<< Updated upstream
-enabled = true
-=======
-enabled = true
-
-[[analyzers]]
-name = "sql"
-enabled = true
->>>>>>> Stashed changes
