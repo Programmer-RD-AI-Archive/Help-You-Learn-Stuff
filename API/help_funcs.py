@@ -15,7 +15,6 @@ class Help_Funcs:
         gmail_password = config["Configs"]["Gmail Password"]
         sent_from = gmail_user
         to = [reviver]
-        subject = subject
         body = message
         try:
             server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
