@@ -1,6 +1,5 @@
 # import base64
 
-
 from azure.storage.blob import (
     BlobClient,
     BlobServiceClient,
