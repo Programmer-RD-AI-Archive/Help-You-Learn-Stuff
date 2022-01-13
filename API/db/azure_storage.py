@@ -1,4 +1,9 @@
-from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
+from azure.storage.blob import (
+    BlobClient,
+    BlobServiceClient,
+    ContainerClient,
+    __version__,
+)
 
 
 class Azure_Storage:
@@ -9,7 +14,9 @@ class Azure_Storage:
         )
         self.container_name = str(container_name)
         try:
-            self.container_client = self.blob_service_client.create_container(self.container_name)
+            self.container_client = self.blob_service_client.create_container(
+                self.container_name
+            )
         except:
             pass
 

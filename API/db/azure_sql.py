@@ -1,6 +1,7 @@
-import pyodbc
-import textwrap
 import binascii
+import textwrap
+
+import pyodbc
 
 
 class Azure_SQL:
@@ -88,7 +89,8 @@ class Azure_SQL:
 
     def get_tables(self):
         new_tables = []
-        tables = self.select_table("SELECT table_name FROM information_schema.tables")
+        tables = self.select_table(
+            "SELECT table_name FROM information_schema.tables")
         for table in tables:
             new_tables.append(table[0])
         return new_tables
