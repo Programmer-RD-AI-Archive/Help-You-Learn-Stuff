@@ -1,25 +1,12 @@
 # import base64
 
 import os
-import uuid
 
 from azure.storage.blob import (
-    BlobClient,
     BlobServiceClient,
-    ContainerClient,
-    __version__,
-)
+    __version__)
 
-# yourdiv.replace(str(all_input[0]), info[str(idx)][0])
-from bs4 import BeautifulSoup, Tag
 
-# new_tag = soup.new_tag("h1")
-# new_tag.string = "example.com"
-# a_tag.i.replace_with(new_tag)
-
-# markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
-# soup = BeautifulSoup(markup, "html.parser")
-# a_tag = soup.a
 
 
 class Azure_Storage:
@@ -55,6 +42,3 @@ info = '{"1": ["trtret", "gerger"]}'
 info = bytes(info, encoding="utf-8")
 print(info)
 azure_storage = Azure_Storage()
-# azure_storage.create_file(file_name_in_the_cloud="/a/testa.json", file_rb=info)
-# azure_storage.find_file()
-# azure_storage.download_file()
