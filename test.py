@@ -1,7 +1,6 @@
 # import base64
 
 
-import os
 import uuid
 
 from azure.storage.blob import (
@@ -10,7 +9,6 @@ from azure.storage.blob import (
     ContainerClient,
     __version__,
 )
-from bs4 import BeautifulSoup, Tag
 
 class Azure_Storage:
     def __init__(self, ) -> None:
