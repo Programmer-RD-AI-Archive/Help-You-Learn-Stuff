@@ -26,21 +26,21 @@ def admin_courses():
         resources = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
             {
-                "Query": f"SELECT * FROM Resources",
+                "Query": "SELECT * FROM Resources",
                 "Type": "Select"
             },
         ).json()["message"]
         questions = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
             {
-                "Query": f"SELECT * FROM Questions",
+                "Query": "SELECT * FROM Questions",
                 "Type": "Select"
             },
         ).json()["message"]
         courses = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
             {
-                "Query": f"SELECT * FROM Courses",
+                "Query": "SELECT * FROM Courses",
                 "Type": "Select"
             },
         ).json()["message"]
