@@ -91,7 +91,6 @@ def sign_up():
         if verify_email(email) is False:
             flash("Invalid Email", "danger")
             return redirect("/Sign/Up")
-        # remember_password = request.form["Remember Password"]  # TODO
         already_accounts = requests.get("http://127.0.0.1:5000/api/Accounts", )
         already_accounts = already_accounts.json()
         for already_account in already_accounts["message"]:
