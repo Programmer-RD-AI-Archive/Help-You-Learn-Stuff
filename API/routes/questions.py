@@ -25,7 +25,7 @@ class Questions(Resource):
                     [name] varchar(max),
                 )
                 """)
-        return {"message": asql.select_table(f"SELECT * FROM Questions")}
+        return {"message": asql.select_table("SELECT * FROM Questions")}
 
     def post(self):
         args = questions.parse_args()
