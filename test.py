@@ -1,8 +1,6 @@
 # import base64
 
-from azure.storage.blob import (
-    BlobServiceClient,
-    __version__)
+from azure.storage.blob import BlobServiceClient, __version__
 
 
 class Azure_Storage:
