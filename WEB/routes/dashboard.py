@@ -98,22 +98,21 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                     session=session,
                     resources="True",
                 )
-            else:
-                info_of_page = requests.get(
-                    "http://127.0.0.1:5000/api/azure/sql",
-                    {
-                        "Query":
-                        f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
-                        "Type": "Select",
-                    },
-                ).json()["message"]
-                print(info_of_page)
-                return render_template(
-                    "dashboard/lesson.html",
-                    session=session,
-                    resources=False,
-                    code=info_of_page[0][1],
-                )
+            info_of_page = requests.get(
+                "http://127.0.0.1:5000/api/azure/sql",
+                {
+                    "Query":
+                    f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
+                    "Type": "Select",
+                },
+            ).json()["message"]
+            print(info_of_page)
+            return render_template(
+                "dashboard/lesson.html",
+                session=session,
+                resources=False,
+                code=info_of_page[0][1],
+            )
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])

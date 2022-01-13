@@ -56,11 +56,10 @@ def home():
                 "success",
             )
             return redirect("/")
-        else:
-            session["email"] = email
-            session["question"] = question
-            flash("There is some error so please try again.", "danger")
-            return redirect("/")
+        session["email"] = email
+        session["question"] = question
+        flash("There is some error so please try again.", "danger")
+        return redirect("/")
     password = "01x2253x6871"
     config = requests.get("http://127.0.0.1:5000/api/get_config",
                           {"password": password})
@@ -100,7 +99,7 @@ def sign_up():
                     password):
                 flash("Email is already exist.", "danger")
                 return redirect("/Sign/Up")
-            elif already_account[2] == user_name and already_account[
+            if already_account[2] == user_name and already_account[
                     3] == encode(password):
                 flash("User Name is already exist.", "danger")
                 return redirect("/Sign/Up")
@@ -161,9 +160,8 @@ def sign_in():
             session["Rank"] = rank
             flash("You have loged in successfully", "success")
             return redirect(f"/Usr/{_id}/")
-        else:
-            session["Email or User Name"] = user_name_or_email
-            session["Password"] = password
-            flash("Email or User Name and Password is wrong.", "danger")
-            return redirect("/Sign/In")
+        session["Email or User Name"] = user_name_or_email
+        session["Password"] = password
+        flash("Email or User Name and Password is wrong.", "danger")
+        return redirect("/Sign/In")
     return render_template("home/sign_in.html", session=session, config=config)

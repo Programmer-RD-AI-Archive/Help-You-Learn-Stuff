@@ -106,8 +106,7 @@ class Get_Config(Resource):
             config = open("./API/config.json")
             config = json.load(config)
             return {"config": config}
-        else:
-            abort(401, message="Wrong password")
+        abort(401, message="Wrong password")
 
 
 class Contact_Us(Resource):
@@ -299,14 +298,13 @@ class Azure_SQL_API(Resource):
         asql = Azure_SQL()
         if args["Type"] == "Table":
             return {"message": asql.create_new_table(args["Query"])}
-        elif args["Type"] == "Insert":
+        if args["Type"] == "Insert":
             return {"message": asql.insert_to_table(args["Query"])}
-        elif args["Type"] == "Select":
+        if args["Type"] == "Select":
             return {"message": asql.select_table(args["Query"])}
-        elif args["Type"] == "Get Tables":
+        if args["Type"] == "Get Tables":
             return {"message": asql.create_new_table()}
-        else:
-            return {"message": "Not correct type"}
+        return {"message": "Not correct type"}
 
 
 class Azure_Storage_API(Resource):
@@ -320,18 +318,17 @@ class Azure_Storage_API(Resource):
                 astorage.create_file(blob_name=args["blob_name"],
                                      file_rb=args["file_rb"])
             }
-        elif args["Type"] == "Find File":
+        if args["Type"] == "Find File":
             return {"message": astorage.find_file()}
-        elif args["Type"] == "Download File":
+        if args["Type"] == "Download File":
             return {
                 "message":
                 astorage.download_file(
                     file_name_in_the_cloud=args["file_name"]).decode("utf-8")
             }
-        elif args["Type"] == "Delete Container":
+        if args["Type"] == "Delete Container":
             return {"message": astorage.delete_blob()}
-        else:
-            return {"message": "Not correct type"}
+        return {"message": "Not correct type"}
 
 
 api.add_resource(Resources, "/api/resources")
