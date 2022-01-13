@@ -13,7 +13,7 @@ def usr_home(_id):
         courses = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
             {
-                "Query": f"SELECT * FROM Courses",
+                "Query": "SELECT * FROM Courses",
                 "Type": "Select"
             },
         ).json()["message"]
