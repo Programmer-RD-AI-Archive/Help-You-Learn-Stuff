@@ -111,7 +111,8 @@ class Get_Config(Resource):
 
 
 class Contact_Us(Resource):
-    def post(self):
+    @staticmethod
+    def post():
         try:
             args = contact_us_request_parser.parse_args()
             email = args["email"]
@@ -134,7 +135,8 @@ class Contact_Us(Resource):
 
 
 class Accounts(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Accounts" not in tables:
@@ -147,7 +149,8 @@ class Accounts(Resource):
             newaccounts.append(list(account))
         return {"message": newaccounts}
 
-    def post(self):
+    @staticmethod
+    def post():
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         tables = asql.get_tables()
@@ -166,7 +169,8 @@ class Accounts(Resource):
 
 
 class Questions(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
@@ -180,7 +184,8 @@ class Questions(Resource):
                 """)
         return {"message": asql.select_table(f"SELECT * FROM Questions")}
 
-    def post(self):
+    @staticmethod
+    def post():
         args = cources.parse_args()
         print(args)
         asql = Azure_SQL()
@@ -201,11 +206,13 @@ class Questions(Resource):
 
 
 class Resources(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         asql = Azure_SQL()
         return {"message": asql.select_table(f"SELECT * FROM [Resources]")}
 
-    def post(self):
+    @staticmethod
+    def post():
         args = resources_request_parser_delete.parse_args()
         asql = Azure_SQL()
         return {
@@ -214,7 +221,8 @@ class Resources(Resource):
                 f"DELETE FROM Resources WHERE ID={args['id']}")
         }  # TODO
 
-    def put(self):
+    @staticmethod
+    def put():
         args = resources_request_parser.parse_args()
         asql = Azure_SQL()
         asql.insert_to_table(
@@ -223,7 +231,8 @@ class Resources(Resource):
 
 
 class Courses(Resource):
-    def put(self):
+    @staticmethod
+    def put():
         args = courses.parse_args()
         asql = Azure_SQL()
         astorage = Azure_Storage("cource")
@@ -294,7 +303,8 @@ class Courses(Resource):
 
 
 class Azure_SQL_API(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         args = azure_sql_request_parser.parse_args()
         asql = Azure_SQL()
         if args["Type"] == "Table":
@@ -309,7 +319,8 @@ class Azure_SQL_API(Resource):
 
 
 class Azure_Storage_API(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         args = azure_storage_request_parser.parse_args()
         print(args)
         astorage = Azure_Storage(args["Container Name"])
