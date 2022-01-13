@@ -120,16 +120,12 @@ class Contact_Us(Resource):
             asql = Azure_SQL()
             tables = asql.get_tables()
             if "Contact_Us" not in tables:
-                result = asql.create_new_table(
+                asql.create_new_table(
                     "CREATE TABLE Contact_Us (ID int IDENTITY(1,1),  Email varchar(max),Question varchar(max))"
                 )
-                if result[0] is False:
-                    return {"message": False}
-            result = asql.insert_to_table(
+            asql.insert_to_table(
                 f"INSERT INTO [Contact_Us]( [Email], [Question] ) VALUES ( '{email}', '{question}')"
             )
-            if result[0] is False:
-                return {"message": False}
             # Added DB
             return {"message": True}
         except Exception as e:
@@ -141,11 +137,9 @@ class Accounts(Resource):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Accounts" not in tables:
-            result = asql.create_new_table(
+            asql.create_new_table(
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Rank INT(max), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
-            if result[0] is False:
-                return {"message": False}
         newaccounts = []
         accounts = asql.select_table("SELECT * FROM [Accounts]")
         for account in accounts:
@@ -157,16 +151,12 @@ class Accounts(Resource):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Accounts" not in tables:
-            result = asql.create_new_table(
+            asql.create_new_table(
                 "CREATE TABLE Accounts (ID int IDENTITY(1,1), Rank INT(max), Email varchar(max),User_Name varchar(max), Password varchar(max))"
             )
-            if result[0] is False:
-                return {"message": False}
-        result = asql.insert_to_table(
+        asql.insert_to_table(
             f"INSERT INTO [Accounts]( [Rank],[Email], [User_Name], [Password] ) VALUES ( 1,'{args['email']}', '{args['user_name']}', '{args['password']}')"
         )
-        if result[0] is False:
-            return {"message": False}
         newaccounts = []
         accounts = asql.select_table("SELECT * FROM [Accounts]")
         for account in accounts:
@@ -179,59 +169,33 @@ class Questions(Resource):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
-<<<<<<< Updated upstream
             asql.create_new_table("""
-=======
-            result = asql.create_new_table(
-                """
->>>>>>> Stashed changes
                 CREATE TABLE Questions
                 (
                     [ID] int IDENTITY(1,1),
                     [html] varchar(max),
                     [name] varchar(max),
                 )
-<<<<<<< Updated upstream
                 """)
-=======
-                """
-            )
-            if result[0] is False:
-                return {"message": False}
->>>>>>> Stashed changes
         return {"message": asql.select_table(f"SELECT * FROM Questions")}
 
     def post(self):
         args = cources.parse_args()
+        print(args)
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
-<<<<<<< Updated upstream
             asql.create_new_table("""
-=======
-            result = asql.create_new_table(
-                """
->>>>>>> Stashed changes
                 CREATE TABLE Questions
                 (
                     [ID] int IDENTITY(1,1),
                     [html] varchar(max),
                     [name] varchar(max),
                 )
-<<<<<<< Updated upstream
                 """)
         asql.insert_to_table(
-=======
-                """
-            )
-            if result[0] is False:
-                return {"message": False}
-        result = asql.insert_to_table(
->>>>>>> Stashed changes
             f"INSERT INTO Questions (html, name) VALUES ('{args['html']}','{args['name']}');"
         )
-        if result[0] is False:
-            return {"message": False}
         return {"message": True}
 
 
@@ -252,11 +216,9 @@ class Resources(Resource):
     def put(self):
         args = resources_request_parser.parse_args()
         asql = Azure_SQL()
-        result = asql.insert_to_table(
+        asql.insert_to_table(
             f"INSERT INTO [Resources]( [method_of_resource], [link_of_resource], [title], [description] ) VALUES ( '{args['method_of_resource']}', '{args['link_of_resource']}','{args['title']}','{args['description']}')"
         )
-        if result[0] is False:
-            return {"message": False}
 
 
 class Courses(Resource):
@@ -275,22 +237,12 @@ class Courses(Resource):
 
         info = str(args["info"])
         info = bytes(info, encoding="utf-8")
-<<<<<<< Updated upstream
         astorage.create_file(file_name_in_the_cloud=f"{id_new}-info.txt",
                              file_rb=info)
 
         tables = asql.get_tables()
         if "Questions" not in tables:
             asql.create_new_table("""
-=======
-        result = astorage.create_file(file_name_in_the_cloud=f"{id_new}-info.txt", file_rb=info)
-        if result[0] is False:
-            return {"message": False}
-        tables = asql.get_tables()
-        if "Questions" not in tables:
-            result = asql.create_new_table(
-                """
->>>>>>> Stashed changes
                 CREATE TABLE Courses
                 (
                     [ID] int IDENTITY(1,1),
@@ -300,17 +252,8 @@ class Courses(Resource):
                     [Name] varchar(max),
                     [Marks] varchar(max)
                 )
-<<<<<<< Updated upstream
                 """)
         asql.insert_to_table(f"""
-=======
-                """
-            )
-            if result[0] is False:
-                return {"message": False}
-        result = asql.insert_to_table(
-            f"""
->>>>>>> Stashed changes
             INSERT INTO [Courses]
             (   
                 [Whole_Content],
@@ -327,35 +270,26 @@ class Courses(Resource):
                 '{args['name']}',
                 '{args['marks']}'
             )
-<<<<<<< Updated upstream
             """)
-=======
-            """
-        )
-        if result[0] is False:
-            return {"message": False}
->>>>>>> Stashed changes
         return {"message": True}
 
-    def get(self):
-        asql = Azure_SQL()
-        tables = asql.get_tables()
-        if "Questions" not in tables:
-            result = asql.create_new_table(
-                """
-                CREATE TABLE Courses
-                (
-                    [ID] int IDENTITY(1,1),
-                    [Whole Content] varchar(max),
-                    [Info] varchar(max),
-                    [Image] varchar(max),
-                    [Name] varchar(max)
-                )
-                """
-            )
-            if result[0] is False:
-                return {"message": False}
-        return {"message": asql.select_table(f"SELECT * FROM Courses;")}
+    # def get(self):
+    #     asql = Azure_SQL()
+    #     tables = asql.get_tables()
+    #     if "Questions" not in tables:
+    #         asql.create_new_table(
+    #             """
+    #             CREATE TABLE Courses
+    #             (
+    #                 [ID] int IDENTITY(1,1),
+    #                 [Whole Content] varchar(max),
+    #                 [Info] varchar(max),
+    #                 [Image] varchar(max),
+    #                 [Name] varchar(max)
+    #             )
+    #             """
+    #         )
+    #     return {"message": asql.select_table(f"SELECT * FROM Courses;")}
 
 
 class Azure_SQL_API(Resource):
@@ -376,6 +310,7 @@ class Azure_SQL_API(Resource):
 class Azure_Storage_API(Resource):
     def get(self):
         args = azure_storage_request_parser.parse_args()
+        print(args)
         astorage = Azure_Storage(args["Container Name"])
         if args["Type"] == "Create File":
             return {
@@ -385,7 +320,6 @@ class Azure_Storage_API(Resource):
             }
         if args["Type"] == "Find File":
             return {"message": astorage.find_file()}
-<<<<<<< Updated upstream
         if args["Type"] == "Download File":
             return {
                 "message":
@@ -393,11 +327,6 @@ class Azure_Storage_API(Resource):
                     file_name_in_the_cloud=args["file_name"]).decode("utf-8")
             }
         if args["Type"] == "Delete Container":
-=======
-        elif args["Type"] == "Download File":
-            return {"message": astorage.download_file(file_name_in_the_cloud=args["file_name"])}
-        elif args["Type"] == "Delete Container":
->>>>>>> Stashed changes
             return {"message": astorage.delete_blob()}
         return {"message": "Not correct type"}
 
