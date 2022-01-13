@@ -1,6 +1,5 @@
 # import base64
 
-
 import os
 import uuid
 
@@ -11,7 +10,6 @@ from azure.storage.blob import (
     __version__,
 )
 from bs4 import BeautifulSoup, Tag
-
 
 
 class Azure_Storage:
