@@ -25,9 +25,13 @@ from bs4 import BeautifulSoup, Tag
 class Azure_Storage:
     def __init__(self, ) -> None:
         self.connection_str = "DefaultEndpointsProtocol=https;AccountName=helpyoulearnstuff;AccountKey=WMruG6IqnwGspaRB9vIL+SmhTwzM3iPE7cRtjHkikxpa7WJo5EvQ+rIqjFZIgoPqwmEvOCZ/4KSf42yVX8kkQQ==;EndpointSuffix=core.windows.net"
+<<<<<<< Updated upstream
         self.blob_service_client = BlobServiceClient.from_connection_string(
             self.connection_str)
         print(self.blob_service_client.list_blobs())
+=======
+        self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_str)
+>>>>>>> Stashed changes
         self.container_name = str("cources")
         self.container_client = self.blob_service_client.create_container(
             self.container_name)
@@ -53,7 +57,6 @@ class Azure_Storage:
 
 info = '{"1": ["trtret", "gerger"]}'
 info = bytes(info, encoding="utf-8")
-print(info)
 azure_storage = Azure_Storage()
 # azure_storage.create_file(file_name_in_the_cloud="/a/testa.json", file_rb=info)
 # azure_storage.find_file()

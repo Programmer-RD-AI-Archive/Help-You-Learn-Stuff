@@ -1,4 +1,6 @@
-from API import *
+import pyodbc
+import textwrap
+import binascii
 
 
 class Azure_SQL:
@@ -41,6 +43,7 @@ class Azure_SQL:
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
+<<<<<<< Updated upstream
         self,
         table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
     ):
@@ -55,13 +58,37 @@ class Azure_SQL:
     ):
         result = self.crsr.execute(insert_query)
         self.crsr.commit()
+=======
+        self, table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
+    ) -> list:
+        try:
+            result = self.crsr.execute(table_query)
+            self.crsr.commit()
+            return [True, result]
+        except Exception as e:
+            return [False, e]
 
-    def select_table(self, select_query: str = "SELECT * FROM TEST"):
-        self.crsr.execute(select_query)
-        results = []
-        for result in self.crsr.fetchall():
-            results.append(list(result))
-        return results
+    def insert_to_table(
+        self,
+        insert_query: str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')",
+    ) -> list:
+        try:
+            result = self.crsr.execute(insert_query)
+            self.crsr.commit()
+            return [True, result]
+        except Exception as e:
+            return [False, e]
+>>>>>>> Stashed changes
+
+    def select_table(self, select_query: str = "SELECT * FROM TEST") -> list:
+        try:
+            self.crsr.execute(select_query)
+            results = []
+            for result in self.crsr.fetchall():
+                results.append(list(result))
+            return results
+        except:
+            return []
 
     def close_connection(self) -> bool:
         try:
@@ -85,9 +112,20 @@ class Azure_SQL:
             return False
 
     def get_tables(self):
+<<<<<<< Updated upstream
         new_tables = []
         tables = self.select_table(
             "SELECT table_name FROM information_schema.tables")
         for table in tables:
             new_tables.append(table[0])
         return new_tables
+=======
+        try:
+            new_tables = []
+            tables = self.select_table("SELECT table_name FROM information_schema.tables")
+            for table in tables:
+                new_tables.append(table[0])
+            return new_tables
+        except Exception as e:
+            return []
+>>>>>>> Stashed changes

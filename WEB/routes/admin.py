@@ -89,7 +89,6 @@ def admin_courses_post():
                 "marks": str(marks),
             },
         ).json()
-        print(response)
         flash("Cources added", "success")
         return redirect("/Admin/Courses")
 
@@ -101,7 +100,6 @@ def admin_question():
         returned_vals = requests.get(
             "http://127.0.0.1:5000/api/questions").json()
         returned_vals = returned_vals["message"]
-        print(returned_vals)
         return render_template(
             "admin/question.html",
             config=config,
@@ -244,11 +242,17 @@ def admin_question_post():
         for input_ in inputs:
             input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
+<<<<<<< Updated upstream
     returned_vals = requests.post("http://127.0.0.1:5000/api/questions", {
         "html": str(soup),
         "name": str(name)
     }).json()
     print(returned_vals)
+=======
+    returned_vals = requests.post(
+        "http://127.0.0.1:5000/api/questions", {"html": str(soup), "name": str(name)}
+    ).json()
+>>>>>>> Stashed changes
     return ("", 200)
 
 
@@ -280,7 +284,6 @@ def admin_question_delete(_id):
                 "Type": "Insert"
             },
         ).json()
-        print(results)
         flash("Deleted", "success")
         return redirect("/Admin/Question")
 
