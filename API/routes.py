@@ -284,7 +284,6 @@ class Courses(Resource):
         return {"message": True}
 
 
-
 class Azure_SQL_API(Resource):
     @staticmethod
     def get():
