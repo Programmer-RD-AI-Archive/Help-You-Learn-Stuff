@@ -1,61 +1,102 @@
 from API import *
 
 resources_request_parser = reqparse.RequestParser()
-resources_request_parser.add_argument(
-    "method_of_resource", type=str, help="method_of_resource is required", required=True
-)
-resources_request_parser.add_argument(
-    "link_of_resource", type=str, help="link_of_resource is required", required=True
-)
-resources_request_parser.add_argument("title", type=str, help="title is required", required=True)
-resources_request_parser.add_argument(
-    "description", type=str, help="description is required", required=True
-)
+resources_request_parser.add_argument("method_of_resource",
+                                      type=str,
+                                      help="method_of_resource is required",
+                                      required=True)
+resources_request_parser.add_argument("link_of_resource",
+                                      type=str,
+                                      help="link_of_resource is required",
+                                      required=True)
+resources_request_parser.add_argument("title",
+                                      type=str,
+                                      help="title is required",
+                                      required=True)
+resources_request_parser.add_argument("description",
+                                      type=str,
+                                      help="description is required",
+                                      required=True)
 get_config_request_parser = reqparse.RequestParser()
-get_config_request_parser.add_argument(
-    "password", type=str, help="Password is required", required=True
-)
+get_config_request_parser.add_argument("password",
+                                       type=str,
+                                       help="Password is required",
+                                       required=True)
 contact_us_request_parser = reqparse.RequestParser()
-contact_us_request_parser.add_argument("email", type=str, help="email is required", required=True)
-contact_us_request_parser.add_argument(
-    "question", type=str, help="question is required", required=True
-)
+contact_us_request_parser.add_argument("email",
+                                       type=str,
+                                       help="email is required",
+                                       required=True)
+contact_us_request_parser.add_argument("question",
+                                       type=str,
+                                       help="question is required",
+                                       required=True)
 azure_sql_request_parser = reqparse.RequestParser()
-azure_sql_request_parser.add_argument("Type", type=str, help="Type is required", required=True)
-azure_sql_request_parser.add_argument("Query", type=str, help="Query is required", required=False)
+azure_sql_request_parser.add_argument("Type",
+                                      type=str,
+                                      help="Type is required",
+                                      required=True)
+azure_sql_request_parser.add_argument("Query",
+                                      type=str,
+                                      help="Query is required",
+                                      required=False)
 azure_storage_request_parser = reqparse.RequestParser()
-azure_storage_request_parser.add_argument(
-    "Container Name", type=str, help="Container Name is required", required=True
-)
-azure_storage_request_parser.add_argument(
-    "blob_name", type=str, help="blob_name is required", required=False
-)
-azure_storage_request_parser.add_argument(
-    "file_rb", type=str, help="file_rb is required", required=False
-)
-azure_storage_request_parser.add_argument(
-    "file_name", type=str, help="file_name is required", required=False
-)
-azure_storage_request_parser.add_argument("Type", type=str, help="Type is required", required=False)
+azure_storage_request_parser.add_argument("Container Name",
+                                          type=str,
+                                          help="Container Name is required",
+                                          required=True)
+azure_storage_request_parser.add_argument("blob_name",
+                                          type=str,
+                                          help="blob_name is required",
+                                          required=False)
+azure_storage_request_parser.add_argument("file_rb",
+                                          type=str,
+                                          help="file_rb is required",
+                                          required=False)
+azure_storage_request_parser.add_argument("file_name",
+                                          type=str,
+                                          help="file_name is required",
+                                          required=False)
+azure_storage_request_parser.add_argument("Type",
+                                          type=str,
+                                          help="Type is required",
+                                          required=False)
 accounts_request_parser = reqparse.RequestParser()
-accounts_request_parser.add_argument("email", type=str, help="email is required", required=True)
-accounts_request_parser.add_argument(
-    "password", type=str, help="Password is required", required=True
-)
-accounts_request_parser.add_argument(
-    "user_name", type=str, help="user name is required", required=True
-)
+accounts_request_parser.add_argument("email",
+                                     type=str,
+                                     help="email is required",
+                                     required=True)
+accounts_request_parser.add_argument("password",
+                                     type=str,
+                                     help="Password is required",
+                                     required=True)
+accounts_request_parser.add_argument("user_name",
+                                     type=str,
+                                     help="user name is required",
+                                     required=True)
 cources = reqparse.RequestParser()
 cources.add_argument("html", type=str, help="html is required", required=True)
 cources.add_argument("name", type=str, help="name is required", required=True)
 resources_request_parser_delete = reqparse.RequestParser()
-resources_request_parser_delete.add_argument("id", type=int, help="id is required", required=True)
+resources_request_parser_delete.add_argument("id",
+                                             type=int,
+                                             help="id is required",
+                                             required=True)
 courses = reqparse.RequestParser()
-courses.add_argument("whole_content", type=str, help="whole_content is required", required=True)
+courses.add_argument("whole_content",
+                     type=str,
+                     help="whole_content is required",
+                     required=True)
 courses.add_argument("info", help="info is required", required=True, type=str)
-courses.add_argument("image", type=str, help="image is required", required=True)
+courses.add_argument("image",
+                     type=str,
+                     help="image is required",
+                     required=True)
 courses.add_argument("name", type=str, help="name is required", required=True)
-courses.add_argument("marks", type=str, help="marks is required", required=True)
+courses.add_argument("marks",
+                     type=str,
+                     help="marks is required",
+                     required=True)
 
 
 class Get_Config(Resource):
@@ -76,7 +117,8 @@ class Contact_Us(Resource):
             args = contact_us_request_parser.parse_args()
             email = args["email"]
             question = args["question"]
-            send_email(subject=question, message=f"Email - {email} \n Question {question}")
+            send_email(subject=question,
+                       message=f"Email - {email} \n Question {question}")
             asql = Azure_SQL()
             tables = asql.get_tables()
             if "Contact_Us" not in tables:
@@ -132,16 +174,14 @@ class Questions(Resource):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
-            asql.create_new_table(
-                """
+            asql.create_new_table("""
                 CREATE TABLE Questions
                 (
                     [ID] int IDENTITY(1,1),
                     [html] varchar(max),
                     [name] varchar(max),
                 )
-                """
-            )
+                """)
         return {"message": asql.select_table(f"SELECT * FROM Questions")}
 
     @staticmethod
@@ -151,16 +191,14 @@ class Questions(Resource):
         asql = Azure_SQL()
         tables = asql.get_tables()
         if "Questions" not in tables:
-            asql.create_new_table(
-                """
+            asql.create_new_table("""
                 CREATE TABLE Questions
                 (
                     [ID] int IDENTITY(1,1),
                     [html] varchar(max),
                     [name] varchar(max),
                 )
-                """
-            )
+                """)
         asql.insert_to_table(
             f"INSERT INTO Questions (html, name) VALUES ('{args['html']}','{args['name']}');"
         )
@@ -178,7 +216,9 @@ class Resources(Resource):
         args = resources_request_parser_delete.parse_args()
         asql = Azure_SQL()
         return {
-            "message": asql.insert_to_table(f"DELETE FROM Resources WHERE ID={args['id']}")
+            "message":
+            asql.insert_to_table(
+                f"DELETE FROM Resources WHERE ID={args['id']}")
         }  # TODO
 
     @staticmethod
@@ -207,12 +247,12 @@ class Courses(Resource):
 
         info = str(args["info"])
         info = bytes(info, encoding="utf-8")
-        astorage.create_file(file_name_in_the_cloud=f"{id_new}-info.txt", file_rb=info)
+        astorage.create_file(file_name_in_the_cloud=f"{id_new}-info.txt",
+                             file_rb=info)
 
         tables = asql.get_tables()
         if "Questions" not in tables:
-            asql.create_new_table(
-                """
+            asql.create_new_table("""
                 CREATE TABLE Courses
                 (
                     [ID] int IDENTITY(1,1),
@@ -222,10 +262,8 @@ class Courses(Resource):
                     [Name] varchar(max),
                     [Marks] varchar(max)
                 )
-                """
-            )
-        asql.insert_to_table(
-            f"""
+                """)
+        asql.insert_to_table(f"""
             INSERT INTO [Courses]
             (   
                 [Whole_Content],
@@ -242,8 +280,7 @@ class Courses(Resource):
                 '{args['name']}',
                 '{args['marks']}'
             )
-            """
-        )
+            """)
         return {"message": True}
 
 
@@ -271,17 +308,17 @@ class Azure_Storage_API(Resource):
         astorage = Azure_Storage(args["Container Name"])
         if args["Type"] == "Create File":
             return {
-                "message": astorage.create_file(
-                    blob_name=args["blob_name"], file_rb=args["file_rb"]
-                )
+                "message":
+                astorage.create_file(blob_name=args["blob_name"],
+                                     file_rb=args["file_rb"])
             }
         if args["Type"] == "Find File":
             return {"message": astorage.find_file()}
         if args["Type"] == "Download File":
             return {
-                "message": astorage.download_file(file_name_in_the_cloud=args["file_name"]).decode(
-                    "utf-8"
-                )
+                "message":
+                astorage.download_file(
+                    file_name_in_the_cloud=args["file_name"]).decode("utf-8")
             }
         if args["Type"] == "Delete Container":
             return {"message": astorage.delete_blob()}
