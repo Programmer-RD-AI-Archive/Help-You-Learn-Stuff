@@ -1,5 +1,6 @@
 # import base64
 
+
 import os
 import uuid
 
@@ -10,11 +11,6 @@ from azure.storage.blob import (
     __version__,
 )
 from bs4 import BeautifulSoup, Tag
-
-# markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
-# soup = BeautifulSoup(markup, "html.parser")
-# a_tag = soup.a
-
 
 class Azure_Storage:
     def __init__(self, ) -> None:
