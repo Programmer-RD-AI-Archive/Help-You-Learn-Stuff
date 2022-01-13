@@ -16,8 +16,6 @@
 # soup = BeautifulSoup('<b class="boldest">Extremely bold</b>')
 # tag = soup.b
 
-
-
 # new_tag = soup.new_tag("b")
 # new_tag.string = "example.com"
 # a_tag.i.replace_with(new_tag)
@@ -33,7 +31,6 @@ from azure.storage.blob import (
 
 # yourdiv.replace(str(all_input[0]), info[str(idx)][0])
 from bs4 import BeautifulSoup, Tag
-
 
 # new_tag = soup.new_tag("h1")
 # new_tag.string = "example.com"
