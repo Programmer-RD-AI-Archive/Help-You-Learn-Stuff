@@ -9,7 +9,6 @@ def send_email(subject="TEST",
     """
     Send Email using ttest
     """
-
     gmail_user = "helpyoulearnstuff@gmail.com"
     gmail_password = "Ranuga D 2008"
 
