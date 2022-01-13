@@ -55,7 +55,6 @@ class Azure_SQL:
     ):
         result = self.crsr.execute(insert_query)
         self.crsr.commit()
-        return None
 
     def select_table(self, select_query: str = "SELECT * FROM TEST"):
         self.crsr.execute(select_query)
