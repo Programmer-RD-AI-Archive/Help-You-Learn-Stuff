@@ -1,11 +1,16 @@
 # import base64
 
-from azure.storage.blob import BlobServiceClient, __version__
-from bs4 import BeautifulSoup, Tag
 
-# markup = '<a href="http://example.com/">I linked to <i>example.com</i></a>'
-# soup = BeautifulSoup(markup, "html.parser")
-# a_tag = soup.a
+import os
+import uuid
+
+from azure.storage.blob import (
+    BlobClient,
+    BlobServiceClient,
+    ContainerClient,
+    __version__,
+)
+from bs4 import BeautifulSoup, Tag
 
 
 class Azure_Storage:
