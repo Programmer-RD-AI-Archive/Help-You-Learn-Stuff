@@ -2,12 +2,14 @@ from API import *
 
 hp = Help_Funcs()
 azure_sql_request_parser = reqparse.RequestParser()
-azure_sql_request_parser.add_argument(
-    "Type", type=str, help="Type is required", required=True
-)
-azure_sql_request_parser.add_argument(
-    "Query", type=str, help="Query is required", required=False
-)
+azure_sql_request_parser.add_argument("Type",
+                                      type=str,
+                                      help="Type is required",
+                                      required=True)
+azure_sql_request_parser.add_argument("Query",
+                                      type=str,
+                                      help="Query is required",
+                                      required=False)
 
 
 class Azure_SQL_API(Resource):
