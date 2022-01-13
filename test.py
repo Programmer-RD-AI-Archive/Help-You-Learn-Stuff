@@ -1,6 +1,5 @@
 # import base64
 
-
 import uuid
 
 from azure.storage.blob import (
@@ -9,6 +8,7 @@ from azure.storage.blob import (
     ContainerClient,
     __version__,
 )
+
 
 class Azure_Storage:
     def __init__(self, ) -> None:
