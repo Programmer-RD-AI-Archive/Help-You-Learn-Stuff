@@ -1,14 +1,9 @@
 # import base64
 
-import os
-import uuid
 
 from azure.storage.blob import (
-    BlobClient,
     BlobServiceClient,
-    ContainerClient,
-    __version__,
-)
+    __version__)
 
 from bs4 import BeautifulSoup, Tag
 
