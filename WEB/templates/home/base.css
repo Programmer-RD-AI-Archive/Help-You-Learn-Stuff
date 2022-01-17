@@ -1,0 +1,15 @@
+.base_navbar {
+  padding: 12.5px !important;
+}
+.base_container_cloud_navbar_brand_img {
+  border-radius: 25px;
+}
+.collapse_navbar_nav_item_1 {
+  font-size: 25px !important;
+  margin-right: 12px !important;
+}
+.collapse_navbar_nav_item_2 {
+  font-size: 25px !important;
+  margin-right: 12px !important;
+  color: lightgray !important;
+}
