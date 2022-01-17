@@ -1,12 +1,5 @@
 {% extends "/admin/base.html" %} {% block head %}
-<style>
-  .overflow-hidden {
-    padding: 25px !important;
-  }
-  body {
-    background-color: #1272e9 !important;
-  }
-</style>
+<link rel="stylesheet" href="./courses.js" />
 <title>Home</title>
 
 {% endblock %} {% block body %}
@@ -31,7 +24,6 @@
         <center>
           <h1><b> Welcome back @{{session['User Name']}}</b></h1>
           <p>Hope you are have a great day</p>
-      
         </center>
       </div>
       <div class="col" style="background-color: #1272e9 !important">
