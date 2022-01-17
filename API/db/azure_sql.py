@@ -1,5 +1,6 @@
 import binascii
 import textwrap
+
 import pyodbc
 
 
@@ -29,8 +30,7 @@ class Azure_SQL:
         self.username = username
         self.password = password
         self.connection_timeout = connection_timeout
-        self.connection_str = textwrap.dedent(
-            f"""
+        self.connection_str = textwrap.dedent(f"""
                                  Driver={self.driver};
                                  Server={self.server};
                                  Database={self.database_name};
@@ -39,13 +39,13 @@ class Azure_SQL:
                                  Encrypt=yes;
                                  TrustServerCertificate=no;
                                  Connection Timeout={30};
-                                 """
-        )
+                                 """)
         self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
-        self, table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
+        self,
+        table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
     ) -> bool:
         try:
             self.crsr.execute(table_query)
@@ -56,7 +56,8 @@ class Azure_SQL:
 
     def insert_to_table(
         self,
-        insert_query: str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')",
+        insert_query:
+        str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')",
     ) -> bool:
         try:
             self.crsr.execute(insert_query)
@@ -99,7 +100,8 @@ class Azure_SQL:
     def get_tables(self) -> list:
         try:
             new_tables = []
-            tables = self.select_table("SELECT table_name FROM information_schema.tables")
+            tables = self.select_table(
+                "SELECT table_name FROM information_schema.tables")
             for table in tables:
                 new_tables.append(table[0])
             return new_tables
