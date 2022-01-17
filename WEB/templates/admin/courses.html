@@ -4,11 +4,7 @@
 
 {% endblock %} {% block body %}
 <div class="container">
-  <div
-    class="content"
-    id="content"
-    style="resize: both; overflow: auto; height: 250px"
-  ></div>
+  <div class="content courses_content_1" id="content"></div>
   <hr />
   <br />
   <form>
@@ -31,7 +27,7 @@
         required
       />
     </div>
-    <div style="resize: both; overflow: auto; height: 125px">
+    <div class="cources_list_resources">
       {% for resource in resources %}
       <br />
       <button
@@ -49,7 +45,7 @@
     <br />
     <hr />
     <br />
-    <div style="resize: both; overflow: auto; height: 125px">
+    <div class="cources_list_questions">
       {% for question in questions %}
       <button
         type="button"
@@ -74,8 +70,8 @@
       {% for course_iter in course %}
       <div class="col">
         <div
-          class="p-3 border bg-light"
-          style="background-image: url({{course_iter[3]}});  background-position: center;background-repeat: no-repeat;background-size: cover;"
+          class="p-3 border bg-light cources_p3_border_bg_light_1"
+          style="background-image: url({{course_iter[3]}}); "
         >
           <h1><b>Name : {{course_iter[4]}}</b></h1>
           <p><b>Marks Required : {{course_iter[5]}}</b></p>
