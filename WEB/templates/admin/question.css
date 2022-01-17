@@ -1,3 +1,9 @@
 .content {
   padding: 25px !important;
 }
+.questions_already_exists {
+  background-color: lightgray;
+  border-radius: 12.5px;
+  padding: 1em;
+  margin: 1em;
+}
