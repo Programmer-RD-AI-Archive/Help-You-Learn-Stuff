@@ -1,5 +1,6 @@
 import base64
 import smtplib
+
 from API import *
 
 
@@ -32,7 +33,9 @@ class Help_Funcs:
 
 
 class Encryption:
-    def __init__(self, message: str, encoder: str = config["Configs"]["Encoder Type"]) -> None:
+    def __init__(self,
+                 message: str,
+                 encoder: str = config["Configs"]["Encoder Type"]) -> None:
         self.message = message
         self.encoder = encoder
 
