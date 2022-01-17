@@ -1,0 +1,9 @@
+.resources_already_exists {
+  background-color: lightgray;
+  padding: 50px !important;
+  border-radius: 25px;
+}
+.resources_iframe_of_resource {
+  resize: both !important;
+  overflow: auto !important;
+}
