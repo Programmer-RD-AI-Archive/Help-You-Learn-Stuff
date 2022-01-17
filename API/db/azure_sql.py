@@ -1,6 +1,5 @@
 import binascii
 import textwrap
-
 import pyodbc
 
 
@@ -30,7 +29,8 @@ class Azure_SQL:
         self.username = username
         self.password = password
         self.connection_timeout = connection_timeout
-        self.connection_str = textwrap.dedent(f"""
+        self.connection_str = textwrap.dedent(
+            f"""
                                  Driver={self.driver};
                                  Server={self.server};
                                  Database={self.database_name};
@@ -39,32 +39,41 @@ class Azure_SQL:
                                  Encrypt=yes;
                                  TrustServerCertificate=no;
                                  Connection Timeout={30};
-                                 """)
+                                 """
+        )
         self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
-        self,
-        table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
-    ):
-        result = self.crsr.execute(table_query)
-        self.crsr.commit()
-        return result
+        self, table_query: str = "CREATE TABLE TEST (A varbinary(max),B varchar(50))"
+    ) -> bool:
+        try:
+            self.crsr.execute(table_query)
+            self.crsr.commit()
+            return True
+        except:
+            return False
 
     def insert_to_table(
         self,
-        insert_query:
-        str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')",
-    ):
-        result = self.crsr.execute(insert_query)
-        self.crsr.commit()
+        insert_query: str = f"INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')",
+    ) -> bool:
+        try:
+            self.crsr.execute(insert_query)
+            self.crsr.commit()
+            return True
+        except:
+            return False
 
-    def select_table(self, select_query: str = "SELECT * FROM TEST"):
-        self.crsr.execute(select_query)
-        results = []
-        for result in self.crsr.fetchall():
-            results.append(list(result))
-        return results
+    def select_table(self, select_query: str = "SELECT * FROM TEST") -> list:
+        try:
+            self.crsr.execute(select_query)
+            results = []
+            for result in self.crsr.fetchall():
+                results.append(list(result))
+            return results
+        except:
+            return []  # TODO
 
     def close_connection(self) -> bool:
         try:
@@ -87,10 +96,12 @@ class Azure_SQL:
         except:
             return False
 
-    def get_tables(self):
-        new_tables = []
-        tables = self.select_table(
-            "SELECT table_name FROM information_schema.tables")
-        for table in tables:
-            new_tables.append(table[0])
-        return new_tables
+    def get_tables(self) -> list:
+        try:
+            new_tables = []
+            tables = self.select_table("SELECT table_name FROM information_schema.tables")
+            for table in tables:
+                new_tables.append(table[0])
+            return new_tables
+        except:
+            return []
