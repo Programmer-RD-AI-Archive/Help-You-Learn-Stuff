@@ -1,20 +1,13 @@
 {% extends "/home/base.html" %} {% block head %}
-<style></style>
+<link rel="stylesheet" href="sign_up.css" />
 <title>Sign Up</title>
 
 {% endblock %} {% block body %}
-<div >
+<div>
   <div class="overflow-hidden">
-    <div
-      class="row gx-5"
-      style="
-        height: 100% !important;
-        width: 100% !important;
-        background-color: white !important;
-      "
-    >
-      <div class="col" style="background-color: white !important">
-        <div class="p-3 bg-light" style="background-color: white !important">
+    <div class="row gx-5 sign_up_row_gx_5_1">
+      <div class="col sign_up_col_1">
+        <div class="p-3 bg-light sign_up_p3_bg_light_1">
           <img
             src="{{config['config']['Sign Up']['Gif']}}"
             alt=""
@@ -23,18 +16,8 @@
           />
         </div>
       </div>
-      <div
-        class="col"
-        style="
-          margin: auto !important;
-          width: 50% !important;
-          background-color: white !important;
-        "
-      >
-        <div
-          class="p-3 bg-light"
-          style="padding: 50px !important; background-color: white !important"
-        >
+      <div class="col sign_up_col_1">
+        <div class="p-3 bg-light sign_up_p3_bg_light_2">
           <!-- 
           <br />
           <h3></h3>
@@ -46,12 +29,7 @@
           >
             <h2 style="color: rgb(0, 195, 255) !important">Getting Started</h2>
           </button> -->
-          <h1
-            style="
-              font-size: 100px !important;
-              color: rgb(0, 195, 255) !important;
-            "
-          >
+          <h1 class="sign_up_main_title_1">
             <b>Sign Up</b>
           </h1>
           <form method="post">
@@ -62,36 +40,33 @@
               <input
                 name="User Name"
                 type="text"
-                class="form-control"
+                class="form-control sign_in_form_control_1"
                 id="User Name"
                 aria-describedby="emailHelp"
                 value="{{session['User Name']}}"
                 placeholder="User Name"
-                style="width: 500px !important; border-radius: 25px"
               />
             </div>
             <div class="mb-3">
               <!-- <label for="Email" class="form-label"><h3>Email</h3></label> -->
               <input
                 type="email"
-                class="form-control"
+                class="form-control sign_in_form_control_1"
                 id="Email"
                 name="Email"
                 value="{{session['Email']}}"
                 placeholder="Email"
-                style="width: 500px !important; border-radius: 25px"
               />
             </div>
             <div class="mb-3">
               <!-- <label for="Password" class="form-label"><h3>Password</h3></label> -->
               <input
                 type="password"
-                class="form-control"
+                class="form-control sign_in_form_control_1"
                 id="Password"
                 name="Password"
                 value="{{session['Password']}}"
                 placeholder="Password"
-                style="width: 500px !important; border-radius: 25px"
               />
             </div>
             <div class="mb-3 form-check">
