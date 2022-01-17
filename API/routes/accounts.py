@@ -29,9 +29,6 @@ class Accounts(Resource):
             return {"""message""": newaccounts}
 
     def post(self) -> dict:
-        """
-        Post Reuqest
-        """
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         hp.table_exists_or_not(
