@@ -74,10 +74,8 @@ def usr_home_cources(_id, course_id):
            methods=["GET", "POST"])
 def usr_home_cource_lesson(_id, course_id, lesson_id):
     if str(_id) == str(session["id"]):
-        print(lesson_id)
         if int(lesson_id) <= len(session[f"Cource {course_id}"]):
             specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
-            print(specific_lesson_info)
             if specific_lesson_info[0][2] == "resource":
                 info_of_page = requests.get(
                     "http://127.0.0.1:5000/api/azure/sql",
@@ -106,7 +104,6 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                     "Type": "Select",
                 },
             ).json()["message"]
-            print(info_of_page)
             return render_template(
                 "dashboard/lesson.html",
                 session=session,
