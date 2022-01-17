@@ -1,5 +1,5 @@
 {% extends "/admin/base.html" %} {% block head %}
-
+<link rel="stylesheet" href="./resources.css" />
 <title>Resources</title>
 
 {% endblock %} {% block body %}
@@ -72,14 +72,7 @@
   <div class="content">
     {% for resource in resources %}
     <br />
-    <div
-      class="jumbotron"
-      style="
-        background-color: lightgray;
-        padding: 50px !important;
-        border-radius: 25px;
-      "
-    >
+    <div class="jumbotron resources_already_exists">
       <h1>{{resource[3]}}</h1>
       <p><b>{{resource[4]}}</b></p>
       <p>{{link_of_resource_dict[resource[1]]}}</p>
@@ -102,7 +95,7 @@
       ></iframe>
       {% else %}
       <iframe
-        style="resize: both !important; overflow: auto !important"
+        class="resources_iframe_of_resource"
         width="500"
         height="500"
         src="{{resource[2]}}"
