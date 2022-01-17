@@ -1,5 +1,5 @@
 {% extends "/dashboard/base.html" %} {% block head %}
-
+<link rel="stylesheet" href="lesson.css" />
 <title>Lesson</title>
 
 {% endblock %} {% block body %}
@@ -11,11 +11,11 @@
   <p><b>{{description}}</b></p>
   <br />
   <iframe
+    class="lesson_iframe_1"
     src="{{url}}"
     width="1000px"
     height="750px"
     frameborder="0"
-    style="padding: 20px; resize: both; overflow: auto"
   ></iframe>
   {% else %} {{code|safe}} <br />
   <button type="button" class="btn btn-dark" id="submit_btn">Submit</button>
