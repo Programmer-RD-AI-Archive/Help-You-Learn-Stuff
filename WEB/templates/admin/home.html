@@ -1,33 +1,19 @@
 {% extends "/admin/base.html" %} {% block head %}
-<link rel="stylesheet" href="./courses.js" />
+<link rel="stylesheet" href="./home.css" />
 <title>Home</title>
 
 {% endblock %} {% block body %}
 <div>
   <div class="overflow-hidden">
-    <div
-      class="row gx-5"
-      style="
-        height: 100% !important;
-        width: 100% !important;
-        background-color: #1272e9 !important;
-      "
-    >
-      <div
-        class="col"
-        style="
-          margin: auto !important;
-          width: 50% !important;
-          background-color: #1272e9 !important;
-        "
-      >
+    <div class="row gx-5 home_row_gx_5_1">
+      <div class="col home_col_1">
         <center>
           <h1><b> Welcome back @{{session['User Name']}}</b></h1>
           <p>Hope you are have a great day</p>
         </center>
       </div>
-      <div class="col" style="background-color: #1272e9 !important">
-        <div class="p-3 bg-light" style="background-color: #1272e9 !important">
+      <div class="col home_col_2">
+        <div class="p-3 bg-light home_p3_bg_light_1">
           <img
             src="{{config['config']['Admin']['Gif']}}"
             alt=""
