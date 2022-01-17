@@ -1,36 +1,14 @@
 {% extends "/home/base.html" %} {% block head %}
-
+<link rel="stylesheet" href="./sign_in.css" />
 <title>Sign In</title>
 
 {% endblock %} {% block body %}
 <div>
   <div class="overflow-hidden">
-    <div
-      class="row gx-5"
-      style="
-        height: 100% !important;
-        width: 100% !important;
-        background-color: white !important;
-      "
-    >
-      <div
-        class="col"
-        style="
-          margin: auto !important;
-          width: 50% !important;
-          background-color: white !important;
-        "
-      >
-        <div
-          class="p-3 bg-light"
-          style="padding: 50px !important; background-color: white !important"
-        >
-          <h1
-            style="
-              font-size: 100px !important;
-              color: rgb(0, 17, 255) !important;
-            "
-          >
+    <div class="row gx-5 sign_in_row_gx_5_1">
+      <div class="col sign_in_col_1">
+        <div class="p-3 bg-light sign_in_p3_bg_light">
+          <h1 class="sign_in_main_title_1">
             <b>Sign In</b>
           </h1>
           <form method="post">
@@ -41,24 +19,22 @@
               <input
                 name="Email or User Name"
                 type="text"
-                class="form-control"
+                class="form-control sign_in_form_control_1"
                 id="User Name"
                 aria-describedby="emailHelp"
                 value="{{session['Email or User Name']}}"
                 placeholder="Email or User Name"
-                style="width: 500px !important; border-radius: 25px"
               />
             </div>
             <div class="mb-3">
               <!-- <label for="Password" class="form-label"><h3>Password</h3></label> -->
               <input
                 type="password"
-                class="form-control"
+                class="form-control sign_in_form_control_1"
                 id="Password"
                 name="Password"
                 value="{{session['Password']}}"
                 placeholder="Password"
-                style="width: 500px !important; border-radius: 25px"
               />
             </div>
             <!-- <a href=""><h5>Already dont have a account ?</h5></a>
@@ -67,8 +43,8 @@
           </form>
         </div>
       </div>
-      <div class="col" style="background-color: white !important">
-        <div class="p-3 bg-light" style="background-color: white !important">
+      <div class="col sign_in_col_2">
+        <div class="p-3 bg-light sign_in_p3_bg_light_1">
           <img
             src="{{config['config']['Sign In']['Gif']}}"
             alt=""
