@@ -10,6 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="base.css" />
     <script type="text/javascript" src="./base.js"></script>
     <script
       type="text/javascript"
@@ -41,8 +42,7 @@
   </head>
   <body>
     <nav
-      class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark"
-      style="padding: 12.5px !important"
+      class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark base_navbar"
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -63,13 +63,9 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link base_nav_item_link_1"
                 aria-current="page"
                 href="/"
-                style="
-                  font-size: 25px !important;
-                  margin-right: 12px !important;
-                "
                 >Home</a
               >
             </li>
@@ -77,14 +73,9 @@
 
           <div class="btn btn-dark nav-item">
             <a
-              class="nav-link"
+              class="nav-link base_nav_item_link_2"
               aria-current="page"
               href="/Usr/{{session['id']}}/Log/Out"
-              style="
-                font-size: 25px !important;
-                margin-right: 12px !important;
-                color: lightgray !important;
-              "
               >Log Out</a
             >
           </div>
