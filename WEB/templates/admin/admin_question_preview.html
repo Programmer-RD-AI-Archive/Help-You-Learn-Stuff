@@ -1,4 +1,9 @@
 {% extends "/admin/base.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='admin/css/admin_question_preview.css') }}"
+/>
+<script src="{{ url_for('static', filename='admin/js/admin_question_preview.js') }}"></script>
 <title>Admin Question Preview</title>
 
 {% endblock %} {% block body %}
