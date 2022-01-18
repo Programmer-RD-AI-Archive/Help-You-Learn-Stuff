@@ -5,6 +5,13 @@ import pyodbc
 
 
 class Azure_SQL:
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
     try:
         f = open(
             "./azure_sql.py",
@@ -23,6 +30,12 @@ class Azure_SQL:
         password: str = """ranuga-2008""",
         connection_timeout: int = 30,
     ) -> None:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         self.driver = driver
         self.server_name = server_name
         self.database_name = database_name
@@ -30,7 +43,8 @@ class Azure_SQL:
         self.username = username
         self.password = password
         self.connection_timeout = connection_timeout
-        self.connection_str = textwrap.dedent(f"""
+        self.connection_str = textwrap.dedent(
+            f"""
                                  Driver={self.driver};
                                  Server={self.server};
                                  Database={self.database_name};
@@ -39,15 +53,21 @@ class Azure_SQL:
                                  Encrypt=yes;
                                  TrustServerCertificate=no;
                                  Connection Timeout={30};
-                                 """)
+                                 """
+        )
         self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
         self,
-        table_query:
-        str = """CREATE TABLE TEST (A varbinary(max),B varchar(50))""",
+        table_query: str = """CREATE TABLE TEST (A varbinary(max),B varchar(50))""",
     ) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.crsr.execute(table_query)
             self.crsr.commit()
@@ -57,9 +77,14 @@ class Azure_SQL:
 
     def insert_to_table(
         self,
-        insert_query:
-        str = f"""INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')""",
+        insert_query: str = f"""INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')""",
     ) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.crsr.execute(insert_query)
             self.crsr.commit()
@@ -67,8 +92,13 @@ class Azure_SQL:
         except:
             return False
 
-    def select_table(self,
-                     select_query: str = """SELECT * FROM TEST""") -> list:
+    def select_table(self, select_query: str = """SELECT * FROM TEST""") -> list:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.crsr.execute(select_query)
             results = []
@@ -79,6 +109,12 @@ class Azure_SQL:
             return []  # TODO
 
     def close_connection(self) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.cnxn.close()
             return True
@@ -86,6 +122,12 @@ class Azure_SQL:
             return False
 
     def reconnect_connection(self) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
             return True
@@ -93,6 +135,12 @@ class Azure_SQL:
             return False
 
     def reconnect_cursor(self) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             self.crsr: pyodbc.Cursor = self.cnxn.cursor()
             return True
@@ -100,10 +148,15 @@ class Azure_SQL:
             return False
 
     def get_tables(self) -> list:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             new_tables = []
-            tables = self.select_table(
-                """SELECT table_name FROM information_schema.tables""")
+            tables = self.select_table("""SELECT table_name FROM information_schema.tables""")
             for table in tables:
                 new_tables.append(table[0])
             return new_tables
