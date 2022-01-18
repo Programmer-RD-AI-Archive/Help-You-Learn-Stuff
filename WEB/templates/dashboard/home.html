@@ -1,5 +1,9 @@
 {% extends "/dashboard/base.html" %} {% block head %}
-<link rel="stylesheet" href="home.css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='dashboard/css/home.css') }}"
+/>
+<script src="{{ url_for('static', filename='dashboard/js/home.js') }}"></script>
 <title>Home</title>
 
 {% endblock %} {% block body %}
