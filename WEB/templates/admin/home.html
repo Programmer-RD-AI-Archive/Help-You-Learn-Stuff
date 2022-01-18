@@ -1,5 +1,9 @@
 {% extends "/admin/base.html" %} {% block head %}
-<link rel="stylesheet" href="./home.css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='admin/css/home.css') }}"
+/>
+<script src="{{ url_for('static', filename='admin/js/home.js') }}"></script>
 <title>Home</title>
 
 {% endblock %} {% block body %}
