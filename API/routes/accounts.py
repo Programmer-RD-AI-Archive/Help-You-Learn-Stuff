@@ -2,25 +2,33 @@ from API import *
 
 hp = Help_Funcs()
 accounts_request_parser = reqparse.RequestParser()
-accounts_request_parser.add_argument("""email""",
-                                     type=str,
-                                     help="""email is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""password""",
-                                     type=str,
-                                     help="""Password is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""user_name""",
-                                     type=str,
-                                     help="""user name is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""password_hash""",
-                                     type=str,
-                                     required=True)
+accounts_request_parser.add_argument(
+    """email""", type=str, help="""email is required""", required=True
+)
+accounts_request_parser.add_argument(
+    """password""", type=str, help="""Password is required""", required=True
+)
+accounts_request_parser.add_argument(
+    """user_name""", type=str, help="""user name is required""", required=True
+)
+accounts_request_parser.add_argument("""password_hash""", type=str, required=True)
 
 
 class Accounts(Resource):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
     def get(self) -> dict:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         if args["password_hash"] == password:
             asql = Azure_SQL()
             hp.table_exists_or_not(
@@ -34,6 +42,12 @@ class Accounts(Resource):
             return {"""message""": newaccounts}
 
     def post(self) -> dict:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         args = accounts_request_parser.parse_args()
         asql = Azure_SQL()
         hp.table_exists_or_not(
