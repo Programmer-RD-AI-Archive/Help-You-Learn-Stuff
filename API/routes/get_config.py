@@ -7,7 +7,20 @@ get_config_request_parser.add_argument(
 
 
 class Get_Config(Resource):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
     def get(self) -> dict:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         args = get_config_request_parser.parse_args()
         if args["password"] == password:
             config = open("./API/config.json")
