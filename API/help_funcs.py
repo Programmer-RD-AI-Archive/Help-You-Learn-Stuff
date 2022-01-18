@@ -1,3 +1,4 @@
+import warnings
 import base64
 import smtplib
 
@@ -11,6 +12,7 @@ class Help_Funcs:
     argument -- description
     Return: return_description
     """
+
     def send_email(subject: str, message: str, reviver: str) -> bool:
         """sumary_line
 
@@ -57,9 +59,7 @@ class Encryption:
     Return: return_description
     """
 
-    def __init__(self,
-                 message: str,
-                 encoder: str = config["Configs"]["Encoder Type"]) -> None:
+    def __init__(self, message: str, encoder: str = config["Configs"]["Encoder Type"]) -> None:
         """sumary_line
 
         Keyword arguments:
