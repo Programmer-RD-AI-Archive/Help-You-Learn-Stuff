@@ -1,3 +1,11 @@
+/*
+sumary_line
+
+Keyword arguments:
+argument -- description
+Return: return_description
+*/
+
 let idx = 0;
 let idx_iter = 0;
 $("#input").click(function () {
