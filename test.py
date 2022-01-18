@@ -4,9 +4,7 @@ from azure.storage.blob import BlobServiceClient, __version__
 
 
 class Azure_Storage:
-    def __init__(
-        self,
-    ) -> None:
+    def __init__(self, ) -> None:
         """sumary_line
 
         Keyword arguments:
@@ -14,10 +12,12 @@ class Azure_Storage:
         Return: return_description
         """
         self.connection_str = "DefaultEndpointsProtocol=https;AccountName=helpyoulearnstuff;AccountKey=WMruG6IqnwGspaRB9vIL+SmhTwzM3iPE7cRtjHkikxpa7WJo5EvQ+rIqjFZIgoPqwmEvOCZ/4KSf42yVX8kkQQ==;EndpointSuffix=core.windows.net"
-        self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_str)
+        self.blob_service_client = BlobServiceClient.from_connection_string(
+            self.connection_str)
         # print(self.blob_service_client.list_blobs())
         self.container_name = str("cources")
-        self.container_client = self.blob_service_client.create_container(self.container_name)
+        self.container_client = self.blob_service_client.create_container(
+            self.container_name)
 
     def create_file(self, file_rb, file_name_in_the_cloud) -> None:
         """sumary_line
@@ -27,8 +27,7 @@ class Azure_Storage:
         Return: return_description
         """
         blob_client = self.blob_service_client.get_blob_client(
-            container=self.container_name, blob=file_name_in_the_cloud
-        )
+            container=self.container_name, blob=file_name_in_the_cloud)
         blob_client.upload_blob(file_rb)
 
     def find_file(self) -> None:
@@ -54,8 +53,7 @@ class Azure_Storage:
         """
 
         blob_client = self.blob_service_client.get_blob_client(
-            container=self.container_name, blob=file_name_in_the_cloud
-        )
+            container=self.container_name, blob=file_name_in_the_cloud)
         return blob_client.download_blob().readall()
 
 
