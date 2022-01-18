@@ -126,7 +126,7 @@ $("#range").click(function () {
   );
 });
 $("#submit_btn").click(function () {
-  var info = {};
+  const info = {};
   for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
     try {
       var label = document.getElementById(
