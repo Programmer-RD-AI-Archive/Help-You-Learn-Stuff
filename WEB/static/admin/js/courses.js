@@ -1,7 +1,7 @@
 var idx = 0;
 var idx_val = {};
 function removeElement(idx) {
-  console.log(idx);
+  
   var element = document.getElementById(`${idx}`);
   element.remove();
 }
@@ -17,7 +17,7 @@ function add_to_content(val) {
         <button type="button" class="btn btn-outline-danger" onclick='removeElement("${idx}");'>Delete</button>
       </div>`
   );
-  console.log(val);
+  
 }
 $("#submit_btn").click(function (e) {
   var marks = document.getElementById(`Marks Required to Pass`).value;
@@ -27,10 +27,10 @@ $("#submit_btn").click(function (e) {
   var info = {};
   for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
     var specific_content = $(`#${idx_iter}`).html();
-    console.log(specific_content);
+    
     info[idx_iter] = [idx_val[idx_iter]];
   }
-  console.log(whole_content);
+  
   $.ajax({
     type: "POST",
     url: "/Admin/Courses/Post/",

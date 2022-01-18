@@ -1,7 +1,7 @@
 var idx = 0;
 $("#input").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -17,7 +17,7 @@ $("#input").click(function (e) {
 });
 $("#text").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div id="${idx.toString()}">
@@ -32,7 +32,7 @@ $("#text").click(function (e) {
 });
 $("#checkbox").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -49,7 +49,7 @@ $("#checkbox").click(function (e) {
 });
 $("#big_input").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -66,7 +66,7 @@ $("#big_input").click(function (e) {
 });
 $("#switches").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -83,7 +83,7 @@ $("#switches").click(function (e) {
 });
 $("#checks").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -102,7 +102,7 @@ $("#checks").click(function (e) {
 });
 $("#range").click(function (e) {
   idx += 1;
-  console.log(idx);
+  
   document.getElementById("content").insertAdjacentHTML(
     "beforeend",
     `<div class="mb-3" id="${idx.toString()}">
@@ -117,8 +117,8 @@ $("#range").click(function (e) {
 $("#submit_btn").click(function (e) {
   var info = {};
   for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
-    console.log(`${idx_iter.toString()}-Label`);
-    console.log(`${idx_iter.toString()}-Input-Name`);
+    
+    
     try {
       var label = document.getElementById(
         `${idx_iter.toString()}-Input-Name`
@@ -138,14 +138,14 @@ $("#submit_btn").click(function (e) {
     } catch (error) {
       var name = "None";
     }
-    console.log(label);
-    console.log(content);
-    console.log(name);
+    
+    
+    
     info[idx_iter] = [label, content];
   }
   info["name"] = name;
   yourdiv = $("#content").html();
-  console.log(JSON.stringify({ info: info, yourdiv: yourdiv }));
+  
   $.ajax({
     type: "POST",
     url: "/Admin/Question/Post/",
@@ -155,7 +155,7 @@ $("#submit_btn").click(function (e) {
   window.location.reload(0);
 });
 function removeElement(idx) {
-  console.log(idx);
+  
   var element = document.getElementById(`${idx}`);
   element.remove();
 } // TODO Redirect the POST Request to the API
