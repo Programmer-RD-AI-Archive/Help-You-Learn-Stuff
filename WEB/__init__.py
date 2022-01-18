@@ -2,8 +2,6 @@
 this has all of imports and other init configs and other main
 """
 from flask import *
-from bs4 import BeautifulSoup
-from requests.sessions import session
 
 app = Flask(__name__)  # init flask app
 app.debug = True  # debug
