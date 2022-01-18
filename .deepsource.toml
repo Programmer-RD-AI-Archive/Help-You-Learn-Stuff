@@ -1,6 +1,21 @@
 version = 1
 
 [[analyzers]]
+name = "ansible"
+enabled = true
+
+[[analyzers]]
+name = "terraform"
+enabled = true
+
+[[analyzers]]
+name = "docker"
+enabled = true
+
+  [analyzers.meta]
+  dockerfile_paths = ["/docker"]
+
+[[analyzers]]
 name = "sql"
 enabled = true
 
