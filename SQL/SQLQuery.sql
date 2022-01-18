@@ -1,5 +1,5 @@
 -- Contact_Us
-DROP TABLE Contact_Us;
+DROP TABLE [Contact_Us];
 
 CREATE TABLE Contact_Us (
     ID int IDENTITY(1, 1),
@@ -10,7 +10,7 @@ CREATE TABLE Contact_Us (
 SELECT
     *
 FROM
-    Contact_Us;
+    [Contact_Us];
 
 -- Accounts
 DROP TABLE Accounts;
@@ -30,9 +30,9 @@ FROM
 
 -- All of the tables
 SELECT
-    table_name
+    [table_name]
 FROM
-    information_schema.tables;
+    [information_schema.tables];
 
 -- Questions
 DROP TABLE Questions;
@@ -83,7 +83,7 @@ FROM
     Courses;
 
 -- TEST
-DROP TABLE TEST;
+DROP TABLE [TEST];
 
 CREATE TABLE [TEST] ([Testing_Object] varchar(max));
 
@@ -97,4 +97,4 @@ VALUES
 SELECT
     *
 FROM
-    TEST;
+    [TEST];
