@@ -58,8 +58,8 @@ def home():
             try:
                 session.pop("email")
                 session.pop("question")
-            except:
-                pass
+            except Exception as e:
+                warnings.filterwarnings(e)
             flash(
                 "Your Question will be answered as soon as possible by our team.",
                 "success",
@@ -165,8 +165,8 @@ def sign_in():
             try:
                 session.pop("Email or User Name")
                 session.pop("Password")
-            except:
-                pass
+            except Exception as e:
+                warnings.filterwarnings(e)
             session["id"] = _id
             session["User Name"] = user_name
             session["Email"] = email
