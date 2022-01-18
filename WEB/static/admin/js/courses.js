@@ -1,5 +1,5 @@
 let idx = 0
-var idx_val = {}
+const idx_val = {}
 function removeElement (idx) {
   const element = document.getElementById(`${idx}`)
   element.remove()
