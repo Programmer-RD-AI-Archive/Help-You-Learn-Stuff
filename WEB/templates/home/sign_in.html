@@ -1,5 +1,9 @@
 {% extends "/home/base.html" %} {% block head %}
-<link rel="stylesheet" href="./sign_in.css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='home/css/sign_in.css') }}"
+/>
+<script src="{{ url_for('static', filename='home/js/sign_in.js') }}"></script>
 <title>Sign In</title>
 
 {% endblock %} {% block body %}
