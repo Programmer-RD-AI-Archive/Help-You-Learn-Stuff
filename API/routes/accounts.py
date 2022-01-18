@@ -2,21 +2,17 @@ from API import *
 
 hp = Help_Funcs()
 accounts_request_parser = reqparse.RequestParser()
-accounts_request_parser.add_argument("""email""",
-                                     type=str,
-                                     help="""email is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""password""",
-                                     type=str,
-                                     help="""Password is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""user_name""",
-                                     type=str,
-                                     help="""user name is required""",
-                                     required=True)
-accounts_request_parser.add_argument("""password_hash""",
-                                     type=str,
-                                     required=True)
+accounts_request_parser.add_argument(
+    """email""", type=str, help="""email is required""", required=True
+)
+accounts_request_parser.add_argument(
+    """password""", type=str, help="""Password is required""", required=True
+)
+accounts_request_parser.add_argument(
+    """user_name""", type=str, help="""user name is required""", required=True
+)
+accounts_request_parser.add_argument(
+    """password_hash""", type=str, required=True)
 
 
 class Accounts(Resource):
