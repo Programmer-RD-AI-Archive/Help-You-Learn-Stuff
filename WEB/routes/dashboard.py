@@ -37,6 +37,7 @@ def usr_home(_id):
             courses=new_cources,
             id_user=_id,
         )
+    return abort(404)
 
 
 @app.route("/Usr/<_id>/Cources/<course_id>/", methods=["GET", "POST"])
@@ -66,6 +67,7 @@ def usr_home_cources(_id, course_id):
         next_lesson = list(info.keys())[0]
         # TODO check if length of cource is higher than 1
         return redirect(f"/Usr/{_id}/Cources/{course_id}/Lesson/{next_lesson}")
+    return abort(404)
 
 
 @app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>/", methods=["GET", "POST"])
@@ -111,6 +113,7 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                 resources=False,
                 code=info_of_page[0][1],
             )
+    return abort(404)
 
 
 @app.route("/Usr/<_id>/Log/Out", methods=["GET", "POST"])
@@ -130,3 +133,4 @@ def usr_logout(_id):
         session.pop("type", None)
         flash("Logged Out", "success")
         return redirect("/")
+    return abort(404)
