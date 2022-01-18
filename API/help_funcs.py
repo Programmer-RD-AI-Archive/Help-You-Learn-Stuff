@@ -5,9 +5,19 @@ from API import *
 
 
 class Help_Funcs:
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
     def send_email(subject: str, message: str, reviver: str) -> bool:
-        """
-        Send Email using ttest
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
         """
         gmail_user = config["Configs"]["Gmail"]
         gmail_password = config["Configs"]["Gmail Password"]
@@ -22,6 +32,12 @@ class Help_Funcs:
             return False
 
     def table_exists_or_not(self, table_name: str, query: str) -> bool:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         try:
             asql = Azure_SQL()
             tables = asql.get_tables()
@@ -33,9 +49,20 @@ class Help_Funcs:
 
 
 class Encryption:
-    def __init__(self,
-                 message: str,
-                 encoder: str = config["Configs"]["Encoder Type"]) -> None:
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
+    def __init__(self, message: str, encoder: str = config["Configs"]["Encoder Type"]) -> None:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         self.message = message
         self.encoder = encoder
 
