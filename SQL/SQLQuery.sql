@@ -66,7 +66,8 @@ FROM
     Resources;
 
 -- Courses
-DROP TABLE Courses; 
+DROP TABLE Courses;
+
 CREATE TABLE Courses (
     [ID] int IDENTITY(1, 1),
     [Whole_Content] varchar(max),
