@@ -72,7 +72,8 @@ class Azure_SQL:
             self.crsr.execute(table_query)
             self.crsr.commit()
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def insert_to_table(
@@ -89,7 +90,8 @@ class Azure_SQL:
             self.crsr.execute(insert_query)
             self.crsr.commit()
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def select_table(self, select_query: str = """SELECT * FROM TEST""") -> list:
@@ -105,7 +107,8 @@ class Azure_SQL:
             for result in self.crsr.fetchall():
                 results.append(list(result))
             return results
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return []  # TODO
 
     def close_connection(self) -> bool:
@@ -118,7 +121,8 @@ class Azure_SQL:
         try:
             self.cnxn.close()
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def reconnect_connection(self) -> bool:
@@ -131,7 +135,8 @@ class Azure_SQL:
         try:
             self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def reconnect_cursor(self) -> bool:
@@ -144,7 +149,8 @@ class Azure_SQL:
         try:
             self.crsr: pyodbc.Cursor = self.cnxn.cursor()
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def get_tables(self) -> list:
@@ -160,5 +166,6 @@ class Azure_SQL:
             for table in tables:
                 new_tables.append(table[0])
             return new_tables
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return []
