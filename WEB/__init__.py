@@ -1,8 +1,10 @@
 """
 this has all of imports and other init configs and other main
 """
-from flask import *
 import warnings
+
+from flask import *
+
 from WEB.help_funcs import *
 from WEB.routes import *
 
