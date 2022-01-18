@@ -1,9 +1,9 @@
-function googleTranslateElementInit() {
+function googleTranslateElementInit () {
   new google.translate.TranslateElement(
     {
-      pageLanguage: "en",
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     },
-    "google_translate_eMicrosoft Edgelement"
-  );
+    'google_translate_eMicrosoft Edgelement'
+  )
 }
