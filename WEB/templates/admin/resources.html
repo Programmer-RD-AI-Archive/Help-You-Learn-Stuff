@@ -1,5 +1,9 @@
 {% extends "/admin/base.html" %} {% block head %}
-<link rel="stylesheet" href="./resources.css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='admin/css/resources.css') }}"
+/>
+<script src="{{ url_for('static', filename='admin/js/resources.js') }}"></script>
 <title>Resources</title>
 
 {% endblock %} {% block body %}
