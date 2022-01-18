@@ -141,11 +141,10 @@ $("#submit_btn").click(function () {
     info[idx_iter] = [label, content];
   }
   info.name = name;
-  var yourdiv = $("#content").html();
   $.ajax({
     type: "POST",
     url: "/Admin/Question/Post/",
-    data: JSON.stringify({ info: info, yourdiv: yourdiv }),
+    data: JSON.stringify({ info: info, yourdiv: $("#content").html() }),
   });
   alert("Question Added");
   window.location.reload(0);
