@@ -7,6 +7,12 @@ link_of_resource_dict = {1: "Video", 2: "Image", 3: "Sound", 4: "Website"}
 @app.route("/Admin", methods=["GET", "POST"])
 @app.route("/Admin/", methods=["GET", "POST"])
 def admin_home():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
@@ -20,6 +26,12 @@ def admin_home():
 @app.route("/Admin/Courses", methods=["GET", "POST"])
 @app.route("/Admin/Courses/", methods=["GET", "POST"])
 def admin_courses():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         resources = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
@@ -54,6 +66,12 @@ def admin_courses():
 @app.route("/Admin/Courses/Post/", methods=["GET", "POST"])
 @app.route("/Admin/Courses/Post", methods=["GET", "POST"])
 def admin_courses_post():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         request_forms = request.form
         request_forms = dict(request_forms)
@@ -85,6 +103,12 @@ def admin_courses_post():
 @app.route("/Admin/Question", methods=["GET", "POST"])
 @app.route("/Admin/Question/", methods=["GET", "POST"])
 def admin_question():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         returned_vals = requests.get("http://127.0.0.1:5000/api/questions").json()
         returned_vals = returned_vals["message"]
@@ -99,6 +123,12 @@ def admin_question():
 @app.route("/Admin/Resources", methods=["GET", "POST"])
 @app.route("/Admin/Resources/", methods=["GET", "POST"])
 def admin_resources():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         if request.method == "POST":
             method_of_resource = request.form["method-of-resource"]
@@ -136,6 +166,12 @@ def admin_resources():
     methods=["GET", "POST"],
 )
 def admin_resources_delete(_id):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         results = requests.post(
             "http://127.0.0.1:5000/api/resources",
@@ -156,6 +192,12 @@ def admin_resources_delete(_id):
     methods=["GET", "POST"],
 )
 def admin_resources_edit(_id):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         if request.method == "POST":
             method_of_resource = request.form["method-of-resource"]
@@ -188,6 +230,12 @@ def admin_resources_edit(_id):
 @app.route("/Admin/Question/Post", methods=["POST"])
 @app.route("/Admin/Question/Post/", methods=["POST"])
 def admin_question_post():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     flash("Question Added", "success")
     request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
@@ -237,6 +285,12 @@ def admin_question_post():
     "/Admin/Question/<_id>/Preview",
 )
 def admin_question_preview(_id):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
@@ -250,6 +304,12 @@ def admin_question_preview(_id):
     "/Admin/Question/<_id>/Delete",
 )
 def admin_question_delete(_id):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
@@ -261,12 +321,24 @@ def admin_question_delete(_id):
 
 @app.route("/Admin/Test")
 def admin_test():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     return render_template("admin/test.html")
 
 
 @app.route("/Admin/Log/Out", methods=["GET", "POST"])
 @app.route("/Admin/Log/Out/", methods=["GET", "POST"])
 def admin_log_out():
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
     if "Is_Admin" in session:
         session.pop("Is_Admin")
         session.pop("id")
