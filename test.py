@@ -8,7 +8,6 @@ class Azure_Storage:
         self.connection_str = "DefaultEndpointsProtocol=https;AccountName=helpyoulearnstuff;AccountKey=WMruG6IqnwGspaRB9vIL+SmhTwzM3iPE7cRtjHkikxpa7WJo5EvQ+rIqjFZIgoPqwmEvOCZ/4KSf42yVX8kkQQ==;EndpointSuffix=core.windows.net"
         self.blob_service_client = BlobServiceClient.from_connection_string(
             self.connection_str)
-        # print(self.blob_service_client.list_blobs())
         self.container_name = str("cources")
         self.container_client = self.blob_service_client.create_container(
             self.container_name)
