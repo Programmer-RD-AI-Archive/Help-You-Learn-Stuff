@@ -1,9 +1,10 @@
 from API import *
 
 get_config_request_parser = reqparse.RequestParser()
-get_config_request_parser.add_argument(
-    "password", type=str, help="Password is required", required=True
-)
+get_config_request_parser.add_argument("password",
+                                       type=str,
+                                       help="Password is required",
+                                       required=True)
 
 
 class Get_Config(Resource):
