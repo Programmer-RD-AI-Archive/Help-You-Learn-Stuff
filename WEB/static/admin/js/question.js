@@ -141,7 +141,7 @@ $("#submit_btn").click(function () {
     info[idx_iter] = [label, content];
   }
   info.name = name;
-  var yourdiv = $("#content").html();
+  const yourdiv = $("#content").html();
   $.ajax({
     type: "POST",
     url: "/Admin/Question/Post/",
