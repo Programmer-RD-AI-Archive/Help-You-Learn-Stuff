@@ -1,0 +1,28 @@
+.sign_in_row_gx_5_1 {
+  height: 100% !important;
+  width: 100% !important;
+  background-color: white !important;
+}
+.sign_in_col_1 {
+  margin: auto !important;
+  width: 50% !important;
+  background-color: white !important;
+}
+.sign_in_p3_bg_light {
+  padding: 50px !important;
+  background-color: white !important;
+}
+.sign_in_main_title_1 {
+  font-size: 100px !important;
+  color: rgb(0, 17, 255) !important;
+}
+.sign_in_form_control_1 {
+  width: 500px !important;
+  border-radius: 25px;
+}
+.sign_in_col_2 {
+  background-color: white !important;
+}
+.sign_in_p3_bg_light_1 {
+  background-color: white !important;
+}
