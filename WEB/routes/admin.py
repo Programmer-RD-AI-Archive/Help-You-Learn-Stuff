@@ -14,8 +14,7 @@ def admin_home():
     Return: return_description
     """
     if "Is_Admin" in session:
-        config = requests.get("http://127.0.0.1:5000/api/get_config",
-                              {"password": password})
+        config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
         return render_template(
             "admin/home.html",
@@ -37,24 +36,15 @@ def admin_courses():
     if "Is_Admin" in session:
         resources = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": "SELECT * FROM Resources",
-                "Type": "Select"
-            },
+            {"Query": "SELECT * FROM Resources", "Type": "Select"},
         ).json()["message"]
         questions = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": "SELECT * FROM Questions",
-                "Type": "Select"
-            },
+            {"Query": "SELECT * FROM Questions", "Type": "Select"},
         ).json()["message"]
         courses = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": "SELECT * FROM Courses",
-                "Type": "Select"
-            },
+            {"Query": "SELECT * FROM Courses", "Type": "Select"},
         ).json()["message"]
         new_cources = []
         iter_cources = []
@@ -123,8 +113,7 @@ def admin_question():
     Return: return_description
     """
     if "Is_Admin" in session:
-        returned_vals = requests.get(
-            "http://127.0.0.1:5000/api/questions").json()
+        returned_vals = requests.get("http://127.0.0.1:5000/api/questions").json()
         returned_vals = returned_vals["message"]
         return render_template(
             "admin/question.html",
@@ -161,7 +150,9 @@ def admin_resources():
             ).json()
             flash("Resource Added", "success")
             return redirect("/Admin/Resources")
-        results = requests.get("http://127.0.0.1:5000/api/resources", ).json()
+        results = requests.get(
+            "http://127.0.0.1:5000/api/resources",
+        ).json()
         return render_template(
             "admin/resources.html",
             session=session,
@@ -223,8 +214,7 @@ def admin_resources_edit(_id):
             results = requests.get(
                 "http://127.0.0.1:5000/api/azure/sql",
                 {
-                    "Query":
-                    f"UPDATE Resources SET method_of_resource='{method_of_resource}', link_of_resource='{link_of_resource}', title='{title}', description='{description}' WHERE ID={_id}",
+                    "Query": f"UPDATE Resources SET method_of_resource='{method_of_resource}', link_of_resource='{link_of_resource}', title='{title}', description='{description}' WHERE ID={_id}",
                     "Type": "Insert",
                 },
             ).json()
@@ -232,10 +222,7 @@ def admin_resources_edit(_id):
             return redirect("/Admin/Resources")
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": f"SELECT * FROM Resources WHERE ID = {_id}",
-                "Type": "Select"
-            },
+            {"Query": f"SELECT * FROM Resources WHERE ID = {_id}", "Type": "Select"},
         ).json()["message"][0]
         return render_template(
             "admin/resources.html",
@@ -257,9 +244,7 @@ def admin_question_post():
     Return: return_description
     """
     flash("Question Added", "success")
-    request_form = eval(
-        list(dict(request.form).keys())[0] +
-        list(dict(request.form).values())[0])
+    request_form = eval(list(dict(request.form).keys())[0] + list(dict(request.form).values())[0])
     info = request_form["info"]
     yourdiv = request_form["yourdiv"]
     name = info["name"]
@@ -296,16 +281,16 @@ def admin_question_post():
         for input_ in inputs:
             input_.attrs["answer"] = info[str(idx)][1]
             input_.attrs["name"] = input_.attrs["id"]
-    returned_vals = requests.post("http://127.0.0.1:5000/api/questions", {
-        "html": str(soup),
-        "name": str(name)
-    }).json()
+    returned_vals = requests.post(
+        "http://127.0.0.1:5000/api/questions", {"html": str(soup), "name": str(name)}
+    ).json()
     return ("", 200)
 
 
 @app.route("/Admin/Question/<_id>/Preview/")
 @app.route(
-    "/Admin/Question/<_id>/Preview", )
+    "/Admin/Question/<_id>/Preview",
+)
 def admin_question_preview(_id):
     """sumary_line
 
@@ -316,19 +301,16 @@ def admin_question_preview(_id):
     if "Is_Admin" in session:
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": f"SELECT * FROM Questions WHERE ID = {_id}",
-                "Type": "Select"
-            },
+            {"Query": f"SELECT * FROM Questions WHERE ID = {_id}", "Type": "Select"},
         ).json()["message"][0]
-        return render_template("admin/admin_question_preview.html",
-                               code=results[1])
+        return render_template("admin/admin_question_preview.html", code=results[1])
     return abort(404)
 
 
 @app.route("/Admin/Question/<_id>/Delete/")
 @app.route(
-    "/Admin/Question/<_id>/Delete", )
+    "/Admin/Question/<_id>/Delete",
+)
 def admin_question_delete(_id):
     """sumary_line
 
@@ -339,10 +321,7 @@ def admin_question_delete(_id):
     if "Is_Admin" in session:
         results = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": f"DELETE FROM Questions WHERE ID={_id}",
-                "Type": "Insert"
-            },
+            {"Query": f"DELETE FROM Questions WHERE ID={_id}", "Type": "Insert"},
         ).json()
         flash("Deleted", "success")
         return redirect("/Admin/Question")
