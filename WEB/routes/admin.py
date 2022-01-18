@@ -248,26 +248,26 @@ def admin_question_post():
         element = soup.find("input", id=f"{idx}-Input-Name")
         try:
             element.replaceWith(info[str(idx)][0])
-        except:
-            pass
+        except Exception as e:
+            warnings.filterwarnings(e)
         element = soup.find("button")
         try:
             element.string = ""
-        except:
-            pass
+        except Exception as e:
+            warnings.filterwarnings(e)
         try:
             element.unwrap()
-        except:
-            pass  # TODO Change Make if else statment
+        except Exception as e:
+            warnings.filterwarnings(e)  # TODO Change Make if else statment
         element = soup.find("div", id=f"{idx}")
         try:
             del element.attrs['class"mb-3"']
-        except:
-            pass
+        except Exception as e:
+            warnings.filterwarnings(e)
         try:
             element.attrs["class"] = "mb-3"
-        except:
-            pass
+        except Exception as e:
+            warnings.filterwarnings(e)
         element = soup.find("hr")
         element.unwrap()
         inputs = soup.find_all("input", id=f"{idx}-Label")
