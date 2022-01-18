@@ -1,6 +1,6 @@
 let idx = 0;
 let idx_iter = 0;
-$("#input").click(function (e) {
+$("#input").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -16,7 +16,7 @@ $("#input").click(function (e) {
         </div>`
   );
 });
-$("#text").click(function (e) {
+$("#text").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -31,7 +31,7 @@ $("#text").click(function (e) {
       </div>`
   );
 });
-$("#checkbox").click(function (e) {
+$("#checkbox").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -48,7 +48,7 @@ $("#checkbox").click(function (e) {
         </div>`
   );
 });
-$("#big_input").click(function (e) {
+$("#big_input").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -65,7 +65,7 @@ $("#big_input").click(function (e) {
         </div>`
   );
 });
-$("#switches").click(function (e) {
+$("#switches").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -82,7 +82,7 @@ $("#switches").click(function (e) {
         </div>`
   );
 });
-$("#checks").click(function (e) {
+$("#checks").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -101,7 +101,7 @@ $("#checks").click(function (e) {
         </div>`
   );
 });
-$("#range").click(function (e) {
+$("#range").click(function () {
   idx += 1;
 
   document.getElementById("content").insertAdjacentHTML(
@@ -115,7 +115,7 @@ $("#range").click(function (e) {
         </div>`
   );
 });
-$("#submit_btn").click(function (e) {
+$("#submit_btn").click(function () {
   const info = {};
   for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
     try {
