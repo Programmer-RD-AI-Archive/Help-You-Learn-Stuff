@@ -18,7 +18,8 @@ class Azure_SQL:
             "rb",
         )
         f = "0x" + binascii.hexlify(f.read()).decode("utf-8")
-    except:
+    except Exception as e:
+        warnings.filterwarnings(e)
         f = "0x123456987"
 
     def __init__(
