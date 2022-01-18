@@ -23,8 +23,8 @@ class Azure_Storage:
         self.container_name = str(container_name)
         try:
             self.container_client = self.blob_service_client.create_container(self.container_name)
-        except:
-            pass
+        except Exception as e:
+            warnings.filterwarnings(e)
 
     def create_file(self, file_rb, file_name_in_the_cloud: str) -> None:
         """sumary_line
