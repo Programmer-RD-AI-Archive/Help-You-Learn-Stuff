@@ -13,15 +13,11 @@ def usr_home(_id):
     """
     if str(_id) == str(session["id"]):
         password = "01x2253x6871"
-        config = requests.get("http://127.0.0.1:5000/api/get_config",
-                              {"password": password})
+        config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
         courses = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": "SELECT * FROM Courses",
-                "Type": "Select"
-            },
+            {"Query": "SELECT * FROM Courses", "Type": "Select"},
         ).json()["message"]
         new_cources = []
         iter_cources = []
@@ -55,24 +51,16 @@ def usr_home_cources(_id, course_id):
     """
     if str(_id) == str(session["id"]):
         password = "01x2253x6871"
-        config = requests.get("http://127.0.0.1:5000/api/get_config",
-                              {"password": password})
+        config = requests.get("http://127.0.0.1:5000/api/get_config", {"password": password})
         config = config.json()
         courses = requests.get(
             "http://127.0.0.1:5000/api/azure/sql",
-            {
-                "Query": f"SELECT * FROM Courses WHERE ID={course_id}",
-                "Type": "Select"
-            },
+            {"Query": f"SELECT * FROM Courses WHERE ID={course_id}", "Type": "Select"},
         ).json()["message"]
         info = courses[0][2]
         info = requests.get(
             "http://127.0.0.1:5000/api/azure/storage",
-            {
-                "Type": "Download File",
-                "Container Name": "cource",
-                "file_name": info
-            },
+            {"Type": "Download File", "Container Name": "cource", "file_name": info},
         ).json()["message"]
         info = dict(eval(info))
         session[f"Cource {course_id}"] = info
@@ -82,10 +70,8 @@ def usr_home_cources(_id, course_id):
     return abort(404)
 
 
-@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>/",
-           methods=["GET", "POST"])
-@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>",
-           methods=["GET", "POST"])
+@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>/", methods=["GET", "POST"])
+@app.route("/Usr/<_id>/Cources/<course_id>/Lesson/<lesson_id>", methods=["GET", "POST"])
 def usr_home_cource_lesson(_id, course_id, lesson_id):
     """sumary_line
 
@@ -100,14 +86,12 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
                 info_of_page = requests.get(
                     "http://127.0.0.1:5000/api/azure/sql",
                     {
-                        "Query":
-                        f"SELECT * FROM Resources WHERE ID={int(specific_lesson_info[0][1])}",
+                        "Query": f"SELECT * FROM Resources WHERE ID={int(specific_lesson_info[0][1])}",
                         "Type": "Select",
                     },
                 ).json()["message"]
                 if info_of_page[0][1] == 1:
-                    info_of_page[0][2] = ("https://www.youtube.com/embed/" +
-                                          info_of_page[0][2])
+                    info_of_page[0][2] = "https://www.youtube.com/embed/" + info_of_page[0][2]
                 return render_template(
                     "dashboard/lesson.html",
                     url=info_of_page[0][2],
@@ -119,8 +103,7 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
             info_of_page = requests.get(
                 "http://127.0.0.1:5000/api/azure/sql",
                 {
-                    "Query":
-                    f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
+                    "Query": f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
                     "Type": "Select",
                 },
             ).json()["message"]
