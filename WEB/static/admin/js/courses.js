@@ -18,13 +18,12 @@ function add_to_content(val) {
       </div>`
   );
 }
-$("#submit_btn").click(function (e) {
+$("#submit_btn").click(function () {
   const marks = document.getElementById("Marks Required to Pass").value;
   const image = document.getElementById("Image").value;
   const name = document.getElementById("Name").value;
   const info = {};
   for (idx_iter = 1; idx_iter <= idx; idx_iter++) {
-    // const specific_content = $(`#${idx_iter}`).html();
     info[idx_iter] = [idx_val[idx_iter]];
   }
 
