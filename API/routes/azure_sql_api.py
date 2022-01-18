@@ -2,18 +2,29 @@ from API import *
 
 hp = Help_Funcs()
 azure_sql_request_parser = reqparse.RequestParser()
-azure_sql_request_parser.add_argument("""Type""",
-                                      type=str,
-                                      help="""Type is required""",
-                                      required=True)
-azure_sql_request_parser.add_argument("""Query""",
-                                      type=str,
-                                      help="""Query is required""",
-                                      required=False)
+azure_sql_request_parser.add_argument(
+    """Type""", type=str, help="""Type is required""", required=True
+)
+azure_sql_request_parser.add_argument(
+    """Query""", type=str, help="""Query is required""", required=False
+)
 
 
 class Azure_SQL_API(Resource):
+    """sumary_line
+
+    Keyword arguments:
+    argument -- description
+    Return: return_description
+    """
+
     def get(self) -> dict:
+        """sumary_line
+
+        Keyword arguments:
+        argument -- description
+        Return: return_description
+        """
         args = azure_sql_request_parser.parse_args()
         asql = Azure_SQL()
         if args["""Type"""] == """Table""":
