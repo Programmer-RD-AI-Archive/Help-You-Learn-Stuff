@@ -28,7 +28,8 @@ class Help_Funcs:
             server.sendmail(gmail_user, reviver, message)
             server.close()
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
     def table_exists_or_not(self, table_name: str, query: str) -> bool:
@@ -44,7 +45,8 @@ class Help_Funcs:
             if table_name not in tables:
                 asql.create_new_table(query)
             return True
-        except:
+        except Exception as e:
+            warnings.filterwarnings(e)
             return False
 
 
