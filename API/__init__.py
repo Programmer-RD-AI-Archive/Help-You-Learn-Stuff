@@ -2,7 +2,6 @@ import json
 
 from flask import *
 from flask_restful import *
-from flask_restful import reqparse
 
 
 config = json.load(open("./API/config.json"))
