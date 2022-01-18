@@ -11,12 +11,6 @@
       crossorigin="anonymous"
     />
     <script
-      rel="stylesheet"
-      type="text/css"
-      href="/WEB/static/base_admin.css"
-    ></script>
-    <script type="text/javascript" src="./base.js"></script>
-    <script
       type="text/javascript"
       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     ></script>
@@ -43,6 +37,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     {% block head %} {% endblock %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/base.css') }}"
+    />
+    <script src="{{ url_for('static', filename='admin/js/base.js') }}"></script>
   </head>
   <body>
     <nav
