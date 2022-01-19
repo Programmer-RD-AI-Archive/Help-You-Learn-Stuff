@@ -123,6 +123,7 @@ def sign_up():
         session["Password"] = password
         flash("Your account has been created.", "success")
         return redirect("/Sign/In")
+        # session["2FACAUTH"] = True
     return render_template("home/sign_up.html", session=session, config=config)
 
 
@@ -178,4 +179,37 @@ def sign_in():
         session["Password"] = password
         flash("Email or User Name and Password is wrong.", "danger")
         return redirect("/Sign/In")
+        # session["2FACAUTH"] = False
     return render_template("home/sign_in.html", session=session, config=config)
+
+
+# @app.route("/2/Fac/Auth/", methods=["POST", "GET"])
+# @app.route("/2/Fac/Auth/", methods=["POST", "GET"])
+# def sign_two_face_auth():
+#     # try:
+#     if "2FACAUTH" in session:
+#         db = cluster["2FACAUTH"]
+#         collection = db["2FACAUTH"]
+#         if request.method == "POST":
+#             email_code = request.form["email"]
+#             phone_number_code = request.form["phone_number"]
+#             # results = [
+#             #     collection.find_one(
+#             #         {
+#             #             session["Email"]: int(email_code),
+#             #             session["Phone Number"]: int(phone_number_code),
+#             #             "user_name": session["User Name"],
+#             #         }
+#             #     )
+#             # ]
+#             results = ["GRG", "FEG"]
+#             if results == [None]:
+#                 flash("Email or Phone Number code is wrong.", "danger")
+#                 return redirect("/Sign/In")
+#             # collection.delete_one(results[0])
+#             if session["2FACAUTH_TYPE"] is False:
+#                 session["auth"] = True
+#             session.pop("2FACAUTH")
+#             return redirect(session["route"])
+#         two_fac_auth(session["User Name"], session["Email"], session["Phone Number"])
+#         return render_template("/home/2_fac_auth.html")
