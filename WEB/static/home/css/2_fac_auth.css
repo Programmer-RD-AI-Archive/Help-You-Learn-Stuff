@@ -1,0 +1,22 @@
+body {
+  background-color: white;
+  color: black !important;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+.two_fac_auth_container_1 {
+  border-radius: 25px !important;
+}
+.two_factor_auth_btn_1 {
+  font-size: 25px !important;
+  text-shadow: 2px 2px 0px white;
+  box-shadow: 4px 4px 10px gray !important;
+  margin-right: 62px !important;
+}
