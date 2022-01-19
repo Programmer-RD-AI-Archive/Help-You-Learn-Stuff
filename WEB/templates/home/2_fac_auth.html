@@ -1,0 +1,73 @@
+{% extends "/home/base.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='2_fac_auth/css/home.css') }}"
+/>
+<script src="{{ url_for('static', filename='2_fac_auth/js/home.js') }}"></script>
+<title>2 Fac Auth</title>
+{% endblock %} {% block body %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+  <div class="col">
+    <div class="container two_fac_auth_container_1">
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <form method="post">
+                <br />
+                <div class="mb-3">
+                  <label for="Email" class="form-label">
+                    email_code (the code is 12345)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Email"
+                    aria-describedby="emailHelp"
+                    value="{{ email_code }}"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="Password" class="form-label"
+                    >phone_number_code (the code is 12345)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Password"
+                    value="{{ phone_number_code }}"
+                    required
+                    name="phone_number"
+                  />
+                </div>
+                <button
+                  class="btn btn-outline-secondary two_factor_auth_btn_1"
+                  aria-current="page"
+                  href="/"
+                >
+                  Enter
+                </button>
+                <br />
+                <br />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <img
+      src="https://twilio-cms-prod.s3.amazonaws.com/original_images/push-auth-2fa.gif"
+      alt=""
+    />
+  </div>
+</div>
+{% endblock %}
