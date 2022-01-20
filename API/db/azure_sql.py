@@ -37,8 +37,7 @@ class Azure_SQL:
         self.username = username
         self.password = password
         self.connection_timeout = connection_timeout
-        self.connection_str = textwrap.dedent(
-            f"""
+        self.connection_str = textwrap.dedent(f"""
                                  Driver={self.driver};
                                  Server={self.server};
                                  Database={self.database_name};
@@ -47,14 +46,14 @@ class Azure_SQL:
                                  Encrypt=yes;
                                  TrustServerCertificate=no;
                                  Connection Timeout={30};
-                                 """
-        )
+                                 """)
         self.cnxn: pyodbc.Connection = pyodbc.connect(self.connection_str)
         self.crsr: pyodbc.Cursor = self.cnxn.cursor()
 
     def create_new_table(
         self,
-        table_query: str = """CREATE TABLE TEST (A varbinary(max),B varchar(50))""",
+        table_query:
+        str = """CREATE TABLE TEST (A varbinary(max),B varchar(50))""",
     ) -> bool:
         """sumary_line
 
@@ -72,7 +71,8 @@ class Azure_SQL:
 
     def insert_to_table(
         self,
-        insert_query: str = f"""INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')""",
+        insert_query:
+        str = f"""INSERT INTO [TEST]( [A], [B] ) VALUES ( {f}, 'Jane')""",
     ) -> bool:
         """sumary_line
 
@@ -88,7 +88,8 @@ class Azure_SQL:
             warnings.filterwarnings(e)
             return False
 
-    def select_table(self, select_query: str = """SELECT * FROM TEST""") -> list:
+    def select_table(self,
+                     select_query: str = """SELECT * FROM TEST""") -> list:
         """sumary_line
 
         Keyword arguments:
@@ -156,7 +157,8 @@ class Azure_SQL:
         """
         try:
             new_tables = []
-            tables = self.select_table("""SELECT table_name FROM information_schema.tables""")
+            tables = self.select_table(
+                """SELECT table_name FROM information_schema.tables""")
             for table in tables:
                 new_tables.append(table[0])
             return new_tables
