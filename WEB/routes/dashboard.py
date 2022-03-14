@@ -93,10 +93,8 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
     argument -- description
     Return: return_description
     """
-    if (
-        str(_id) == str(session["id"])
-        and int(lesson_id) <= len(session[f"Cource {course_id}"])
-    ):
+    if str(_id) == str(session["id"]) and int(lesson_id) <= len(
+            session[f"Cource {course_id}"]):
         specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
         if specific_lesson_info[0][2] == "resource":
             info_of_page = requests.get(
