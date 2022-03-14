@@ -93,43 +93,45 @@ def usr_home_cource_lesson(_id, course_id, lesson_id):
     argument -- description
     Return: return_description
     """
-    if str(_id) == str(session["id"]):
-        if int(lesson_id) <= len(session[f"Cource {course_id}"]):
-            specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
-            if specific_lesson_info[0][2] == "resource":
-                info_of_page = requests.get(
-                    "http://127.0.0.1:5000/api/azure/sql",
-                    {
-                        "Query":
-                        f"SELECT * FROM Resources WHERE ID={int(specific_lesson_info[0][1])}",
-                        "Type": "Select",
-                    },
-                ).json()["message"]
-                if info_of_page[0][1] == 1:
-                    info_of_page[0][2] = ("https://www.youtube.com/embed/" +
-                                          info_of_page[0][2])
-                return render_template(
-                    "dashboard/lesson.html",
-                    url=info_of_page[0][2],
-                    title=info_of_page[0][3],
-                    description=info_of_page[0][4],
-                    session=session,
-                    resources="True",
-                )
+    if (
+        str(_id) == str(session["id"])
+        and int(lesson_id) <= len(session[f"Cource {course_id}"])
+    ):
+        specific_lesson_info = session[f"Cource {course_id}"][lesson_id]
+        if specific_lesson_info[0][2] == "resource":
             info_of_page = requests.get(
                 "http://127.0.0.1:5000/api/azure/sql",
                 {
                     "Query":
-                    f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
+                    f"SELECT * FROM Resources WHERE ID={int(specific_lesson_info[0][1])}",
                     "Type": "Select",
                 },
             ).json()["message"]
+            if info_of_page[0][1] == 1:
+                info_of_page[0][2] = ("https://www.youtube.com/embed/" +
+                                      info_of_page[0][2])
             return render_template(
                 "dashboard/lesson.html",
+                url=info_of_page[0][2],
+                title=info_of_page[0][3],
+                description=info_of_page[0][4],
                 session=session,
-                resources=False,
-                code=info_of_page[0][1],
+                resources="True",
             )
+        info_of_page = requests.get(
+            "http://127.0.0.1:5000/api/azure/sql",
+            {
+                "Query":
+                f"SELECT * FROM Questions WHERE ID={int(specific_lesson_info[0][1])}",
+                "Type": "Select",
+            },
+        ).json()["message"]
+        return render_template(
+            "dashboard/lesson.html",
+            session=session,
+            resources=False,
+            code=info_of_page[0][1],
+        )
     return abort(404)
 
 
