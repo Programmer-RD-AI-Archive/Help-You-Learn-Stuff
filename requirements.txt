@@ -3,7 +3,7 @@ adal==1.2.7
 aiofiles==0.7.0
 aiohttp==3.8.1
 aiohttp-cors==0.7.0
-aioredis==2.0.0
+aioredis==2.0.1
 aiosignal==1.2.0
 altair==4.1.0
 aniso8601==9.0.1
