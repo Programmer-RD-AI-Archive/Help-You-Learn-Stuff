@@ -12,6 +12,7 @@ class Help_Funcs:
     argument -- description
     Return: return_description
     """
+
     def send_email(subject: str, message: str, reviver: str) -> bool:
         """sumary_line
 
