@@ -1,3 +1,4 @@
+import ast
 from WEB import *
 from WEB.help_funcs import *
 
@@ -91,7 +92,7 @@ def admin_courses_post():
         for key, val in zip(request_forms.keys(), request_forms.values()):
             new_request_forms += key
             new_request_forms += val
-        request_forms = eval(new_request_forms)
+        request_forms = ast.literal_eval(new_request_forms)
         whole_content = request_forms["whole_content"]
         whole_content = BeautifulSoup(whole_content, "html.parser")
         info = request_forms["info"]
@@ -257,7 +258,7 @@ def admin_question_post():
     Return: return_description
     """
     flash("Question Added", "success")
-    request_form = eval(
+    request_form = ast.literal_eval(
         list(dict(request.form).keys())[0] +
         list(dict(request.form).values())[0])
     info = request_form["info"]
