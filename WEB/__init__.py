@@ -1,6 +1,4 @@
-"""
-this has all of imports and other init configs and other main
-"""
+"""this has all of imports and other init configs and other main"""
 import warnings
 
 from flask import *
