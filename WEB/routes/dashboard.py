@@ -1,3 +1,4 @@
+import ast
 from WEB import *
 from WEB.help_funcs import *
 
@@ -74,7 +75,7 @@ def usr_home_cources(_id, course_id):
                 "file_name": info
             },
         ).json()["message"]
-        info = dict(eval(info))
+        info = dict(ast.literal_eval(info))
         session[f"Cource {course_id}"] = info
         next_lesson = list(info.keys())[0]
         # TODO check if length of cource is higher than 1
