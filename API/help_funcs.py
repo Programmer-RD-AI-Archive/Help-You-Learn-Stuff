@@ -71,18 +71,14 @@ class Encryption:
         self.encoder = encoder
 
     def encode(self) -> bytes:
-        """
-        Encode string for privacy and encryption.
-        """
+        """Encode string for privacy and encryption."""
         msg_bytes = self.message.encode(self.encoder)
         string_bytes = base64.b64encode(msg_bytes)
         string = string_bytes.decode(self.encoder)
         return string
 
     def decode(self) -> bytes:
-        """
-        Decode string for privacy and encryption.
-        """
+        """Decode string for privacy and encryption."""
         msg_bytes = self.message.encode(self.encoder)
         string_bytes = base64.b64decode(msg_bytes)
         string = string_bytes.decode(self.encoder)
