@@ -226,7 +226,7 @@ olefile==0.46
 opencensus==0.8.0
 opencensus-context==0.1.2
 opencv-python==4.5.4.60
-opencv-python-headless==4.5.4.60
+opencv-python-headless==4.8.1.78
 openpyxl==3.0.9
 opt-einsum==3.3.0
 orderedmultidict==1.0.1
