@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@7c0b4c8c8ebed23eca9ec2802474895d105b11bc
+        uses: shivammathur/setup-php@21e092a3e0c2fabb77bf641337eced34a4bcd3cc
         with:
           php-version: ${{ env.PHP_VERSION }}
 
